@@ -1,1 +1,16 @@
-index.html
+<!doctype html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>Let's learn Angular!</title>
+		<script src="lib/angular/angular.js"></script>
+		<script src="js/controllers.js"></script>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<input type="text" ng-model="charname">
+		<h2>This will be the stat block for: {{charname}} </h2>
+		<div ng-controller = "MyController">
+		</div>
+	</body>
+</html>
