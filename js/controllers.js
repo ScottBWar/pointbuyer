@@ -15,6 +15,7 @@ myApp.controller('statController', function statController($scope){
 
 	$scope.plusStr = function(){
 		$scope.stats.str++;
+		$scope.total--;
 	};
 
 
