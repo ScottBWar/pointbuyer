@@ -10,21 +10,20 @@
 	<body>
 		<input type="text" ng-model="charname">
 		<h2>This will be the stat block for: {{charname}} </h2>
-		<div ng-controller = "MyController">
-		</div>
-		<select placeholder="type">
+		<div ng-controller = "statController">
+		<select placeholder="type" ng-model="race">
 		<option>Human</option>
 		<option>Other</option>
 		</select>
-		<h3>Points Left: <span class="total" ng-model="points">27</span></h3>
-
+		<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
 		<ul class='abilityscores'>
-		<li>str</li>
-		<li>dex</li>
-		<li>con</li>
-		<li>int</li>
-		<li>wis</li>
-		<li>cha</li>
+		<li>str <span class="stat">{{stats.str}}</span></li>
+		<li>dex <span class="stat">{{stats.dex}}</span></li>
+		<li>con <span class="stat">{{stats.con}}</span></li>
+		<li>int <span class="stat">{{stats.int}}</span></li>
+		<li>wis <span class="stat">{{stats.wis}}</span></li>
+		<li>cha <span class="stat">{{stats.cha}}</span></li>
 		</ul>
+		</div>
 	</body>
 </html>
