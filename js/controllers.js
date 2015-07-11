@@ -27,6 +27,7 @@ myApp.controller('statController', function statController($scope){
 	};
 
 	$scope.selectedRace = function(selected){
+		console.log(selected);
 		$scope.race = selected;
 		$scope.revertStats();
 		switch ($scope.race.type){
