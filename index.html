@@ -9,12 +9,12 @@
 	</head>
 	<body>
 		<input type="text" ng-model="charname">
-		<h2>This will be the stat block for: {{charname}} </h2>
 		<div ng-controller = "statController">
-			<select placeholder="type" ng-model="race">
+			<select placeholder="type" ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="racesList">
 				<option>Human</option>
 				<option>Other</option>
 			</select>
+			<h2>This will be the stat block for: {{charname}} - {{race}} </h2>
 			<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
 			<ul class='abilityscores'>
 				<li>str
