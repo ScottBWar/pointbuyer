@@ -11,4 +11,5 @@ myApp.controller('statController', function statController($scope){
 		'cha' : 8,
 	};
 
+
 });

@@ -11,19 +11,37 @@
 		<input type="text" ng-model="charname">
 		<h2>This will be the stat block for: {{charname}} </h2>
 		<div ng-controller = "statController">
-		<select placeholder="type" ng-model="race">
-		<option>Human</option>
-		<option>Other</option>
-		</select>
-		<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
-		<ul class='abilityscores'>
-		<li>str <span class="stat">{{stats.str}}</span></li>
-		<li>dex <span class="stat">{{stats.dex}}</span></li>
-		<li>con <span class="stat">{{stats.con}}</span></li>
-		<li>int <span class="stat">{{stats.int}}</span></li>
-		<li>wis <span class="stat">{{stats.wis}}</span></li>
-		<li>cha <span class="stat">{{stats.cha}}</span></li>
-		</ul>
+			<select placeholder="type" ng-model="race">
+				<option>Human</option>
+				<option>Other</option>
+			</select>
+			<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
+			<ul class='abilityscores'>
+				<li>str
+					<span class="stat">{{stats.str}}</span>
+					<button id="plusStr" class="plusButton">+</button>
+				</li>
+				<li>dex
+					<span class="stat">{{stats.dex}}</span>
+					<button id="plusDex" class="plusButton">+</button>
+				</li>
+				<li>con
+					<span class="stat">{{stats.con}}</span>
+					<button id="plusCon" class="plusButton">+</button>
+				</li>
+				<li>int
+					<span class="stat">{{stats.int}}</span>
+					<button id="plusInt" class="plusButton">+</button>
+				</li>
+				<li>wis
+					<span class="stat">{{stats.wis}}</span>
+					<button id="plusWis" class="plusButton">+</button>
+				</li>
+				<li>cha
+					<span class="stat">{{stats.cha}}</span>
+					<button id="plusCha" class="plusButton">+</button>
+				</li>
+			</ul>
 		</div>
 	</body>
 </html>
