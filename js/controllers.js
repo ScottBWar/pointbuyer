@@ -63,14 +63,22 @@ myApp.controller('statController', function statController($scope) {
     };
 
     $scope.selectedRace = function(selected) {
-        console.log(selected);
+    	if($scope.benefitsToggle === true){
+        	$scope.applyRacialBenefits();
+        	document.getElementById("benefits").checked = false;
+        	$scope.race = selected;
+        }
+      else{
         $scope.race = selected;
-        $scope.revertStats();
         document.getElementById("benefitsToggle").style.display="block";
+      }
     };
 
     $scope.increaseStat = function(stat) {
-        if(stat.value < 13 && $scope.total >= 1){
+    		if(stat.value == 15){
+        	console.log("15 point max");
+        }
+        else if(stat.value < 13 && $scope.total >= 1){
         	stat.value++;
         	$scope.total--;
         }
@@ -104,8 +112,23 @@ myApp.controller('statController', function statController($scope) {
         $scope.benefitsToggle = true;
       }
       else if($scope.benefitsToggle === true){
+      	switch ($scope.race.type) {
+            case "Human":
+                $scope.stats[0].value--;
+                $scope.stats[1].value--;
+                $scope.stats[2].value--;
+                $scope.stats[3].value--;
+                $scope.stats[4].value--;
+                $scope.stats[5].value--;
+                break;
+            case "Hill Dwarf":
+                $scope.stats[2].value -= 2;
+                $scope.stats[4].value--;
+                break;
+            case undefined:
+            		break;
+        }
       	$scope.benefitsToggle = false;
-      	$scope.revertStats();
       }
     };
 
