@@ -6,23 +6,29 @@ myApp.controller('statController', function statController($scope) {
 
     $scope.stats = [{
         'label': 'str',
-        'value': 8
+        'value': 8,
+        'modifier':" -1 "
     }, {
         'label': 'dex',
-        'value': 8
+        'value': 8,
+        'modifier':" -1 "
     }, {
         'label': 'con',
-        'value': 8
+        'value': 8,
+        'modifier':" -1 "
     }, {
         'label': 'int',
-        'value': 8
+        'value': 8,
+        'modifier':" -1 "
     }, {
         'label': 'wis',
-        'value': 8
+        'value': 8,
+        'modifier':" -1 "
     }, {
         'label': 'cha',
-        'value': 8
-    }, ];
+        'value': 8,
+        'modifier':" -1 "
+    } ];
 
     $scope.total = 27;
 
@@ -88,24 +94,30 @@ myApp.controller('statController', function statController($scope) {
     $scope.revertStats = function() {
         $scope.total = 27;
         $scope.stats = [{
-            'label': 'str',
-            'value': 8
-        }, {
-            'label': 'dex',
-            'value': 8
-        }, {
-            'label': 'con',
-            'value': 8
-        }, {
-            'label': 'int',
-            'value': 8
-        }, {
-            'label': 'wis',
-            'value': 8
-        }, {
-            'label': 'cha',
-            'value': 8
-        }, ];
+        'label': 'str',
+        'value': 8,
+        'modifier':" -1 "
+    }, {
+        'label': 'dex',
+        'value': 8,
+        'modifier':" -1 "
+    }, {
+        'label': 'con',
+        'value': 8,
+        'modifier':" -1 "
+    }, {
+        'label': 'int',
+        'value': 8,
+        'modifier':" -1 "
+    }, {
+        'label': 'wis',
+        'value': 8,
+        'modifier':" -1 "
+    }, {
+        'label': 'cha',
+        'value': 8,
+        'modifier':" -1 "
+    } ];
     };
 
     $scope.selectedRace = function(selected) {
@@ -122,7 +134,33 @@ myApp.controller('statController', function statController($scope) {
     $scope.selected = $scope.racesList[0];
     $scope.selectedRace($scope.racesList[0]);
 
+    $scope.getModifier = function(stat){
+    	if(stat.value <= 9){
+    		stat.modifier = " - 1 ";
+    	}
+    	else if(stat.value < 11){
+    		stat.modifier = " + 0 ";
+    	}
+    	else if(stat.value < 13){
+    		stat.modifier = " + 1 ";
+    	}
+    	else if(stat.value <= 15){
+    		stat.modifier = " + 2 ";
+    	}
+    	else if(stat.value > 15){
+    		stat.modifier = " + 3 ";
+    	}
+    };
+
+    $scope.getAllModifier = function(stat){
+    for(var i = 0; i < $scope.stats.length; i++){
+    		console.log($scope.stats[i]);
+    		$scope.getModifier($scope.stats[i]);
+    	}
+    };
+
     $scope.increaseStat = function(stat) {
+    	$scope.getModifier(stat);
         if (stat.value == 15) {
             console.log("15 point max");
         } else if (stat.value < 13 && $scope.total >= 1) {
@@ -174,6 +212,7 @@ myApp.controller('statController', function statController($scope) {
             }
             $scope.benefitsToggle = false;
         }
+        $scope.getAllModifier();
     };
 
 });
