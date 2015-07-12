@@ -1,5 +1,7 @@
 var myApp = angular.module('myApp', []);
 
+
+
 myApp.controller('statController', function statController($scope) {
 
     $scope.stats = [{
@@ -37,6 +39,8 @@ myApp.controller('statController', function statController($scope) {
         type: "other"
     }];
 
+
+
     $scope.benefitsToggle = false;
 
     $scope.revertStats = function() {
@@ -73,6 +77,9 @@ myApp.controller('statController', function statController($scope) {
         document.getElementById("benefitsToggle").style.display="block";
       }
     };
+
+    $scope.selected = $scope.racesList[0];
+    $scope.selectedRace($scope.racesList[0]);
 
     $scope.increaseStat = function(stat) {
     		if(stat.value == 15){

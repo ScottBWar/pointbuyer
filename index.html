@@ -11,7 +11,6 @@
 		<input type="text" ng-model="charname">
 		<div ng-controller = "statController">
 			<select placeholder="type" ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type for race in racesList">
-				<option value=""></option>
 			</select>
 			<h2>This will be the stat block for: {{charname}} - {{race.type}} </h2>
 			<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
