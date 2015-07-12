@@ -1,54 +1,142 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('statController', function statController($scope){
 
-	$scope.stats = {
-		'str' : 8,
-		'dex' : 8,
-		'con' : 8,
-		'int' : 8,
-		'wis' : 8,
-		'cha' : 8,
-		};
 
-	$scope.total = 27;
+myApp.controller('statController', function statController($scope) {
 
-	$scope.racesList = [{id:1,type:"Human"},{id:2,type:"Hill Dwarf"},{id:3,type:"other"}];
+    $scope.stats = [{
+        'label': 'str',
+        'value': 8
+    }, {
+        'label': 'dex',
+        'value': 8
+    }, {
+        'label': 'con',
+        'value': 8
+    }, {
+        'label': 'int',
+        'value': 8
+    }, {
+        'label': 'wis',
+        'value': 8
+    }, {
+        'label': 'cha',
+        'value': 8
+    }, ];
 
-	$scope.revertStats = function(){
-		$scope.stats = {
-		'str' : 8,
-		'dex' : 8,
-		'con' : 8,
-		'int' : 8,
-		'wis' : 8,
-		'cha' : 8,
-		};
-	};
+    $scope.total = 27;
 
-	$scope.selectedRace = function(selected){
-		console.log(selected);
-		$scope.race = selected;
-		$scope.revertStats();
-		switch ($scope.race.type){
-			case "Human":
-			$scope.stats.str++;
-			$scope.stats.dex++;
-			$scope.stats.con++;
-			$scope.stats.int++;
-			$scope.stats.wis++;
-			$scope.stats.cha++;
-			break;
-			case "Hill Dwarf":
-			$scope.stats.con += 2;
-			$scope.stats.wis++;
-		}
-	};
+    $scope.racesList = [{
+        id: 1,
+        type: "Human",
+        perks: "+ All"
+    }, {
+        id: 2,
+        type: "Hill Dwarf",
+        perks: "++ con, + wis"
+    }, {
+        id: 3,
+        type: "other"
+    }];
 
-	$scope.plusStr = function(){
-		$scope.stats.str++;
-		$scope.total--;
-	};
 
+
+    $scope.benefitsToggle = false;
+
+    $scope.revertStats = function() {
+    	$scope.total = 27;
+        $scope.stats = [{
+            'label': 'str',
+            'value': 8
+        }, {
+            'label': 'dex',
+            'value': 8
+        }, {
+            'label': 'con',
+            'value': 8
+        }, {
+            'label': 'int',
+            'value': 8
+        }, {
+            'label': 'wis',
+            'value': 8
+        }, {
+            'label': 'cha',
+            'value': 8
+        }, ];
+    };
+
+    $scope.selectedRace = function(selected) {
+    	if($scope.benefitsToggle === true){
+        	$scope.applyRacialBenefits();
+        	$scope.race = selected;
+        	$scope.applyRacialBenefits();
+        }
+      else{
+        $scope.race = selected;
+        document.getElementById("benefitsToggle").style.display="block";
+      }
+    };
+
+    $scope.selected = $scope.racesList[0];
+    $scope.selectedRace($scope.racesList[0]);
+
+    $scope.increaseStat = function(stat) {
+    		if(stat.value == 15){
+        	console.log("15 point max");
+        }
+        else if(stat.value < 13 && $scope.total >= 1){
+        	stat.value++;
+        	$scope.total--;
+        }
+        else if(stat.value >= 13 && $scope.total >= 2){
+        	stat.value++;
+        	$scope.total -= 2;
+        }
+        else{
+        	console.log("no more points");
+        }
+    };
+
+    $scope.applyRacialBenefits = function(){
+    	if($scope.benefitsToggle === false){
+    	 switch ($scope.race.type) {
+            case "Human":
+                $scope.stats[0].value++;
+                $scope.stats[1].value++;
+                $scope.stats[2].value++;
+                $scope.stats[3].value++;
+                $scope.stats[4].value++;
+                $scope.stats[5].value++;
+                break;
+            case "Hill Dwarf":
+                $scope.stats[2].value += 2;
+                $scope.stats[4].value++;
+                break;
+            case undefined:
+            		break;
+        }
+        $scope.benefitsToggle = true;
+      }
+      else if($scope.benefitsToggle === true){
+      	switch ($scope.race.type) {
+            case "Human":
+                $scope.stats[0].value--;
+                $scope.stats[1].value--;
+                $scope.stats[2].value--;
+                $scope.stats[3].value--;
+                $scope.stats[4].value--;
+                $scope.stats[5].value--;
+                break;
+            case "Hill Dwarf":
+                $scope.stats[2].value -= 2;
+                $scope.stats[4].value--;
+                break;
+            case undefined:
+            		break;
+        }
+      	$scope.benefitsToggle = false;
+      }
+    };
 
 });
