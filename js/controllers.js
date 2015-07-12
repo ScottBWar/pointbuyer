@@ -65,8 +65,8 @@ myApp.controller('statController', function statController($scope) {
     $scope.selectedRace = function(selected) {
     	if($scope.benefitsToggle === true){
         	$scope.applyRacialBenefits();
-        	document.getElementById("benefits").checked = false;
         	$scope.race = selected;
+        	$scope.applyRacialBenefits();
         }
       else{
         $scope.race = selected;
