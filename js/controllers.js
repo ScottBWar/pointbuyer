@@ -35,7 +35,8 @@ myApp.controller('statController', function statController($scope) {
     $scope.racesList = [{
         id: 1,
         type: "Human",
-        perks: "+ All"
+        perks: "+ All",
+        increase_array: [0,1,2,3,4,5]
     }, {
         id: 2,
         type: "Halfling: Lightfoot",
@@ -48,11 +49,11 @@ myApp.controller('statController', function statController($scope) {
         id: 4,
         type: "Hill Dwarf",
         perks: "++ con, + wis"
-
     }, {
         id: 5,
         type: "Mountain Dwarf",
-        perks: "++ con, ++ str"
+        perks: "++ con, ++ str",
+        increase_array: [0,0,2,2]
     }, {
         id: 6,
         type: "High Elf",
@@ -154,7 +155,6 @@ myApp.controller('statController', function statController($scope) {
 
     $scope.getAllModifier = function(stat){
     for(var i = 0; i < $scope.stats.length; i++){
-    		console.log($scope.stats[i]);
     		$scope.getModifier($scope.stats[i]);
     	}
     };
@@ -176,43 +176,21 @@ myApp.controller('statController', function statController($scope) {
 
     $scope.applyRacialBenefits = function() {
         if ($scope.benefitsToggle === false) {
-            switch ($scope.race.type) {
-                case "Human":
-                    $scope.stats[0].value++;
-                    $scope.stats[1].value++;
-                    $scope.stats[2].value++;
-                    $scope.stats[3].value++;
-                    $scope.stats[4].value++;
-                    $scope.stats[5].value++;
-                    break;
-                case "Hill Dwarf":
-                    $scope.stats[2].value += 2;
-                    $scope.stats[4].value++;
-                    break;
-                case undefined:
-                    break;
+            for(var i = 0; i < $scope.race.increase_array.length; i++){
+                var n = $scope.race.increase_array[i];
+                $scope.stats[n].value++;
             }
-            $scope.benefitsToggle = true;
+             $scope.benefitsToggle = true;
         } else if ($scope.benefitsToggle === true) {
-            switch ($scope.race.type) {
-                case "Human":
-                    $scope.stats[0].value--;
-                    $scope.stats[1].value--;
-                    $scope.stats[2].value--;
-                    $scope.stats[3].value--;
-                    $scope.stats[4].value--;
-                    $scope.stats[5].value--;
-                    break;
-                case "Hill Dwarf":
-                    $scope.stats[2].value -= 2;
-                    $scope.stats[4].value--;
-                    break;
-                case undefined:
-                    break;
+            for(var ii = 0; ii < $scope.race.increase_array.length; ii++){
+                var nn = $scope.race.increase_array[ii];
+                $scope.stats[nn].value--;
             }
-            $scope.benefitsToggle = false;
+           $scope.benefitsToggle = false;
         }
         $scope.getAllModifier();
     };
 
 });
+
+
