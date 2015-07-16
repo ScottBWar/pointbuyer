@@ -40,15 +40,18 @@ myApp.controller('statController', function statController($scope) {
     }, {
         id: 2,
         type: "Halfling: Lightfoot",
-        perks: "++ dex, + cha"
+        perks: "++ dex, + cha",
+        increase_array: [1,1,5]
     }, {
         id: 3,
         type: "Halfling: Stout",
-        perks: "++ dex, + con"
+        perks: "++ dex, + con",
+        increase_array: [1,1,2]
     }, {
         id: 4,
         type: "Hill Dwarf",
-        perks: "++ con, + wis"
+        perks: "++ con, + wis",
+        increase_array: [2,2,4]
     }, {
         id: 5,
         type: "Mountain Dwarf",
@@ -57,35 +60,43 @@ myApp.controller('statController', function statController($scope) {
     }, {
         id: 6,
         type: "High Elf",
-        perks: "++ dex, + int"
+        perks: "++ dex, + int",
+        increase_array: [1,1,3]
     }, {
         id: 7,
         type: "Wood Elf",
-        perks: "++ dex, + wis"
+        perks: "++ dex, + wis",
+        increase_array: [1,1,4]
     }, {
         id: 8,
         type: "Dark Elf",
-        perks: "++ dex, + cha"
+        perks: "++ dex, + cha",
+        increase_array: [1,1,5]
     }, {
         id: 9,
         type: "Forest Gnome",
-        perks: "++ int, + dex"
+        perks: "++ int, + dex",
+        increase_array: [3,3,1]
     }, {
         id: 10,
         type: "Rock Gnome",
-        perks: "++ int, + con"
+        perks: "++ int, + con",
+        increase_array: [3,3,2]
     }, {
         id: 11,
         type: "Half-Orc",
-        perks: "++ str, + con"
+        perks: "++ str, + con",
+        increase_array: [0,0,2]
     }, {
         id: 12,
         type: "Dragonborn",
-        perks: "++ str, + cha"
+        perks: "++ str, + cha",
+        increase_array: [0,0,5]
     }, {
         id: 13,
         type: "Tiefling",
-        perks: "++cha, + int"
+        perks: "++cha, + int",
+        increase_array: [5,5,3]
     }];
 
 
