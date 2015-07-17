@@ -160,7 +160,7 @@ myApp.controller('statController', function statController($scope) {
 
     $scope.selected = $scope.racesList[0];
     $scope.selectedRace($scope.racesList[0]);
-
+//get modifier is not working properly! FIX IT
     $scope.getModifier = function(stat){
     	if(stat.value <= 9){
     		stat.modifier = " - 1 ";
