@@ -5,7 +5,6 @@
 		<title>Let's learn Angular, by playing pathfinder!</title>
 		<script src="lib/angular/angular.js"></script>
 		<script src="js/controllers.js"></script>
-		<script src="js/data.js"></script>
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -23,26 +22,11 @@
 				</li>
 			</ul>
 			<h4 id="benefitsToggle" style="display:none;">Add Race Benefits<input id="benefits" type="checkbox" ng-click="applyRacialBenefits()"></h4>
-			<!-- <div id="half-elf-bonus">
-			<label>Str
-			<input type="checkbox" name="bonusStr" value="str" ng-model="bonusButton.str">
+			<div id="half-elf-bonus" ng-show="race.type == 'Half Elf'">
+			<label ng-repeat="stat in stats">{{stat.label}}
+			<input type="checkbox" name="bonus" ng-model="item.winner" ng-change="checkChanged(item)" ng-disabled="checked==limit && !item.winner">
 			</label>
-			<label>Dex
-			<input type="checkbox" name="bonusDex" value="dex" ng-model="bonusButton.dex">
-			</label>
-			<label>Con
-			<input type="checkbox" name="bonusCon" value="con" ng-model="bonusButton.con">
-			</label>
-			<label>Int
-			<input type="checkbox" name="bonusInt" value="int" ng-model="bonusButton.int">
-			</label>
-			<label>Wis
-			<input type="checkbox" name="bonusWis" value="wis" ng-model="bonusButton.wis">
-			</label>
-			<label>Cha
-			<input type="checkbox" name="bonusCha" value="cha" ng-model="bonusButton.cha">
-			</label>
-			</div> -->
+			</div>
 		</div>
 	</body>
 </html>

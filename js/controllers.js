@@ -97,7 +97,13 @@ myApp.controller('statController', function statController($scope) {
         type: "Tiefling",
         perks: "++cha, + int",
         increase_array: [5,5,3]
-    }];
+    }, {
+        id: 14,
+        type: "Half Elf",
+        perks: "++cha +any two",
+        increase_array: [5,5]
+    }
+    ];
 
 
 
@@ -201,6 +207,17 @@ myApp.controller('statController', function statController($scope) {
         }
         $scope.getAllModifier();
     };
+
+//checkbox maxmimum script
+    $scope.limit = 2;
+    $scope.checked = 0;
+
+     $scope.checkChanged = function(item){
+        if(item.winner) $scope.checked++;
+        else $scope.checked--;
+    };
+
+//
 
 });
 
