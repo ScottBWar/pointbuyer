@@ -147,6 +147,15 @@ myApp.controller('statController', function statController($scope) {
             $scope.race = selected;
             document.getElementById("benefitsToggle").style.display = "block";
         }
+         function revertHalfElfBonus(){
+            if($scope.race.type != 'Half Elf'){
+                console.log("hey that's not a half elf anymore");
+            }
+            else if($scope.race.type == 'Half Elf'){
+                console.log("now that's a half elf");
+            }
+        }
+        revertHalfElfBonus();
     };
 
     $scope.selected = $scope.racesList[0];
@@ -208,12 +217,22 @@ myApp.controller('statController', function statController($scope) {
         $scope.getAllModifier();
     };
 
+    $scope.bonusStat = function(box,stat){
+        if(box.stat){
+            stat.value++;
+        }
+        else if(!box.stat){
+            stat.value--;
+        }
+    };
+
+  
 //checkbox maxmimum script
     $scope.limit = 2;
     $scope.checked = 0;
 
-     $scope.checkChanged = function(item){
-        if(item.winner) $scope.checked++;
+     $scope.checkChanged = function(box){
+        if(box.stat) $scope.checked++;
         else $scope.checked--;
     };
 
