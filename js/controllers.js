@@ -160,21 +160,22 @@ myApp.controller('statController', function statController($scope) {
 
     $scope.selected = $scope.racesList[0];
     $scope.selectedRace($scope.racesList[0]);
-//get modifier is not working properly! FIX IT
+
     $scope.getModifier = function(stat){
+        console.log(stat);
     	if(stat.value <= 9){
     		stat.modifier = " - 1 ";
     	}
-    	else if(stat.value < 11){
+    	else if(stat.value <= 11){
     		stat.modifier = " + 0 ";
     	}
-    	else if(stat.value < 13){
+    	else if(stat.value <= 13){
     		stat.modifier = " + 1 ";
     	}
     	else if(stat.value <= 15){
     		stat.modifier = " + 2 ";
     	}
-    	else if(stat.value > 15){
+    	else if(stat.value >= 16){
     		stat.modifier = " + 3 ";
     	}
     };
@@ -186,7 +187,6 @@ myApp.controller('statController', function statController($scope) {
     };
 
     $scope.increaseStat = function(stat) {
-    	$scope.getModifier(stat);
         if (stat.value == 15) {
             console.log("15 point max");
         } else if (stat.value < 13 && $scope.total >= 1) {
@@ -198,6 +198,7 @@ myApp.controller('statController', function statController($scope) {
         } else {
             console.log("no more points");
         }
+        $scope.getModifier(stat);
     };
 
     $scope.applyRacialBenefits = function() {
