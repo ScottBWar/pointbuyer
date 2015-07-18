@@ -162,7 +162,6 @@ myApp.controller('statController', function statController($scope) {
     $scope.selectedRace($scope.racesList[0]);
 
     $scope.getModifier = function(stat){
-        console.log(stat);
     	if(stat.value <= 9){
     		stat.modifier = " - 1 ";
     	}
@@ -225,6 +224,7 @@ myApp.controller('statController', function statController($scope) {
         else if(!box.stat){
             stat.value--;
         }
+        $scope.getAllModifier();
     };
 
   
@@ -238,6 +238,8 @@ myApp.controller('statController', function statController($scope) {
     };
 
 //
+    
+
 
 });
 
