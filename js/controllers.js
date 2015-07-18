@@ -147,6 +147,7 @@ myApp.controller('statController', function statController($scope) {
             $scope.race = selected;
             document.getElementById("benefitsToggle").style.display = "block";
         }
+        //Let's make this revert function work next time we look at, okay?
          function revertHalfElfBonus(){
             if($scope.race.type != 'Half Elf'){
                 console.log("hey that's not a half elf anymore");
@@ -156,6 +157,7 @@ myApp.controller('statController', function statController($scope) {
             }
         }
         revertHalfElfBonus();
+        // Seriously. This does nothing right now. ^
     };
 
     $scope.selected = $scope.racesList[0];
