@@ -188,31 +188,35 @@ myApp.controller('statController', function statController($scope) {
     };
 
     $scope.increaseStat = function(stat) {
-        if (stat.value == 15) {
-            console.log("15 point max");
-        } else if (stat.value < 13 && $scope.total >= 1) {
-            stat.value++;
-            $scope.total--;
-        } else if (stat.value >= 13 && $scope.total >= 2) {
-            stat.value++;
-            $scope.total -= 2;
-        } else {
-            console.log("no more points");
+        if ($scope.benefitsToggle === false) {
+            if (stat.value == 15) {
+                console.log("15 point max");
+            } else if (stat.value < 13 && $scope.total >= 1) {
+                stat.value++;
+                $scope.total--;
+            } else if (stat.value >= 13 && $scope.total >= 2) {
+                stat.value++;
+                $scope.total -= 2;
+            } else {
+                console.log("no more points");
+            }
+            $scope.getModifier(stat);
         }
-        $scope.getModifier(stat);
     };
 
-    $scope.decreaseStat = function(stat){
-        if (stat.value == 8) {
-            console.log("8 point min");
-        } else if (stat.value > 13) {
-            stat.value--;
-            $scope.total += 2;
-        } else if (stat.value <= 13) {
-            stat.value--;
-            $scope.total++;
-        } 
-        $scope.getModifier(stat);
+    $scope.decreaseStat = function(stat) {
+        if ($scope.benefitsToggle === false) {
+            if (stat.value == 8) {
+                console.log("8 point min");
+            } else if (stat.value > 13) {
+                stat.value--;
+                $scope.total += 2;
+            } else if (stat.value <= 13) {
+                stat.value--;
+                $scope.total++;
+            }
+            $scope.getModifier(stat);
+        }
     };
 
     $scope.applyRacialBenefits = function() {
@@ -252,5 +256,7 @@ myApp.controller('statController', function statController($scope) {
     };
 
     //
+
+
 
 });

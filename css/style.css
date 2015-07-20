@@ -1,8 +1,9 @@
 .selectionArea{
 	float:left;
+	width:20%;
 }
 
 .displayArea{
-	float:right;
+	float:left;
 	text-align:center;
 }
