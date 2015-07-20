@@ -19,12 +19,18 @@
 			<h5>This will be the stat block for: {{charname}} - {{race.type}} </h5>
 			<h3>Points Left: <span class="total">{{total}} out of 27</span></h3> 
 			<ul class='abilityscores'>
-				<li class="stat" ng-repeat="stat in stats">{{stat.label}}
+			
+				<li class="stat" ng-repeat="stat in stats">
+					<span class="statlabel">{{stat.label}}</span>
 					<span class="statnum">{{stat.value}}</span>
 					<span class="modifier">({{stat.modifier}})</span>
+					<div class="statButtons">
 					<button id="increaseStat" class="plusButton" ng-click="increaseStat(stat)">+</button>
 					<button id="decreaseStat" class="minusButton" ng-click="decreaseStat(stat)">-</button>
+					</div>
+					<div class="clear"></div>
 				</li>
+	
 			</ul>
 			<button id="resetScores" ng-click="revertStats()" ng-disabled="benefitsToggle">Reset Scores</button>
 			<h4 id="benefitsToggle">Add Race Benefits<input id="benefits" type="checkbox" ng-click="applyRacialBenefits()"></h4>
