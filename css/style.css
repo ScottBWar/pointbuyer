@@ -1,4 +1,8 @@
-.last{
-	visibility:hidden;
-	color:red;
+.selectionArea{
+	float:left;
+}
+
+.displayArea{
+	float:right;
+	text-align:center;
 }
