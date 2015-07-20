@@ -138,31 +138,19 @@ myApp.controller('statController', function statController($scope) {
     };
 
     $scope.selectedRace = function(selected) {
+        console.log($scope.benefitsToggle);
         if ($scope.benefitsToggle === true) {
             $scope.applyRacialBenefits();
             $scope.race = selected;
             $scope.applyRacialBenefits();
+            $scope.getAllModifier();
         } else {
             $scope.race = selected;
             document.getElementById("benefitsToggle").style.display = "block";
         }
-        //Let's make this revert function work next time we look at, okay?
-        function revertHalfElfBonus() {
-            if ($scope.race.type != 'Half Elf') {
-                //Uncheck the boxes from H-E bonus
-                angular.forEach($scope.stats, function(stat, box) {
-                    if (stat.box === true) {
-                        stat.box = false;
-                        console.log(stat.label + " has been unchecked");
-                        stat.value--;
-                    }
-                    $scope.checked = 0;
-                });
-            }
-        }
-        revertHalfElfBonus();
-        // Seriously. This does nothing right now. ^
     };
+
+    //This selectedRace function works but make it less UGLY AND GROSS.
 
     $scope.selected = $scope.racesList[0];
     $scope.selectedRace($scope.racesList[0]);
@@ -186,6 +174,8 @@ myApp.controller('statController', function statController($scope) {
             $scope.getModifier($scope.stats[i]);
         }
     };
+
+    
 
     $scope.increaseStat = function(stat) {
         if ($scope.benefitsToggle === false) {
@@ -230,6 +220,7 @@ myApp.controller('statController', function statController($scope) {
             for (var ii = 0; ii < $scope.race.increase_array.length; ii++) {
                 var nn = $scope.race.increase_array[ii];
                 $scope.stats[nn].value--;
+                $scope.revertHalfElfBonus();
             }
             $scope.benefitsToggle = false;
         }
@@ -256,6 +247,20 @@ myApp.controller('statController', function statController($scope) {
     };
 
     //
+
+     $scope.revertHalfElfBonus = function() {
+            if ($scope.race.type != 'Half Elf') {
+                //Uncheck the boxes from H-E bonus
+                angular.forEach($scope.stats, function(stat, box) {
+                    if (stat.box === true) {
+                        stat.box = false;
+                        console.log(stat.label + " has been unchecked");
+                        stat.value--;
+                    }
+                    $scope.checked = 0;
+                });
+            }
+        };
 
 
 
