@@ -1,6 +1,8 @@
 .selectionArea{
+	padding:2%;
+	width:340px;
 	float:left;
-	width:40%;
+	border:1px solid black;
 }
 
 .displayArea{
@@ -10,4 +12,12 @@
 
 .last{
 	display:none;
+}
+
+.stat{
+	text-decoration: none;
+}
+
+.abilityscores{
+	list-style-type: none;
 }
