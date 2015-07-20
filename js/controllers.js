@@ -7,28 +7,28 @@ myApp.controller('statController', function statController($scope) {
     $scope.stats = [{
         'label': 'str',
         'value': 8,
-        'modifier':" -1 "
+        'modifier': " -1 "
     }, {
         'label': 'dex',
         'value': 8,
-        'modifier':" -1 "
+        'modifier': " -1 "
     }, {
         'label': 'con',
         'value': 8,
-        'modifier':" -1 "
+        'modifier': " -1 "
     }, {
         'label': 'int',
         'value': 8,
-        'modifier':" -1 "
+        'modifier': " -1 "
     }, {
         'label': 'wis',
         'value': 8,
-        'modifier':" -1 "
+        'modifier': " -1 "
     }, {
         'label': 'cha',
         'value': 8,
-        'modifier':" -1 "
-    } ];
+        'modifier': " -1 "
+    }];
 
     $scope.total = 27;
 
@@ -36,74 +36,73 @@ myApp.controller('statController', function statController($scope) {
         id: 1,
         type: "Human",
         perks: "+ All",
-        increase_array: [0,1,2,3,4,5]
+        increase_array: [0, 1, 2, 3, 4, 5]
     }, {
         id: 2,
         type: "Halfling: Lightfoot",
         perks: "++ dex, + cha",
-        increase_array: [1,1,5]
+        increase_array: [1, 1, 5]
     }, {
         id: 3,
         type: "Halfling: Stout",
         perks: "++ dex, + con",
-        increase_array: [1,1,2]
+        increase_array: [1, 1, 2]
     }, {
         id: 4,
         type: "Hill Dwarf",
         perks: "++ con, + wis",
-        increase_array: [2,2,4]
+        increase_array: [2, 2, 4]
     }, {
         id: 5,
         type: "Mountain Dwarf",
         perks: "++ con, ++ str",
-        increase_array: [0,0,2,2]
+        increase_array: [0, 0, 2, 2]
     }, {
         id: 6,
         type: "High Elf",
         perks: "++ dex, + int",
-        increase_array: [1,1,3]
+        increase_array: [1, 1, 3]
     }, {
         id: 7,
         type: "Wood Elf",
         perks: "++ dex, + wis",
-        increase_array: [1,1,4]
+        increase_array: [1, 1, 4]
     }, {
         id: 8,
         type: "Dark Elf",
         perks: "++ dex, + cha",
-        increase_array: [1,1,5]
+        increase_array: [1, 1, 5]
     }, {
         id: 9,
         type: "Forest Gnome",
         perks: "++ int, + dex",
-        increase_array: [3,3,1]
+        increase_array: [3, 3, 1]
     }, {
         id: 10,
         type: "Rock Gnome",
         perks: "++ int, + con",
-        increase_array: [3,3,2]
+        increase_array: [3, 3, 2]
     }, {
         id: 11,
         type: "Half-Orc",
         perks: "++ str, + con",
-        increase_array: [0,0,2]
+        increase_array: [0, 0, 2]
     }, {
         id: 12,
         type: "Dragonborn",
         perks: "++ str, + cha",
-        increase_array: [0,0,5]
+        increase_array: [0, 0, 5]
     }, {
         id: 13,
         type: "Tiefling",
         perks: "++cha, + int",
-        increase_array: [5,5,3]
+        increase_array: [5, 5, 3]
     }, {
         id: 14,
         type: "Half Elf",
         perks: "++cha +any two",
-        increase_array: [5,5]
-    }
-    ];
+        increase_array: [5, 5]
+    }];
 
 
 
@@ -112,30 +111,30 @@ myApp.controller('statController', function statController($scope) {
     $scope.revertStats = function() {
         $scope.total = 27;
         $scope.stats = [{
-        'label': 'str',
-        'value': 8,
-        'modifier':" -1 "
-    }, {
-        'label': 'dex',
-        'value': 8,
-        'modifier':" -1 "
-    }, {
-        'label': 'con',
-        'value': 8,
-        'modifier':" -1 "
-    }, {
-        'label': 'int',
-        'value': 8,
-        'modifier':" -1 "
-    }, {
-        'label': 'wis',
-        'value': 8,
-        'modifier':" -1 "
-    }, {
-        'label': 'cha',
-        'value': 8,
-        'modifier':" -1 "
-    } ];
+            'label': 'str',
+            'value': 8,
+            'modifier': " -1 "
+        }, {
+            'label': 'dex',
+            'value': 8,
+            'modifier': " -1 "
+        }, {
+            'label': 'con',
+            'value': 8,
+            'modifier': " -1 "
+        }, {
+            'label': 'int',
+            'value': 8,
+            'modifier': " -1 "
+        }, {
+            'label': 'wis',
+            'value': 8,
+            'modifier': " -1 "
+        }, {
+            'label': 'cha',
+            'value': 8,
+            'modifier': " -1 "
+        }];
     };
 
     $scope.selectedRace = function(selected) {
@@ -148,12 +147,17 @@ myApp.controller('statController', function statController($scope) {
             document.getElementById("benefitsToggle").style.display = "block";
         }
         //Let's make this revert function work next time we look at, okay?
-         function revertHalfElfBonus(){
-            if($scope.race.type != 'Half Elf'){
-                console.log("hey that's not a half elf anymore");
-            }
-            else if($scope.race.type == 'Half Elf'){
-                console.log("now that's a half elf");
+        function revertHalfElfBonus() {
+            if ($scope.race.type != 'Half Elf') {
+                //Uncheck the boxes from H-E bonus
+                angular.forEach($scope.stats, function(stat, box) {
+                    if (stat.box === true) {
+                        stat.box = false;
+                        console.log(stat.label + " has been unchecked");
+                        stat.value--;
+                    }
+                    $scope.checked = 0;
+                });
             }
         }
         revertHalfElfBonus();
@@ -163,28 +167,24 @@ myApp.controller('statController', function statController($scope) {
     $scope.selected = $scope.racesList[0];
     $scope.selectedRace($scope.racesList[0]);
 
-    $scope.getModifier = function(stat){
-    	if(stat.value <= 9){
-    		stat.modifier = " - 1 ";
-    	}
-    	else if(stat.value <= 11){
-    		stat.modifier = " + 0 ";
-    	}
-    	else if(stat.value <= 13){
-    		stat.modifier = " + 1 ";
-    	}
-    	else if(stat.value <= 15){
-    		stat.modifier = " + 2 ";
-    	}
-    	else if(stat.value >= 16){
-    		stat.modifier = " + 3 ";
-    	}
+    $scope.getModifier = function(stat) {
+        if (stat.value <= 9) {
+            stat.modifier = " - 1 ";
+        } else if (stat.value <= 11) {
+            stat.modifier = " + 0 ";
+        } else if (stat.value <= 13) {
+            stat.modifier = " + 1 ";
+        } else if (stat.value <= 15) {
+            stat.modifier = " + 2 ";
+        } else if (stat.value >= 16) {
+            stat.modifier = " + 3 ";
+        }
     };
 
-    $scope.getAllModifier = function(stat){
-    for(var i = 0; i < $scope.stats.length; i++){
-    		$scope.getModifier($scope.stats[i]);
-    	}
+    $scope.getAllModifier = function(stat) {
+        for (var i = 0; i < $scope.stats.length; i++) {
+            $scope.getModifier($scope.stats[i]);
+        }
     };
 
     $scope.increaseStat = function(stat) {
@@ -204,45 +204,40 @@ myApp.controller('statController', function statController($scope) {
 
     $scope.applyRacialBenefits = function() {
         if ($scope.benefitsToggle === false) {
-            for(var i = 0; i < $scope.race.increase_array.length; i++){
+            for (var i = 0; i < $scope.race.increase_array.length; i++) {
                 var n = $scope.race.increase_array[i];
                 $scope.stats[n].value++;
             }
-             $scope.benefitsToggle = true;
+            $scope.benefitsToggle = true;
         } else if ($scope.benefitsToggle === true) {
-            for(var ii = 0; ii < $scope.race.increase_array.length; ii++){
+            for (var ii = 0; ii < $scope.race.increase_array.length; ii++) {
                 var nn = $scope.race.increase_array[ii];
                 $scope.stats[nn].value--;
             }
-           $scope.benefitsToggle = false;
+            $scope.benefitsToggle = false;
         }
         $scope.getAllModifier();
     };
 
-    $scope.bonusStat = function(box,stat){
-        if(box.stat){
+    $scope.bonusStat = function(stat, box) {
+        if (stat.box) {
             stat.value++;
-        }
-        else if(!box.stat){
+        } else if (!stat.box) {
             stat.value--;
         }
         $scope.getAllModifier();
     };
 
-  
-//checkbox maxmimum script
+
+    //checkbox maxmimum script
     $scope.limit = 2;
     $scope.checked = 0;
 
-     $scope.checkChanged = function(box){
-        if(box.stat) $scope.checked++;
+    $scope.checkChanged = function(stat) {
+        if (stat.box) $scope.checked++;
         else $scope.checked--;
     };
 
-//
-    
-
+    //
 
 });
-
-
