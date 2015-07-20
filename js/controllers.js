@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', [('ngAnimate')]);
 
 
 
@@ -202,7 +202,7 @@ myApp.controller('statController', function statController($scope) {
         $scope.getModifier(stat);
     };
 
-    $scope.decreaseStat = function(stat){
+    $scope.decreaseStat = function(stat) {
         if (stat.value == 8) {
             console.log("8 point min");
         } else if (stat.value > 13) {
@@ -211,7 +211,7 @@ myApp.controller('statController', function statController($scope) {
         } else if (stat.value <= 13) {
             stat.value--;
             $scope.total++;
-        } 
+        }
         $scope.getModifier(stat);
     };
 
