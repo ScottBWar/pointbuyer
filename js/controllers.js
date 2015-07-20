@@ -202,6 +202,19 @@ myApp.controller('statController', function statController($scope) {
         $scope.getModifier(stat);
     };
 
+    $scope.decreaseStat = function(stat){
+        if (stat.value == 8) {
+            console.log("8 point min");
+        } else if (stat.value > 13) {
+            stat.value--;
+            $scope.total += 2;
+        } else if (stat.value <= 13) {
+            stat.value--;
+            $scope.total++;
+        } 
+        $scope.getModifier(stat);
+    };
+
     $scope.applyRacialBenefits = function() {
         if ($scope.benefitsToggle === false) {
             for (var i = 0; i < $scope.race.increase_array.length; i++) {
