@@ -4,6 +4,11 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 
 myApp.controller('statController', function statController($scope, $modal) {
 
+    $scope.user = {
+        name:"default"
+    };
+
+
     $scope.stats = [{
         'label': 'str',
         'value': 8,
@@ -138,7 +143,6 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.selectedRace = function(selected) {
-        console.log($scope.benefitsToggle);
         if ($scope.benefitsToggle === true) {
             $scope.applyRacialBenefits();
             $scope.race = selected;

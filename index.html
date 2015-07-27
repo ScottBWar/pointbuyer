@@ -12,11 +12,11 @@
 	</head>
 	<body ng-controller = "statController">
 	<div class="selectionArea">
-		<input type="text" ng-model="charname">
+		<input type="text" ng-model="user.name">
 		<div >
 			<select class="" placeholder="type" ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
 			</select>
-			<h5>This will be the stat block for: {{charname}} - {{race.type}} </h5>
+			<h5>This will be the stat block for: {{user.name}} - {{race.type}} </h5>
 			<h3>Points Left: <span class="total">{{total}} out of 27</span></h3> 
 			<ul class='abilityscores'>
 			
@@ -46,24 +46,25 @@
 		</div>
 		<div class="displayArea">
 		Display Area
-		<h1 style="margin-top:400px"> Some text here from the modal:<span ng-bind="sample"></span></h1>
+		<h1 style="margin-top:400px"> Here's that username again {{user.name}}</h1>
 
 		<button ng-click="openModal()">open modal</button>
 
 
 		<script type="text/ng-template" id="myModalContent.html">
-		<div ng-controller="statController as main">
         <div class="modal-header">
-        	<input type="text" ng-model="sample">
+        <form>
+        	<input type="text" ng-model="user.name">
+        	</form>
             <h3 class="modal-title">Im a modal!</h3>
         </div>
         <div class="modal-body">
+        <h6>{{user.name}}</h6>
            <h1>{{total}}</h1>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="ok()">OK</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
         </div>
     </script>
 
