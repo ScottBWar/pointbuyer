@@ -2,7 +2,7 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 
 
 
-myApp.controller('statController', function statController($scope) {
+myApp.controller('statController', function statController($scope, $modal) {
 
     $scope.stats = [{
         'label': 'str',
@@ -262,6 +262,30 @@ myApp.controller('statController', function statController($scope) {
             }
         };
 
+        $scope.openModal = function(){
+            console.log("open modal");
 
+            var modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: 'ModalInstanceCtrl',
+                backdrop:'static',
+                scope:$scope
+                
+            });
+
+        };
 
 });
+
+
+angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
+
+

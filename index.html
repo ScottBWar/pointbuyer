@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" class="ng-cloak">
 	<head>
 		<meta charset="UTF-8">
 		<title>Let's learn Angular, by playing pathfinder!</title>
@@ -10,10 +10,10 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
 	</head>
-	<body>
+	<body ng-controller = "statController">
 	<div class="selectionArea">
 		<input type="text" ng-model="charname">
-		<div ng-controller = "statController">
+		<div >
 			<select class="" placeholder="type" ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
 			</select>
 			<h5>This will be the stat block for: {{charname}} - {{race.type}} </h5>
@@ -39,10 +39,33 @@
 			</label>
 			</div>
 			<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
+
+
+
 		</div>
 		</div>
 		<div class="displayArea">
 		Display Area
+		<h1 style="margin-top:400px"> Some text here from the modal:<span ng-bind="sample"></span></h1>
+
+		<button ng-click="openModal()">open modal</button>
+
+
+		<script type="text/ng-template" id="myModalContent.html">
+		<div ng-controller="statController as main">
+        <div class="modal-header">
+        	<input type="text" ng-model="sample">
+            <h3 class="modal-title">Im a modal!</h3>
+        </div>
+        <div class="modal-body">
+           <h1>{{total}}</h1>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+        </div>
+    </script>
 
 
 
