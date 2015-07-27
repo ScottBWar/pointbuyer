@@ -84,7 +84,7 @@
 				<h4 id="benefitsToggle">Add Race Benefits -   <input id="benefits" type="checkbox" ng-model="benefitsToggle" ng-click="applyRacialBenefits()"></h4>
 				<div id="half-elf-bonus" ng-show="race.type == 'Half Elf' && benefitsToggle === true">
 					<label ng-repeat="stat in stats" ng-class="{'first': $first, 'last': $last}" >{{stat.label}}
-						<input type="checkbox" name="bonus" ng-checked="benefitsToggle" ng-model="stat.box" ng-change="checkChanged(stat); bonusStat(stat,box)" ng-disabled="checked==limit && !stat.box">
+						<input type="checkbox" name="bonus" ng-model="stat.box" ng-change="checkChanged(stat); bonusStat(stat,box)" ng-disabled="checked==limit && !stat.box">
 					</label>
 				</div>
 				<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
