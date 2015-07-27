@@ -44,12 +44,12 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [0, 1, 2, 3, 4, 5]
     }, {
         id: 2,
-        type: "Halfling: Lightfoot",
+        type: "Lightfoot Halfling",
         perks: "++ dex, + cha",
         increase_array: [1, 1, 5]
     }, {
         id: 3,
-        type: "Halfling: Stout",
+        type: "Stout Halfling",
         perks: "++ dex, + con",
         increase_array: [1, 1, 2]
     }, {
