@@ -206,6 +206,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.selectedRace = function(selected) {
+        console.log(selected)
         if ($scope.benefitsToggle === true) {
             $scope.applyRacialBenefits();
             $scope.race = selected;
@@ -220,13 +221,14 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.setClass = function(classChoice){
         console.log(classChoice)
         $scope.selectedClass = classChoice;
+        console.log($scope.selectedClass)
     }
 
     //This selectedRace function works but make it less UGLY AND GROSS.
 
-    $scope.selected = $scope.racesList[0];
+    // $scope.selected = $scope.race;
     // $scope.selectedClass = ;
-    $scope.selectedRace($scope.racesList[0]);
+    // $scope.selectedRace($scope.racesList[0]);
 
     $scope.getModifier = function(stat) {
         if (stat.value <= 9) {
@@ -338,6 +340,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         $scope.openModal = function(){
             console.log("open modal");
             console.log($scope.benefitsToggle)
+            $scope.selected = $scope.race;
+            $scope.classChoice = $scope.selectedClass
+
 
             var modalInstance = $modal.open({
                 templateUrl: 'myModalContent.html',
