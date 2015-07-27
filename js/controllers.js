@@ -112,62 +112,122 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.classList =[
     { 
         id: 1, 
-        type:"Barbarian"
+        type:"Barbarian",
+        wpn1:{
+            name:"Great Axe",
+            damage: "1d12",
+            reqStat: 0
+        }
 
     },
     { 
         id: 2, 
-        type:"Bard"
+        type:"Bard",
+        wpn1:{
+            name:"Rapier",
+            damage: "1d8",
+            reqStat: 1
+        }
 
     },
     { 
         id: 3, 
-        type:"Cleric"
+        type:"Cleric",
+        wpn1:{
+            name:"Mace",
+            damage: "1d6",
+            reqStat: 0
+        }
 
     },
     { 
         id: 4, 
-        type:"Druid"
+        type:"Druid",
+        wpn1:{
+            name:"Scimitar",
+            damage: "1d6",
+            reqStat: 1
+        }
 
     },
     { 
         id: 5, 
-        type:"Fighter"
+        type:"Fighter",
+        wpn1:{
+            name:"Long Sword",
+            damage: "1d8",
+            reqStat: 0
+        }
 
     },
     { 
         id: 6, 
-        type:"Monk"
+        type:"Monk",
+        wpn1:{
+            name:"Martial Arts x2",
+            damage: "1d4",
+            reqStat: 1
+        }
 
     },
     { 
         id: 7, 
-        type:"Paladin"
+        type:"Paladin",
+        wpn1:{
+            name:"Long Sword",
+            damage: "1d8",
+            reqStat: 0
+        }
 
     },
     { 
         id: 8, 
-        type:"Ranger"
+        type:"Ranger",
+        wpn1:{
+            name:"Short Swords x2",
+            damage: "1d6",
+            reqStat: 1
+        }
 
     },
     { 
         id: 9, 
-        type:"Rogue"
+        type:"Rogue",
+        wpn1:{
+            name:"Short Swords x2",
+            damage: "1d6",
+            reqStat: 1
+        }
 
     },
     { 
         id: 10, 
-        type:"Sorceror"
+        type:"Sorceror",
+        wpn1:{
+            name:"Fire Bolt",
+            damage: "1d10",
+            reqStat: 5
+        }
 
     },
     { 
         id: 11, 
-        type:"Wizard"
+        type:"Wizard",
+        wpn1:{
+            name:"Fire Bolt",
+            damage: "1d10",
+            reqStat: 3
+        }
 
     },
     { 
         id: 12, 
-        type:"Warlock"
+        type:"Warlock",
+        wpn1:{
+            name:"Eldritch Blast",
+            damage: "1d10",
+            reqStat: 5
+        }
 
     }
     ];

@@ -52,8 +52,10 @@
 						<span class="Snum">{{stat.value}}</span>
 						<span class="Smodifier">({{stat.modifier}})</span>
 				</li>
-
 			 	</ul>
+			 		<div class="weaponDiv">
+			 		<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
+			 		</div>
 			<button ng-click="openModal()">open modal</button>
 			<script type="text/ng-template" id="myModalContent.html">
 			<div class="modalContainer">
