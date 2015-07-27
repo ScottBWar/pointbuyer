@@ -268,12 +268,14 @@ myApp.controller('statController', function statController($scope, $modal) {
 
         $scope.openModal = function(){
             console.log("open modal");
+            console.log($scope.benefitsToggle)
 
             var modalInstance = $modal.open({
                 templateUrl: 'myModalContent.html',
                 controller: 'ModalInstanceCtrl',
                 backdrop:'static',
-                scope:$scope
+                scope:$scope,
+                show:false
                 
             });
 
