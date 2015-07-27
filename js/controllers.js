@@ -5,7 +5,7 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 myApp.controller('statController', function statController($scope, $modal) {
 
     $scope.user = {
-        name:"default"
+        name:""
     };
 
 
