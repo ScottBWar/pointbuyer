@@ -4,6 +4,7 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 
 myApp.controller('statController', function statController($scope, $modal) {
 
+
     $scope.user = {
         name:""
     };
@@ -20,7 +21,8 @@ myApp.controller('statController', function statController($scope, $modal) {
     }, {
         'label': 'con',
         'value': 8,
-        'modifier': " -1 "
+        'modifier': " -1 ",
+        'mod': -1
     }, {
         'label': 'int',
         'value': 8,
@@ -113,6 +115,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 1, 
         type:"Barbarian",
+        health: 12,
         wpn1:{
             name:"Great Axe",
             damage: "1d12",
@@ -123,6 +126,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 2, 
         type:"Bard",
+        health:8,
         wpn1:{
             name:"Rapier",
             damage: "1d8",
@@ -133,6 +137,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 3, 
         type:"Cleric",
+        health:8,
         wpn1:{
             name:"Mace",
             damage: "1d6",
@@ -143,6 +148,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 4, 
         type:"Druid",
+        health:8,
         wpn1:{
             name:"Scimitar",
             damage: "1d6",
@@ -153,6 +159,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 5, 
         type:"Fighter",
+        health:10,
         wpn1:{
             name:"Long Sword",
             damage: "1d8",
@@ -163,6 +170,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 6, 
         type:"Monk",
+        health:8,
         wpn1:{
             name:"Martial Arts x2",
             damage: "1d4",
@@ -173,6 +181,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 7, 
         type:"Paladin",
+        health:10,
         wpn1:{
             name:"Long Sword",
             damage: "1d8",
@@ -183,6 +192,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 8, 
         type:"Ranger",
+        health:10,
         wpn1:{
             name:"Short Swords x2",
             damage: "1d6",
@@ -193,6 +203,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 9, 
         type:"Rogue",
+        health:8,
         wpn1:{
             name:"Short Swords x2",
             damage: "1d6",
@@ -203,30 +214,30 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 10, 
         type:"Sorceror",
+        health:6,
         wpn1:{
             name:"Fire Bolt",
-            damage: "1d10",
-            reqStat: 5
+            damage: "1d10"
         }
 
     },
     { 
         id: 11, 
         type:"Wizard",
+        health:6,
         wpn1:{
             name:"Fire Bolt",
-            damage: "1d10",
-            reqStat: 3
+            damage: "1d10"
         }
 
     },
     { 
         id: 12, 
         type:"Warlock",
+        health:8,
         wpn1:{
             name:"Eldritch Blast",
-            damage: "1d10",
-            reqStat: 5
+            damage: "1d10"
         }
 
     }
@@ -293,13 +304,18 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.getModifier = function(stat) {
         if (stat.value <= 9) {
             stat.modifier = " - 1 ";
+            stat.mod = -1;
         } else if (stat.value <= 11) {
             stat.modifier = " + 0 ";
+            stat.mod = 0;
         } else if (stat.value <= 13) {
             stat.modifier = " + 1 ";
+            stat.mod = 1;
         } else if (stat.value <= 15) {
             stat.modifier = " + 2 ";
+            stat.mod = 2;
         } else if (stat.value >= 16) {
+            stat.mod = 3;
             stat.modifier = " + 3 ";
         }
     };

@@ -45,6 +45,7 @@
 			This Character is:
 			<h1> {{user.name}}</h1>
 			<h2> The {{race.type}}   {{selectedClass.type}}</h2>
+			<h3> HP : {{selectedClass.health + stats[2].mod}} </h3>
 			 <h3> Ability Scores: <h3>
 			 	<ul class="statsheetlist">
 			 	<li ng-repeat="stat in stats">
