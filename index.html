@@ -44,7 +44,7 @@
 		<div class="displayArea">
 			Display Area
 			<h1> Character Name: {{user.name}}</h1>
-			<h2> Race: {{race.type}}</h2>
+			<h2> The {{race.type}}   {{selectedClass.type}}</h2>
 			 <h3> Ability Scores: <h3>
 			 	<ul>
 			 	<li ng-repeat="stat in stats">
@@ -65,6 +65,8 @@
 			<input type="text" ng-model="user.name">
 			<div >
 				<select class="" placeholder="type" ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
+				</select><br>
+				<select class="" placeholder="type" ng-model="classChoice" ng-change="setClass(classChoice)" data-ng-options="class as class.type for class in classList">
 				</select>
 				<h5>This will be the stat block for: {{user.name}} - {{race.type}} </h5>
 				<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>

@@ -109,6 +109,69 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [5, 5]
     }];
 
+    $scope.classList =[
+    { 
+        id: 1, 
+        type:"Barbarian"
+
+    },
+    { 
+        id: 2, 
+        type:"Bard"
+
+    },
+    { 
+        id: 3, 
+        type:"Cleric"
+
+    },
+    { 
+        id: 4, 
+        type:"Druid"
+
+    },
+    { 
+        id: 5, 
+        type:"Fighter"
+
+    },
+    { 
+        id: 6, 
+        type:"Monk"
+
+    },
+    { 
+        id: 7, 
+        type:"Paladin"
+
+    },
+    { 
+        id: 8, 
+        type:"Ranger"
+
+    },
+    { 
+        id: 9, 
+        type:"Rogue"
+
+    },
+    { 
+        id: 10, 
+        type:"Sorceror"
+
+    },
+    { 
+        id: 11, 
+        type:"Wizard"
+
+    },
+    { 
+        id: 12, 
+        type:"Warlock"
+
+    }
+    ];
+
 
 
     $scope.benefitsToggle = false;
@@ -154,9 +217,15 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
     };
 
+    $scope.setClass = function(classChoice){
+        console.log(classChoice)
+        $scope.selectedClass = classChoice;
+    }
+
     //This selectedRace function works but make it less UGLY AND GROSS.
 
     $scope.selected = $scope.racesList[0];
+    // $scope.selectedClass = ;
     $scope.selectedRace($scope.racesList[0]);
 
     $scope.getModifier = function(stat) {
