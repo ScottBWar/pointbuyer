@@ -1,8 +1,13 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ui.bootstrap']);
 
 
 
-myApp.controller('statController', function statController($scope) {
+myApp.controller('statController', function statController($scope, $modal) {
+
+    $scope.user = {
+        name:"default"
+    };
+
 
     $scope.stats = [{
         'label': 'str',
@@ -104,6 +109,129 @@ myApp.controller('statController', function statController($scope) {
         increase_array: [5, 5]
     }];
 
+    $scope.classList =[
+    { 
+        id: 1, 
+        type:"Barbarian",
+        wpn1:{
+            name:"Great Axe",
+            damage: "1d12",
+            reqStat: 0
+        }
+
+    },
+    { 
+        id: 2, 
+        type:"Bard",
+        wpn1:{
+            name:"Rapier",
+            damage: "1d8",
+            reqStat: 1
+        }
+
+    },
+    { 
+        id: 3, 
+        type:"Cleric",
+        wpn1:{
+            name:"Mace",
+            damage: "1d6",
+            reqStat: 0
+        }
+
+    },
+    { 
+        id: 4, 
+        type:"Druid",
+        wpn1:{
+            name:"Scimitar",
+            damage: "1d6",
+            reqStat: 1
+        }
+
+    },
+    { 
+        id: 5, 
+        type:"Fighter",
+        wpn1:{
+            name:"Long Sword",
+            damage: "1d8",
+            reqStat: 0
+        }
+
+    },
+    { 
+        id: 6, 
+        type:"Monk",
+        wpn1:{
+            name:"Martial Arts x2",
+            damage: "1d4",
+            reqStat: 1
+        }
+
+    },
+    { 
+        id: 7, 
+        type:"Paladin",
+        wpn1:{
+            name:"Long Sword",
+            damage: "1d8",
+            reqStat: 0
+        }
+
+    },
+    { 
+        id: 8, 
+        type:"Ranger",
+        wpn1:{
+            name:"Short Swords x2",
+            damage: "1d6",
+            reqStat: 1
+        }
+
+    },
+    { 
+        id: 9, 
+        type:"Rogue",
+        wpn1:{
+            name:"Short Swords x2",
+            damage: "1d6",
+            reqStat: 1
+        }
+
+    },
+    { 
+        id: 10, 
+        type:"Sorceror",
+        wpn1:{
+            name:"Fire Bolt",
+            damage: "1d10",
+            reqStat: 5
+        }
+
+    },
+    { 
+        id: 11, 
+        type:"Wizard",
+        wpn1:{
+            name:"Fire Bolt",
+            damage: "1d10",
+            reqStat: 3
+        }
+
+    },
+    { 
+        id: 12, 
+        type:"Warlock",
+        wpn1:{
+            name:"Eldritch Blast",
+            damage: "1d10",
+            reqStat: 5
+        }
+
+    }
+    ];
+
 
 
     $scope.benefitsToggle = false;
@@ -138,7 +266,7 @@ myApp.controller('statController', function statController($scope) {
     };
 
     $scope.selectedRace = function(selected) {
-        console.log($scope.benefitsToggle);
+        console.log(selected)
         if ($scope.benefitsToggle === true) {
             $scope.applyRacialBenefits();
             $scope.race = selected;
@@ -150,10 +278,17 @@ myApp.controller('statController', function statController($scope) {
         }
     };
 
+    $scope.setClass = function(classChoice){
+        console.log(classChoice)
+        $scope.selectedClass = classChoice;
+        console.log($scope.selectedClass)
+    }
+
     //This selectedRace function works but make it less UGLY AND GROSS.
 
-    $scope.selected = $scope.racesList[0];
-    $scope.selectedRace($scope.racesList[0]);
+    // $scope.selected = $scope.race;
+    // $scope.selectedClass = ;
+    // $scope.selectedRace($scope.racesList[0]);
 
     $scope.getModifier = function(stat) {
         if (stat.value <= 9) {
@@ -262,6 +397,35 @@ myApp.controller('statController', function statController($scope) {
             }
         };
 
+        $scope.openModal = function(){
+            console.log("open modal");
+            console.log($scope.benefitsToggle)
+            $scope.selected = $scope.race;
+            $scope.classChoice = $scope.selectedClass
 
+
+            var modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: 'ModalInstanceCtrl',
+                backdrop:'static',
+                scope:$scope,
+                show:false
+                
+            });
+
+        };
 
 });
+
+
+angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
+
+

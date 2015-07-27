@@ -1,6 +1,11 @@
+.clear{
+	clear:both;
+}
 .selectionArea{
+	padding:2%;
+	width:340px;
 	float:left;
-	width:20%;
+	border:1px solid black;
 }
 
 .displayArea{
@@ -11,3 +16,41 @@
 .last{
 	display:none;
 }
+
+.abilityscores{
+	list-style-type: none;
+}
+
+
+.stat{
+	text-align:left;
+	margin:8px;
+	text-decoration: none;
+	border-bottom:1px solid black;
+	width: 180px;
+}
+
+.minusButton{
+	margin-left:5px;
+	margin-right:10px;
+}
+
+.statlabel{
+	font-size:20px;
+}
+
+.statnum{
+	font-size:20px;
+}
+
+.modifier{
+	font-size:14px;
+}
+
+.statButtons{
+	margin-right:14px;
+	margin-top:2.5px;
+	float:right;
+}
+
+
