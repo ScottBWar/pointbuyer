@@ -3,12 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Let's learn Angular, by playing pathfinder!</title>
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-ui.js"></script>
 		<script src="lib/angular/angular.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/jquery-ui.css">
 	</head>
 	<body ng-controller = "statController">
 		<div class="selectionArea" style="visibility:hidden">
@@ -59,7 +62,7 @@
 			 		</div>
 			<button ng-click="openModal()">open modal</button>
 			<script type="text/ng-template" id="myModalContent.html">
-			<div class="modalContainer">
+			<div id="draggable" class="modalContainer">
 			<div class="modal-header">
 				<h4>Editor Window for {{user.name}}</h4>
 			</div>

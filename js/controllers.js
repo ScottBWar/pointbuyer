@@ -415,6 +415,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         };
 
         $scope.openModal = function(){
+            $(function() {
+    $( "#draggable" ).draggable();
+  });
             console.log("open modal");
             console.log($scope.benefitsToggle)
             $scope.selected = $scope.race;
@@ -444,5 +447,12 @@ angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modal
     $modalInstance.dismiss('cancel');
   };
 });
+
+
+  $(function() {
+    $(".modal-header").draggable({
+        handle:".modal-header"
+    });
+  });
 
 
