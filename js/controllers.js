@@ -17,7 +17,8 @@ myApp.controller('statController', function statController($scope, $modal) {
     }, {
         'label': 'dex',
         'value': 8,
-        'modifier': " -1 "
+        'modifier': " -1 ",
+        'mod': -1
     }, {
         'label': 'con',
         'value': 8,
