@@ -3,10 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Let's learn Angular, by playing pathfinder!</title>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 		<script src="lib/angular/angular.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+		
+
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
 	</head>
@@ -16,7 +21,7 @@
 			<div >
 				<select class="" placeholder="type" ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
 				</select>
-				<h5>This will be the stat block for: {{user.name}} - {{race.type}} </h5>
+				<h5 data-drag="true" jqyoui-draggable>This will be the stat block for: {{user.name}} - {{race.type}} </h5>
 				<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
 				<ul class='abilityscores'>
 					
@@ -104,5 +109,6 @@
 			</div>
 			</script>
 		</div>
+		<script src="bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 	</body>
 </html>

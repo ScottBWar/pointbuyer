@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.bootstrap']);
+var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop']);
 
 
 
@@ -445,4 +445,8 @@ angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modal
   };
 });
 
+// var elem = document.querySelector('.modalContainer');
+// var draggie = new Draggabilly( elem, {
+//   // options...
+// });
 
