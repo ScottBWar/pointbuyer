@@ -50,7 +50,7 @@
 			This Character is:
 			<h1> {{user.name}}</h1>
 			<h2> The {{race.type}}   {{selectedClass.type}}</h2>
-			<h3> HP : {{selectedClass.health + stats[2].mod}} </h3>
+			<h3 > HP : {{selectedClass.health + stats[2].mod}} </h3>
 			 <h3> Ability Scores: <h3>
 			 	<ul class="statsheetlist">
 			 	<li ng-repeat="stat in stats">
@@ -64,11 +64,11 @@
 			 		</div>
 			<button ng-click="openModal()">open modal</button>
 			<script type="text/ng-template" id="myModalContent.html">
-			<div class="modalContainer">
+			<div data-drag="true" jqyoui-draggable class="modalContainer">
 			<div class="modal-header">
 				<h4>Editor Window for {{user.name}}</h4>
 			</div>
-			<div class="modal-body">
+			<div  jqyoui-draggable class="modal-body">
 			<div class="selectionArea">
 			<input type="text" ng-model="user.name">
 			<div >
