@@ -1,8 +1,8 @@
-var myApp = angular.module('myApp', ['ui.bootstrap']);
+var myApp = angular.module('myApp', []);
 
 
 
-myApp.controller('statController', function statController($scope, $modal) {
+myApp.controller('statController', function statController($scope) {
 
 
     $scope.user = {
@@ -278,7 +278,8 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.selectedRace = function(selected) {
-        console.log(selected)
+        console.log(selected);
+        console.log("you just switched race and the benefits toggle was " +  $scope.benefitsToggle);
         if ($scope.benefitsToggle === true) {
             $scope.applyRacialBenefits();
             $scope.race = selected;
@@ -362,13 +363,16 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.applyRacialBenefits = function() {
+        console.log("you just clicked on the box and the value when you clicked was  " + $scope.benefitsToggle)
         if ($scope.benefitsToggle === false) {
+            console.log("i just gave you benefits")
             for (var i = 0; i < $scope.race.increase_array.length; i++) {
                 var n = $scope.race.increase_array[i];
                 $scope.stats[n].value++;
             }
             $scope.benefitsToggle = true;
         } else if ($scope.benefitsToggle === true) {
+            console.log("i just took ur benefits")
             for (var ii = 0; ii < $scope.race.increase_array.length; ii++) {
                 var nn = $scope.race.increase_array[ii];
                 $scope.stats[nn].value--;
@@ -438,21 +442,21 @@ myApp.controller('statController', function statController($scope, $modal) {
 });
 
 
-angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
-  $scope.ok = function () {
-    $modalInstance.close();
-  };
+// angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+//   $scope.ok = function () {
+//     $modalInstance.close();
+//   };
 
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-});
+//   $scope.cancel = function () {
+//     $modalInstance.dismiss('cancel');
+//   };
+// });
 
 
-  $(function() {
-    $(".modal-header").draggable({
-        handle:".modal-header"
-    });
-  });
+//   $(function() {
+//     $(".modal-header").draggable({
+//         handle:".modal-header"
+//     });
+//   });
 
 
