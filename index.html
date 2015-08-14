@@ -9,15 +9,26 @@
 		<script src="js/controllers.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="js/behavior.js"></script>
 		
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/charsheetstyle.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
 	</head>
 	<body ng-controller = "statController">
-		<div class="displayArea">
-			This Character is:
-			<h1> {{user.name}}</h1>
-			<h2> The {{race.type}}   {{selectedClass.type}}</h2>
+	<div class="displayArea" >
+		<div class="nameDisplayArea">
+			<span class="nametag"><div class="namebox">{{user.name}}</div></span>
+			<div class="level">Name</div>
+		</div>
+		<div class="clear"></div>
+
+
+
+
+
+			<div class="classRace">The {{race.type}}   {{selectedClass.type}}</div>
+			
 			<h3 > HP : {{selectedClass.health + stats[2].mod}} </h3>
 			<h3> Ability Scores: <h3>
 			<ul class="statsheetlist">
@@ -30,15 +41,23 @@
 			<div class="weaponDiv">
 				<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
 			</div>
+
+			</div>
+
 			<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
+
+
+
 			<a href="#openModal">Open Modal</a>
 			<div id="openModal" data-drag="true" jqyoui-draggable class="modalDialog">
 				<div>
 					
+
+					<!-- START MODAL AREA -->
 					
 					<div  id="myModal" role="dialog">
 						<div class="modal-header">
-							<h4>Editor Window for {{user.name}}</h4>
+							<!-- <span>{{user.name}}</span> -->
 						</div>
 						<div  jqyoui-draggable class="modal-body">
 							<div class="selectionArea">
@@ -80,7 +99,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+	
 		<script src="bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 	</body>
 </html>

@@ -5978,7 +5978,7 @@ button.close {
   opacity: .1;
 }
 .modal-header {
-  min-height: 16.42857143px;
+  min-height: 2px;
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -5994,8 +5994,7 @@ button.close {
   padding: 15px;
 }
 .modal-footer {
-  padding: 15px;
-  text-align: right;
+  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .modal-footer .btn + .btn {

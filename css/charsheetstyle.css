@@ -1,0 +1,27 @@
+.displayArea {
+	border: 5px double black;
+	margin-top:20px;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+.nametag {
+	float:left;
+	display:inline;
+}
+.namebox {
+	border-bottom:3px double black;
+	font-size: 60px;
+}
+
+.infobox{
+	border: 3px solid black;
+}
+
+.level {
+	text-align: center;
+}
+
+.classRace {
+	font-size:50px;
+	}

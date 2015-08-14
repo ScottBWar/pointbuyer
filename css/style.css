@@ -8,7 +8,7 @@
 	border:1px solid black;
 }
 
-.displayArea{
+.nameDisplayArea{
 	float:left;
 	text-align:center;
 }
@@ -83,6 +83,7 @@
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
 	border-radius: 10px;
+	border: 1px dotted black;
 	background: #fff;
 	background: -moz-linear-gradient(#fff, #999);
 	background: -webkit-linear-gradient(#fff, #999);
