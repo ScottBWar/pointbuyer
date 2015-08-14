@@ -278,7 +278,9 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.selectedRace = function(selected) {
-        console.log(selected)
+        console.log(selected);
+        console.log($scope.benefitsToggle)
+        // console.log("you picked a race = " + $scope.race.type + "  and the benefitstoggle was " + $scope.benefitstoggle + " when you picked");
         if ($scope.benefitsToggle === true) {
             $scope.applyRacialBenefits();
             $scope.race = selected;
@@ -286,6 +288,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             $scope.getAllModifier();
         } else {
             $scope.race = selected;
+            console.log("now it's " + $scope.race.type);
             document.getElementById("benefitsToggle").style.display = "block";
         }
     };
@@ -362,6 +365,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.applyRacialBenefits = function() {
+        console.log("you clicked the checkbox, and when you clicked the benefitsToggle was" + $scope.benefitsToggle + "  and the race was " + $scope.race.type);
         if ($scope.benefitsToggle === false) {
             for (var i = 0; i < $scope.race.increase_array.length; i++) {
                 var n = $scope.race.increase_array[i];
