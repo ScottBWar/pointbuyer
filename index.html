@@ -3,106 +3,102 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Let's learn Angular, by playing pathfinder!</title>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 		<script src="lib/angular/angular.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="js/behavior.js"></script>
+		
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/charsheetstyle.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
 	</head>
 	<body ng-controller = "statController">
-		<div class="selectionArea" style="visibility:hidden">
-			<input type="text" ng-model="user.name">
-			<div >
-				<select class="" placeholder="type" ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
-				</select>
-				<h5>This will be the stat block for: {{user.name}} - {{race.type}} </h5>
-				<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
-				<ul class='abilityscores'>
-					
-					<li class="stat" ng-repeat="stat in stats">
-						<span class="statlabel">{{stat.label}}</span>
-						<span class="statnum">{{stat.value}}</span>
-						<span class="modifier">({{stat.modifier}})</span>
-						<div class="statButtons">
-							<button id="increaseStat" class="plusButton btn btn-primary btn-xs" ng-click="increaseStat(stat)"><span class="innerbutton">+</span></button>
-							<button id="decreaseStat" class="minusButton btn btn-info btn-xs" ng-click="decreaseStat(stat)"><span class="innerbutton">-</span></button>
-						</div>
-					</li>
-					
-				</ul>
-				<button id="resetScores" ng-click="revertStats()" ng-disabled="benefitsToggle">Reset Scores</button>
-				<h4 id="benefitsToggle">Add Race Benefits -   <input id="benefits" type="checkbox" ng-click="applyRacialBenefits()"></h4>
-				<div id="half-elf-bonus" ng-show="race.type == 'Half Elf' && benefitsToggle === true">
-					<label ng-repeat="stat in stats" ng-class="{'first': $first, 'last': $last}" >{{stat.label}}
-						<input type="checkbox" name="bonus" ng-checked="vBonus" ng-model="stat.box" ng-change="checkChanged(stat); bonusStat(stat,box)" ng-disabled="checked==limit && !stat.box">
-					</label>
-				</div>
-				<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
-			</div>
+	<div class="displayArea" >
+		<div class="nameDisplayArea">
+			<span class="nametag"><div class="namebox">{{user.name}}</div></span>
+			<div class="level">Name</div>
 		</div>
-		<div class="displayArea">
-			This Character is:
-			<h1> {{user.name}}</h1>
-			<h2> The {{race.type}}   {{selectedClass.type}}</h2>
-			<h3> HP : {{selectedClass.health + stats[2].mod}} </h3>
-			 <h3> Ability Scores: <h3>
-			 	<ul class="statsheetlist">
-			 	<li ng-repeat="stat in stats">
-			 			<span class="Slabel">{{stat.label}}</span>
-						<span class="Snum">{{stat.value}}</span>
-						<span class="Smodifier">({{stat.modifier}})</span>
+		<div class="clear"></div>
+
+
+
+
+
+			<div class="classRace">The {{race.type}}   {{selectedClass.type}}</div>
+			
+			<h3 > HP : {{selectedClass.health + stats[2].mod}} </h3>
+			<h3> Ability Scores: <h3>
+			<ul class="statsheetlist">
+				<li ng-repeat="stat in stats">
+					<span class="Slabel">{{stat.label}}</span>
+					<span class="Snum">{{stat.value}}</span>
+					<span class="Smodifier">({{stat.modifier}})</span>
 				</li>
-			 	</ul>
-			 		<div class="weaponDiv">
-			 		<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
-			 		</div>
-			<button ng-click="openModal()">open modal</button>
-			<script type="text/ng-template" id="myModalContent.html">
-			<div class="modalContainer">
-			<div class="modal-header">
-				<h4>Editor Window for {{user.name}}</h4>
+			</ul>
+			<div class="weaponDiv">
+				<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
 			</div>
-			<div class="modal-body">
-			<div class="selectionArea">
-			<input type="text" ng-model="user.name">
-			<div >
-				<select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
-				</select><br>
-				<select class="" ng-model="classChoice" ng-change="setClass(classChoice)" data-ng-options="class as class.type for class in classList">
-				</select>
-				<h5>This will be the stat block for: {{user.name}} - {{race.type}} </h5>
-				<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
-				<ul class='abilityscores'>
+
+			</div>
+
+			<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
+
+
+
+			<a href="#openModal">Open Modal</a>
+			<div id="openModal" data-drag="true" jqyoui-draggable class="modalDialog">
+				<div>
 					
-					<li class="stat" ng-repeat="stat in stats">
-						<span class="statlabel">{{stat.label}}</span>
-						<span class="statnum">{{stat.value}}</span>
-						<span class="modifier">({{stat.modifier}})</span>
-						<div class="statButtons">
-							<button id="increaseStat" class="plusButton btn btn-primary btn-xs" ng-click="increaseStat(stat)"><span class="innerbutton">+</span></button>
-							<button id="decreaseStat" class="minusButton btn btn-info btn-xs" ng-click="decreaseStat(stat)"><span class="innerbutton">-</span></button>
+
+					<!-- START MODAL AREA -->
+					
+					<div  id="myModal" role="dialog">
+						<div class="modal-header">
+							<!-- <span>{{user.name}}</span> -->
 						</div>
-					</li>
-					
-				</ul>
-				<button id="resetScores" ng-click="revertStats()" ng-disabled="benefitsToggle">Reset Scores</button>
-				<h4 id="benefitsToggle">Add Race Benefits -   <input id="benefits" type="checkbox" ng-model="benefitsToggle" ng-click="applyRacialBenefits()"></h4>
-				<div id="half-elf-bonus" ng-show="race.type == 'Half Elf' && benefitsToggle === true">
-					<label ng-repeat="stat in stats" ng-class="{'first': $first, 'last': $last}" >{{stat.label}}
-						<input type="checkbox" name="bonus" ng-model="stat.box" ng-change="checkChanged(stat); bonusStat(stat,box)" ng-disabled="checked==limit && !stat.box">
-					</label>
+						<div  jqyoui-draggable class="modal-body">
+							<div class="selectionArea">
+								<input type="text" ng-model="user.name">
+								<div >
+									<select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
+									</select><br>
+									<select class="" ng-model="classChoice" ng-change="setClass(classChoice)" data-ng-options="class as class.type for class in classList">
+									</select>
+									<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
+									<ul class='abilityscores'>
+										
+										<li class="stat" ng-repeat="stat in stats">
+											<span class="statlabel">{{stat.label}}</span>
+											<span class="statnum">{{stat.value}}</span>
+											<span class="modifier">({{stat.modifier}})</span>
+											<div class="statButtons">
+												<button id="increaseStat" class="plusButton btn btn-primary btn-xs" ng-click="increaseStat(stat)"><span class="innerbutton">+</span></button>
+												<button id="decreaseStat" class="minusButton btn btn-info btn-xs" ng-click="decreaseStat(stat)"><span class="innerbutton">-</span></button>
+											</div>
+										</li>
+										
+									</ul>
+									<button id="resetScores" ng-click="revertStats()" ng-disabled="benefitsToggle">Reset Scores</button>
+									<h4 id="benefitsToggle">Add Race Benefits -   <input id="benefits" type="checkbox" ng-click="applyRacialBenefits()"></h4>
+									<div id="half-elf-bonus" ng-show="race.type == 'Half Elf' && benefitsToggle === true">
+										<label ng-repeat="stat in stats" ng-class="{'first': $first, 'last': $last}" >{{stat.label}}
+											<input type="checkbox" name="bonus" ng-model="stat.box" ng-change="checkChanged(stat); bonusStat(stat,box)" ng-disabled="checked==limit && !stat.box">
+										</label>
+									</div>
+									<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
+								</div>
+							</div>
+						</div>
+						<div style="clear:both"></div>
+						<div class="modal-footer">
+						</div>
+					</div>
 				</div>
-				<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
 			</div>
-		</div>
-			</div>
-			<div style="clear:both"></div>
-			<div class="modal-footer">
-				<button class="btn btn-primary" ng-click="ok()">OK</button>
-			</div>
-			</div>
-			</script>
-		</div>
+	
+		<script src="bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 	</body>
 </html>
