@@ -5,13 +5,24 @@
 	margin-right:20px;
 }
 
+.nameDisplayArea{
+	text-align: center;
+}
+
+.nameClassHeader{
+	text-align: center;
+}
+
 .nametag {
-	float:left;
+	text-align: center;
 	display:inline;
 }
 .namebox {
 	border-bottom:3px double black;
 	font-size: 60px;
+	min-width: 200px;
+	min-height:60px;
+	display:inline-block;
 }
 
 .infobox{
@@ -23,5 +34,10 @@
 }
 
 .classRace {
-	font-size:50px;
+	font-size:35px;
 	}
+
+
+#hpDetails{
+	text-align: center;
+}
