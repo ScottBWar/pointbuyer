@@ -334,10 +334,11 @@ myApp.controller('statController', function statController($scope, $modal) {
             if($scope.selectedClass.saveThrows.indexOf(i) >= 0){
                 $scope.stats[i].proficient = true;
             }
+            else{
+                $scope.stats[i].proficient = false;
+            }
         }
         console.log($scope.stats);
-
-
     };
 
     //This selectedRace function works but make it less UGLY AND GROSS.
