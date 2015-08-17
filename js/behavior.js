@@ -14,6 +14,13 @@ $(document).ready(function() {
 			$('body').removeClass('dark');
 		}
 	});
+
+
+	console.log(parseInt(" + 3 "[0]))
+		console.log(parseInt(" + 3 "[1]))
+			console.log(parseInt(" + 3 "[2]))
+				console.log(parseInt(" + 3 "[3]))
+					console.log(parseInt(" + 3 "[4]))
     
 
 }); 

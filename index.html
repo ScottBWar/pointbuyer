@@ -44,13 +44,15 @@
 			</div>
 
 
-			<!-- <div class="savingthrowlistbox">
+			<div class="savingthrowlistbox">
 				<ul class = "savingthrowlist">
 					<li class=" savingLabel" ng-repeat="stat in stats">
-						<span>{{stat.label}}</span>
+						<span ng-if="stat.label">{{stat.label}}</span>
+						<span ng-if="stat.proficient == true">+{{stat.mod + 2}}</span>
+						<span ng-if="stat.proficient == false">{{stat.modifier}}</span>
 					</li>
 				</ul>
-			</div> -->
+			</div>
 
 			<div class="weaponDiv">
 				<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
