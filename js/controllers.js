@@ -9,6 +9,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         name:""
     };
 
+  
 
     $scope.stats = [{
         'label': 'str',
@@ -460,7 +461,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
         };
 
-
+          $scope.getAllModifier();
 });
 
 
