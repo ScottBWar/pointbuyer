@@ -41,3 +41,17 @@
 #hpDetails{
 	text-align: center;
 }
+
+.statsheetlist{
+	width: 180px ;
+	border:1px solid red;
+}
+
+.statboxul {
+	width:140px;
+	border: 1px solid black;
+	list-style-type: none;
+	text-align: center;
+	padding-left:0;
+	margin:0 auto;
+}

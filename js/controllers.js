@@ -13,29 +13,33 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.stats = [{
         'label': 'str',
         'value': 8,
-        'modifier': " -1 "
+        'modifier': " -1 ",
+        'proficient': false
     }, {
         'label': 'dex',
         'value': 8,
         'modifier': " -1 ",
-        'mod': -1
+        'proficient': false
     }, {
         'label': 'con',
         'value': 8,
         'modifier': " -1 ",
-        'mod': -1
+        'proficient': false
     }, {
         'label': 'int',
         'value': 8,
-        'modifier': " -1 "
+        'modifier': " -1 ",
+        'proficient': false
     }, {
         'label': 'wis',
         'value': 8,
-        'modifier': " -1 "
+        'modifier': " -1 ",
+        'proficient': false
     }, {
         'label': 'cha',
         'value': 8,
-        'modifier': " -1 "
+        'modifier': " -1 ",
+        'proficient': false
     }];
 
     $scope.total = 27;
@@ -117,6 +121,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 1, 
         type:"Barbarian",
         health: 12,
+        saveThrows: [0,2],
         wpn1:{
             name:"Great Axe",
             damage: "1d12",
@@ -128,6 +133,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 2, 
         type:"Bard",
         health:8,
+        saveThrows:[1,5],
         wpn1:{
             name:"Rapier",
             damage: "1d8",
@@ -139,6 +145,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 3, 
         type:"Cleric",
         health:8,
+        saveThrows:[4,5],
         wpn1:{
             name:"Mace",
             damage: "1d6",
@@ -149,6 +156,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 4, 
         type:"Druid",
+        saveThrows:[3,4],
         health:8,
         wpn1:{
             name:"Scimitar",
@@ -161,6 +169,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 5, 
         type:"Fighter",
         health:10,
+        saveThrows:[1,2],
         wpn1:{
             name:"Long Sword",
             damage: "1d8",
@@ -172,6 +181,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 6, 
         type:"Monk",
         health:8,
+        saveThrows:[1,4],
         wpn1:{
             name:"Martial Arts x2",
             damage: "1d4",
@@ -182,6 +192,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 7, 
         type:"Paladin",
+        saveThrows:[0,4],
         health:10,
         wpn1:{
             name:"Long Sword",
@@ -193,6 +204,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 8, 
         type:"Ranger",
+        saveThrows:[1,4],
         health:10,
         wpn1:{
             name:"Short Swords x2",
@@ -205,6 +217,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 9, 
         type:"Rogue",
         health:8,
+        saveThrows:[1,3],
         wpn1:{
             name:"Short Swords x2",
             damage: "1d6",
@@ -216,6 +229,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 10, 
         type:"Sorceror",
         health:6,
+        saveThrows:[2,5],
         wpn1:{
             name:"Fire Bolt",
             damage: "1d10"
@@ -226,6 +240,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 11, 
         type:"Wizard",
         health:6,
+        saveThrows:[3,4],
         wpn1:{
             name:"Fire Bolt",
             damage: "1d10"
@@ -236,11 +251,21 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 12, 
         type:"Warlock",
         health:8,
+        saveThrows:[4,5],
         wpn1:{
             name:"Eldritch Blast",
             damage: "1d10"
         }
 
+    }
+    ];
+
+
+    $scope.skillList = [
+    {
+        label: "Acrobatics",
+        req: "dex",
+        proficient:false
     }
     ];
 
@@ -251,35 +276,41 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.revertStats = function() {
         $scope.total = 27;
         $scope.stats = [{
-            'label': 'str',
-            'value': 8,
-            'modifier': " -1 "
-        }, {
-            'label': 'dex',
-            'value': 8,
-            'modifier': " -1 "
-        }, {
-            'label': 'con',
-            'value': 8,
-            'modifier': " -1 "
-        }, {
-            'label': 'int',
-            'value': 8,
-            'modifier': " -1 "
-        }, {
-            'label': 'wis',
-            'value': 8,
-            'modifier': " -1 "
-        }, {
-            'label': 'cha',
-            'value': 8,
-            'modifier': " -1 "
-        }];
+        'label': 'str',
+        'value': 8,
+        'modifier': " -1 ",
+        'proficient': false
+    }, {
+        'label': 'dex',
+        'value': 8,
+        'modifier': " -1 ",
+        'proficient': false
+    }, {
+        'label': 'con',
+        'value': 8,
+        'modifier': " -1 ",
+        'proficient': false
+    }, {
+        'label': 'int',
+        'value': 8,
+        'modifier': " -1 ",
+        'proficient': false
+    }, {
+        'label': 'wis',
+        'value': 8,
+        'modifier': " -1 ",
+        'proficient': false
+    }, {
+        'label': 'cha',
+        'value': 8,
+        'modifier': " -1 ",
+        'proficient': false
+    }];
     };
 
     $scope.selectedRace = function(selected) {
         console.log(selected);
-        console.log($scope.benefitsToggle)
+        console.log($scope.benefitsToggle);
         // console.log("you picked a race = " + $scope.race.type + "  and the benefitstoggle was " + $scope.benefitstoggle + " when you picked");
         if ($scope.benefitsToggle === true) {
             $scope.applyRacialBenefits();
@@ -294,10 +325,20 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.setClass = function(classChoice){
-        console.log(classChoice)
+        console.log(classChoice);
         $scope.selectedClass = classChoice;
-        console.log($scope.selectedClass)
-    }
+        console.log($scope.selectedClass.saveThrows);
+
+
+        for(var i = 0; i < $scope.stats.length; i++){
+            if($scope.selectedClass.saveThrows.indexOf(i) >= 0){
+                $scope.stats[i].proficient = true;
+            }
+        }
+        console.log($scope.stats);
+
+
+    };
 
     //This selectedRace function works but make it less UGLY AND GROSS.
 
@@ -365,7 +406,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.applyRacialBenefits = function() {
-        console.log("you clicked the checkbox, and when you clicked the benefitsToggle was" + $scope.benefitsToggle + "  and the race was " + $scope.race.type);
+        // console.log("you clicked the checkbox, and when you clicked the benefitsToggle was" + $scope.benefitsToggle + "  and the race was " + $scope.race.type);
         if ($scope.benefitsToggle === false) {
             for (var i = 0; i < $scope.race.increase_array.length; i++) {
                 var n = $scope.race.increase_array[i];
@@ -410,7 +451,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                 angular.forEach($scope.stats, function(stat, box) {
                     if (stat.box === true) {
                         stat.box = false;
-                        console.log(stat.label + " has been unchecked");
+                        // console.log(stat.label + " has been unchecked");
                         stat.value--;
                     }
                     $scope.checked = 0;
@@ -418,23 +459,6 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
         };
 
-        // $scope.openModal = function(){
-        //     console.log("open modal");
-        //     console.log($scope.benefitsToggle)
-        //     $scope.selected = $scope.race;
-        //     $scope.classChoice = $scope.selectedClass
-
-
-        //     var modalInstance = $modal.open({
-        //         templateUrl: 'myModalContent.html',
-        //         controller: 'ModalInstanceCtrl',
-        //         backdrop:'static',
-        //         scope:$scope,
-        //         show:false
-                
-        //     });
-
-        // };
 
 });
 
@@ -453,4 +477,3 @@ angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modal
 // var draggie = new Draggabilly( elem, {
 //   // options...
 // });
-

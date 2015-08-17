@@ -35,13 +35,23 @@
 			 <span class="speed"> Speed | 30ft.</span>
 			</div>
 		
-			<ul class="statsheetlist">
-				<li ng-repeat="stat in stats">
-					<span class="Slabel">{{stat.label}}</span>
-					<span class="Snum">{{stat.value}}</span>
-					<span class="Smodifier">({{stat.modifier}})</span>
-				</li>
-			</ul>
+			<div class="statsheetlist">
+				<ul class="statboxul" ng-repeat="stat in stats">
+					<li class="Slabel">{{stat.label}}</li>
+					<li class="Snum">{{stat.value}}</li>
+					<li class="Smodifier">({{stat.modifier}})</li>
+				</ul>
+			</div>
+
+
+			<!-- <div class="savingthrowlistbox">
+				<ul class = "savingthrowlist">
+					<li class=" savingLabel" ng-repeat="stat in stats">
+						<span>{{stat.label}}</span>
+					</li>
+				</ul>
+			</div> -->
+
 			<div class="weaponDiv">
 				<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
 			</div>
