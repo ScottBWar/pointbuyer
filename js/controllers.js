@@ -458,6 +458,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         for (var i = 0; i < $scope.stats.length; i++) {
             $scope.getModifier($scope.stats[i]);
         }
+        $scope.getSkillModifiers();
     };
 
     
@@ -548,6 +549,23 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
         };
 
+        //this getSkillModifiers function works for now... but needs to be refactored
+    $scope.getSkillModifiers = function(){
+        for(var i = 0;i < $scope.skills.length;i++){
+                for(var ii = 0;ii < $scope.stats.length;ii++){
+                    if($scope.skills[i].req == $scope.stats[ii].label){
+                         $scope.skills[i].mod = $scope.stats[ii].mod;
+                         console.log($scope.skills[i].mod);
+                    }
+                }
+        }
+    };
+
+
+
+
+
+        //this is the end of the controller, where we simply call getAllModifier once.
           $scope.getAllModifier();
 });
 

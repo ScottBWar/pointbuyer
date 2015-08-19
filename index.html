@@ -61,6 +61,8 @@
 					<li class=" skillLabel" ng-repeat="skill in skills">
 						<span ng-if="skill.label">{{skill.label}}</span>
 						<span>  ({{skill.req}}) </span>
+						<span ng-if="skill.proficient == true">+ {{skill.mod + 2}}</span>
+						<span ng-if="skill.proficient == false"> {{skill.mod}} </span>
 					</li>
 				</ul>
 			</div>
