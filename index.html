@@ -62,7 +62,8 @@
 						<span ng-if="skill.label">{{skill.label}}</span>
 						<span>  ({{skill.req}}) </span>
 						<span ng-if="skill.proficient == true">+ {{skill.mod + 2}}</span>
-						<span ng-if="skill.proficient == false"> {{skill.mod}} </span>
+						<span ng-if="skill.proficient == false && skill.mod >= 0">+{{skill.mod}} </span>
+						<span ng-if="skill.proficient == false && skill.mod === -1">{{skill.mod}} </span>
 					</li>
 				</ul>
 			</div>

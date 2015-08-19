@@ -478,6 +478,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
             $scope.getModifier(stat);
         }
+        $scope.getSkillModifiers();
     };
 
     $scope.decreaseStat = function(stat) {
@@ -493,6 +494,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
             $scope.getModifier(stat);
         }
+        $scope.getSkillModifiers();
     };
 
     $scope.applyRacialBenefits = function() {
