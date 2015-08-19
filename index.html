@@ -55,7 +55,17 @@
 				</ul>
 			</div>
 
-			<div class="clear"></div>
+			<div class="skillslistbox">
+			<h6>Skills</h6>
+				<ul class = "skillsthrowlist">
+					<li class=" skillLabel" ng-repeat="skill in skills">
+						<span ng-if="skill.label">{{skill.label}}</span>
+						<span>  ({{skill.req}}) </span>
+					</li>
+				</ul>
+			</div>
+<div class="clear"></div>
+			
 			<div class="weaponDiv">
 				<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
 			</div>

@@ -262,12 +262,99 @@ myApp.controller('statController', function statController($scope, $modal) {
     ];
 
 
-    $scope.skillList = [
+    $scope.skills = [
     {
         label: "Acrobatics",
         req: "dex",
         proficient:false
+    },
+    {
+        label: "Animal Handling",
+        req: "wis",
+        proficient:false
+    },
+    {
+        label: "Arcana",
+        req: "int",
+        proficient:false
+    },
+    {
+        label: "Athletics",
+        req: "str",
+        proficient:false
+    },
+    {
+        label: "Deception",
+        req: "cha",
+        proficient:false
+    },
+    {
+        label: "History",
+        req: "int",
+        proficient:false
+    },
+    {
+        label: "Insight",
+        req: "wis",
+        proficient:false
+    },
+    {
+        label: "Intimidation",
+        req: "cha",
+        proficient:false
+    },
+    {
+        label: "Investigation",
+        req: "int",
+        proficient:false
+    },
+    {
+        label: "Medicine",
+        req: "wis",
+        proficient:false
+    },
+    {
+        label: "Nature",
+        req: "int",
+        proficient:false
+    },
+    {
+        label: "Perception",
+        req: "wis",
+        proficient:false
+    },
+    {
+        label: "Performance",
+        req: "cha",
+        proficient:false
+    },
+    {
+        label: "Persuasion",
+        req: "cha",
+        proficient:false
+    },
+    {
+        label: "Religion",
+        req: "int",
+        proficient:false
+    },
+    {
+        label: "Sleight of Hand",
+        req: "dex",
+        proficient:false
+    },
+    {
+        label: "Stealth",
+        req: "dex",
+        proficient:false
+    },
+    {
+        label: "Survival",
+        req: "wis",
+        proficient:false
     }
+
+
     ];
 
 

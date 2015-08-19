@@ -62,3 +62,8 @@
 	width:100px;
 	border:1px solid blue;
 }
+
+.skillslistbox{
+	border:1px solid green;
+	float:left;
+}
