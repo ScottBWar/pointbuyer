@@ -129,7 +129,7 @@
         </div>
         <div class="tab-pane" id="tab2">
         <div class="skillSelectionArea">
-        	Skills go here bruh
+        	You can pick {{selectedClass.maxSkills - skillsPicked()}} more skills
         	<div id="skillsChecklist">
         				<ul>
         					<li  ng-if="selectedBackground && selectedClass && selectedClass.skillOptions.indexOf(skill.label) >= 0 || selectedBackground.skills.indexOf(skill.label) >= 0" ng-repeat="skill in skills" class="checkableSkill">

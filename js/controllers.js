@@ -382,6 +382,16 @@ myApp.controller('statController', function statController($scope, $modal) {
 
     ];
 
+    $scope.skillsPicked = function(){
+        var total = 0;
+        for(var i = 0; i < $scope.skills.length; i++){
+            if($scope.skills[i].proficient === true){
+                total += 1;
+            }
+        }
+        return total;
+    };
+
 
     $scope.backgrounds = [
     {
@@ -507,14 +517,14 @@ myApp.controller('statController', function statController($scope, $modal) {
                 $scope.stats[i].proficient = false;
             }
         }
-        setSkillProficiecies();
+        $scope.setSkillProficiencies();
     };
 
     $scope.setBackground = function(backgroundChoice){
         console.log(backgroundChoice);
         $scope.selectedBackground = backgroundChoice;
         console.log($scope.selectedBackground);
-        $scope.setSkillProficiecies();
+        $scope.setSkillProficiencies();
     };
 
     //This selectedRace function works but make it less UGLY AND GROSS.
@@ -652,7 +662,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
     //Seriously, refactor this when you get the chance ^
 
-    $scope.setSkillProficiecies = function(){
+    $scope.setSkillProficiencies = function(){
         for(var i=0;i < $scope.skills.length;i++){
             if($scope.selectedBackground.skills.indexOf($scope.skills[i].label) >= 0){
                 $scope.skills[i].proficient = true;
