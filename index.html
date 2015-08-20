@@ -126,6 +126,15 @@
         <div class="tab-pane" id="tab2">
         <div class="skillSelectionArea">
         	Skills go here bruh
+        	<div id="skillsChecklist">
+        				<ul>
+        					<li ng-repeat="skill in skills" class="checkableSkill">
+									<label>{{skill.label}}
+										<input type="checkbox"  name="proficiencyCheck">
+									</label>
+									</li>
+								</ul>
+								</div>
         	</div>
         </div>
         </div>
