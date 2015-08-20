@@ -134,7 +134,7 @@
         				<ul>
         					<li  ng-if="selectedBackground && selectedClass && selectedClass.skillOptions.indexOf(skill.label) >= 0 || selectedBackground.skills.indexOf(skill.label) >= 0" ng-repeat="skill in skills" class="checkableSkill">
 									<label>{{skill.label}}
-										<input type="checkbox" ng-model="skill.proficient" name="proficiencyCheck">
+										<input type="checkbox" ng-model="skill.proficient" ng-disabled="skillsPicked() >= selectedClass.maxSkills && !skill.proficient"name="proficiencyCheck">
 									</label>
 									</li>
 								</ul>
