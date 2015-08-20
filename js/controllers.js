@@ -123,6 +123,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Barbarian",
         health: 12,
         saveThrows: [0,2],
+        skillOptions:["Animal Handling","Athletics","Intimidation","Nature",
+        "Perception","Survival"],
         maxSkills:4,
         wpn1:{
             name:"Great Axe",
@@ -136,6 +138,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Bard",
         health:8,
         saveThrows:[1,5],
+        skillOptions:["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight Of Hand","Stealth","Survival"],
         maxSkills:5,
         wpn1:{
             name:"Rapier",
@@ -149,6 +152,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Cleric",
         health:8,
         saveThrows:[4,5],
+        skillOptions:["History","Insight","Medicine","Persuasion","Religion"],
         maxSkills:4,
         wpn1:{
             name:"Mace",
@@ -162,6 +166,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Druid",
         health:8,
         saveThrows:[3,4],
+        skillOptions:["Arcana","Animal Handling","Insight","Medicine","Nature","Perception","Religion","Survival"],
         maxSkills:4,
         wpn1:{
             name:"Scimitar",
@@ -175,6 +180,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Fighter",
         health:10,
         saveThrows:[1,2],
+        skillOptions:["Acrobatics","Animal Handling","Athletics","History","Insight","Intimidation","Perception","Survival"],
         maxSkills:4,
         wpn1:{
             name:"Long Sword",
@@ -188,6 +194,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Monk",
         health:8,
         saveThrows:[1,4],
+        skillOptions:["Acrobatics","Athletics","History","Insight","Religion","Stealth"],
         maxSkills:4,
         wpn1:{
             name:"Martial Arts x2",
@@ -201,6 +208,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Paladin",
         health:10,
         saveThrows:[0,4],
+        skillOptions:["Athletics","Insight","Intimidation","Medicine","Persuasion","Religion"],
         maxSkills:4,
         wpn1:{
             name:"Long Sword",
@@ -214,6 +222,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Ranger",
         health:10,
         saveThrows:[1,4],
+        skillOptions:["Animal Handling","Athletics","Insight","Investigation","Nature","Perception","Stealth","Survival"],
         maxSkills:5,
         wpn1:{
             name:"Short Swords x2",
@@ -227,6 +236,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Rogue",
         health:8,
         saveThrows:[1,3],
+        skillOptions:["Acrobatics","Athletics","Deception","Insight","Intimidation","Investigation","Perception","Performance","Persuasion","Sleight of Hand","Stealth"],
         maxSkills:6,
         wpn1:{
             name:"Short Swords x2",
@@ -240,6 +250,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Sorceror",
         health:6,
         saveThrows:[2,5],
+        skillOptions:["Arcana","Deception","Insight","Intimidation","Persuasion","Religion"],
         maxSkills:4,
         wpn1:{
             name:"Fire Bolt",
@@ -252,6 +263,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Wizard",
         health:6,
         saveThrows:[3,4],
+        skillOptions:["Arcana","History","Insight","Investigation","Medicine","Religion"],
         maxSkills:4,
         wpn1:{
             name:"Fire Bolt",
@@ -264,6 +276,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Warlock",
         health:8,
         saveThrows:[4,5],
+        skillOptions:["Arcana","Deception","History","Intimidation","Investigation","Nature","Religion"],
         maxSkills:4,
         wpn1:{
             name:"Eldritch Blast",
