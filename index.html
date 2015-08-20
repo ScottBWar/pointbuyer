@@ -75,15 +75,30 @@
 				
 				<div  id="myModal" role="dialog">
 					<div class="modal-header">
-					<ul class="nav nav-tabs">
-							<li role="presentation" class="active"><a href="#openModal">Stats</a></li>
-							<li role="presentation"><a href="#openModal">Skills</a></li>
-							<li role="presentation"><a href="#openModal">Weapons</a></li>
-						</ul>
-						
+					Editor Window Header
 					</div>
 					<div  jqyoui-draggable class="modal-body">
-						<div class="selectionArea">
+
+							<div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+        <li class="active" id="statsTab"><a href="#openModal" data-toggle="tab">Stats</a></li>
+        <li id="skillsTab"><a href="#openModal" data-toggle="tab">Skills</a></li>
+        </ul>
+        <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            Data 1
+        </div>
+        <div class="tab-pane" id="tab2">
+        	<p>Data 2.</p>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+						<!-- <div class="selectionArea">
 							<input type="text" ng-model="user.name">
 							<div >
 								<select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
@@ -113,7 +128,7 @@
 								</div>
 								<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div style="clear:both"></div>
 					<div class="modal-footer">
@@ -132,7 +147,7 @@
 
 
 
-		
+
 		
 		<script src="bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 	</body>

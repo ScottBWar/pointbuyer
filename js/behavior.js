@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+	//Custom Modal Stuff
 	MODAL_OPEN = false;
 
 	$('.displayArea').click(function() {
@@ -15,5 +16,25 @@ $(document).ready(function() {
 		}
 	});
     
+
+   //Custom Tab Stuff
+
+   $('#skillsTab').click(function(){
+   	$('#statsTab').removeClass('active');
+   	$('#skillsTab').addClass('active');
+
+   	$('#tab1').removeClass('active');
+   	$('#tab2').addClass('active');
+
+
+   });
+
+    $('#statsTab').click(function(){
+   	$('#skillsTab').removeClass('active');
+   	$('#statsTab').addClass('active');
+
+   	$('#tab2').removeClass('active');
+   	$('#tab1').addClass('active');
+   });
 
 }); 

@@ -572,15 +572,15 @@ myApp.controller('statController', function statController($scope, $modal) {
 });
 
 
-angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
-  $scope.ok = function () {
-    $modalInstance.close();
-  };
+// angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+//   $scope.ok = function () {
+//     $modalInstance.close();
+//   };
 
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-});
+//   $scope.cancel = function () {
+//     $modalInstance.dismiss('cancel');
+//   };
+// });
 
 // var elem = document.querySelector('.modalContainer');
 // var draggie = new Draggabilly( elem, {
