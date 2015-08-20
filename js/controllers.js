@@ -123,6 +123,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Barbarian",
         health: 12,
         saveThrows: [0,2],
+        maxSkills:4,
         wpn1:{
             name:"Great Axe",
             damage: "1d12",
@@ -135,6 +136,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Bard",
         health:8,
         saveThrows:[1,5],
+        maxSkills:5,
         wpn1:{
             name:"Rapier",
             damage: "1d8",
@@ -147,6 +149,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Cleric",
         health:8,
         saveThrows:[4,5],
+        maxSkills:4,
         wpn1:{
             name:"Mace",
             damage: "1d6",
@@ -157,8 +160,9 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 4, 
         type:"Druid",
-        saveThrows:[3,4],
         health:8,
+        saveThrows:[3,4],
+        maxSkills:4,
         wpn1:{
             name:"Scimitar",
             damage: "1d6",
@@ -171,6 +175,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Fighter",
         health:10,
         saveThrows:[1,2],
+        maxSkills:4,
         wpn1:{
             name:"Long Sword",
             damage: "1d8",
@@ -183,6 +188,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Monk",
         health:8,
         saveThrows:[1,4],
+        maxSkills:4,
         wpn1:{
             name:"Martial Arts x2",
             damage: "1d4",
@@ -193,8 +199,9 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 7, 
         type:"Paladin",
-        saveThrows:[0,4],
         health:10,
+        saveThrows:[0,4],
+        maxSkills:4,
         wpn1:{
             name:"Long Sword",
             damage: "1d8",
@@ -205,8 +212,9 @@ myApp.controller('statController', function statController($scope, $modal) {
     { 
         id: 8, 
         type:"Ranger",
-        saveThrows:[1,4],
         health:10,
+        saveThrows:[1,4],
+        maxSkills:5,
         wpn1:{
             name:"Short Swords x2",
             damage: "1d6",
@@ -219,6 +227,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Rogue",
         health:8,
         saveThrows:[1,3],
+        maxSkills:6,
         wpn1:{
             name:"Short Swords x2",
             damage: "1d6",
@@ -231,6 +240,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Sorceror",
         health:6,
         saveThrows:[2,5],
+        maxSkills:4,
         wpn1:{
             name:"Fire Bolt",
             damage: "1d10"
@@ -242,6 +252,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Wizard",
         health:6,
         saveThrows:[3,4],
+        maxSkills:4,
         wpn1:{
             name:"Fire Bolt",
             damage: "1d10"
@@ -253,6 +264,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         type:"Warlock",
         health:8,
         saveThrows:[4,5],
+        maxSkills:4,
         wpn1:{
             name:"Eldritch Blast",
             damage: "1d10"
@@ -358,6 +370,62 @@ myApp.controller('statController', function statController($scope, $modal) {
     ];
 
 
+    $scope.backgrounds = [
+    {
+        label:'Acolyte',
+        skills:['Insight','Religion']
+    },
+    {
+        label:'Charlatan',
+        skills:['Deception','Sleight of Hand']
+    },
+    {
+        label:'Criminal',
+        skills:['Deception','Stealth']
+    },
+    {
+        label:'Entertainer',
+        skills:['Acrobatics','Performance']
+    },
+    {
+        label:'Folk Hero',
+        skills:['Animal Handling','Survival']
+    },
+    {
+        label:'Guild Artisan',
+        skills:['Insight','Persuasion']
+    },
+    {
+        label:'Hermit',
+        skills:['Medicine','Religion']
+    },
+    {
+        label:'Noble',
+        skills:['History','Persuasion']
+    },
+    {
+        label:'Outlander',
+        skills:['Athletics','Survival']
+    },
+    {
+        label:'Sage',
+        skills:['Arcana','History']
+    },
+    {
+        label:'Sailor',
+        skills:['Athletics','Perception']
+    },
+    {
+        label:'Soldier',
+        skills:['Athletics','Intimidation']
+    },
+    {
+        label:'Urchin',
+        skills:['Sleight of Hand','Stealth']
+    }
+    ];
+
+
 
     $scope.benefitsToggle = false;
 
@@ -427,6 +495,12 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
         }
         console.log($scope.stats);
+    };
+
+    $scope.setBackground = function(backgroundChoice){
+        console.log(backgroundChoice);
+        $scope.selectedBackground = backgroundChoice;
+        console.log($scope.selectedBackground.skills);
     };
 
     //This selectedRace function works but make it less UGLY AND GROSS.

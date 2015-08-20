@@ -87,11 +87,15 @@
         <div class="tab-content">
         <div class="tab-pane active" id="tab1">
           <div class="selectionArea">
-							<input type="text" ng-model="user.name">
-							<div >
-								<select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
+							<span>Name:</span><input type="text" ng-model="user.name">
+							<div>
+								<span>Race:</span><select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
 								</select><br>
-								<select class="" ng-model="classChoice" ng-change="setClass(classChoice)" data-ng-options="class as class.type for class in classList">
+								
+								<span>Class:</span><select class="" ng-model="classChoice" ng-change="setClass(classChoice)" data-ng-options="class as class.type for class in classList">
+								</select><br>
+
+								<span>Background:</span><select class="" ng-model="backgroundChoice" ng-change="setBackground(backgroundChoice)" data-ng-options="background as background.label for background in backgrounds">
 								</select>
 								<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
 								<ul class='abilityscores'>
