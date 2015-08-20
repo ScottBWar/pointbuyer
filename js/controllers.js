@@ -507,7 +507,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                 $scope.stats[i].proficient = false;
             }
         }
-        console.log($scope.stats);
+        setSkillProficiecies();
     };
 
     $scope.setBackground = function(backgroundChoice){
@@ -650,6 +650,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                 }
         }
     };
+    //Seriously, refactor this when you get the chance ^
 
     $scope.setSkillProficiecies = function(){
         for(var i=0;i < $scope.skills.length;i++){
