@@ -517,7 +517,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                 $scope.stats[i].proficient = false;
             }
         }
-        $scope.setSkillProficiencies();
+        if($scope.selectedBackground){$scope.setSkillProficiencies();}
     };
 
     $scope.setBackground = function(backgroundChoice){
