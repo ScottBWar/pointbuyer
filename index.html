@@ -132,7 +132,7 @@
         	Skills go here bruh
         	<div id="skillsChecklist">
         				<ul>
-        					<li ng-repeat="skill in skills" class="checkableSkill">
+        					<li ng-repeat="skill in skills" ng-model="skill.proficient" class="checkableSkill">
 									<label>{{skill.label}}
 										<input type="checkbox"  name="proficiencyCheck">
 									</label>

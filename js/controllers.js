@@ -500,7 +500,8 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.setBackground = function(backgroundChoice){
         console.log(backgroundChoice);
         $scope.selectedBackground = backgroundChoice;
-        console.log($scope.selectedBackground.skills);
+        console.log($scope.selectedBackground);
+        $scope.setSkillProficiecies();
     };
 
     //This selectedRace function works but make it less UGLY AND GROSS.
@@ -634,6 +635,16 @@ myApp.controller('statController', function statController($scope, $modal) {
                          console.log($scope.skills[i].mod);
                     }
                 }
+        }
+    };
+
+    $scope.setSkillProficiecies = function(){
+        for(var i=0;i < $scope.skills.length;i++){
+            if($scope.selectedBackground.skills.indexOf($scope.skills[i].label) >= 0){
+                $scope.skills[i].proficient = true;
+            }
+            else
+                $scope.skills[i].proficient = false;
         }
     };
 
