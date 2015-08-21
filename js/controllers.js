@@ -49,72 +49,86 @@ myApp.controller('statController', function statController($scope, $modal) {
         id: 1,
         type: "Human",
         perks: "+ All",
-        increase_array: [0, 1, 2, 3, 4, 5]
+        increase_array: [0, 1, 2, 3, 4, 5],
+        speed:30
     }, {
         id: 2,
         type: "Lightfoot Halfling",
         perks: "++ dex, + cha",
-        increase_array: [1, 1, 5]
+        increase_array: [1, 1, 5],
+        speed:25
     }, {
         id: 3,
         type: "Stout Halfling",
         perks: "++ dex, + con",
-        increase_array: [1, 1, 2]
+        increase_array: [1, 1, 2],
+        speed:25
     }, {
         id: 4,
         type: "Hill Dwarf",
         perks: "++ con, + wis",
-        increase_array: [2, 2, 4]
+        increase_array: [2, 2, 4],
+        speed: 25
     }, {
         id: 5,
         type: "Mountain Dwarf",
         perks: "++ con, ++ str",
-        increase_array: [0, 0, 2, 2]
+        increase_array: [0, 0, 2, 2],
+        speed:25
     }, {
         id: 6,
         type: "High Elf",
         perks: "++ dex, + int",
-        increase_array: [1, 1, 3]
+        increase_array: [1, 1, 3],
+        speed:30
     }, {
         id: 7,
         type: "Wood Elf",
         perks: "++ dex, + wis",
-        increase_array: [1, 1, 4]
+        increase_array: [1, 1, 4],
+        speed:35
     }, {
         id: 8,
         type: "Dark Elf",
         perks: "++ dex, + cha",
-        increase_array: [1, 1, 5]
+        increase_array: [1, 1, 5],
+        speed:30
     }, {
         id: 9,
         type: "Forest Gnome",
         perks: "++ int, + dex",
-        increase_array: [3, 3, 1]
+        increase_array: [3, 3, 1],
+        speed:25
     }, {
         id: 10,
         type: "Rock Gnome",
         perks: "++ int, + con",
-        increase_array: [3, 3, 2]
+        increase_array: [3, 3, 2],
+        speed:25
     }, {
         id: 11,
         type: "Half-Orc",
         perks: "++ str, + con",
-        increase_array: [0, 0, 2]
+        increase_array: [0, 0, 2],
+        speed:30
     }, {
         id: 12,
         type: "Dragonborn",
         perks: "++ str, + cha",
-        increase_array: [0, 0, 5]
+        increase_array: [0, 0, 5],
+        speed:30
     }, {
         id: 13,
         type: "Tiefling",
         perks: "++cha, + int",
-        increase_array: [5, 5, 3]
+        increase_array: [5, 5, 3],
+        speed:30
     }, {
         id: 14,
         type: "Half Elf",
         perks: "++cha +any two",
-        increase_array: [5, 5]
+        increase_array: [5, 5],
+        speed:30
     }];
 
     $scope.classList =[
