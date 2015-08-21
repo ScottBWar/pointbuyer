@@ -6,10 +6,10 @@ myApp.controller('statController', function statController($scope, $modal) {
 
 
     $scope.user = {
-        name:""
+        name: ""
     };
 
-  
+
 
     $scope.stats = [{
         'label': 'str',
@@ -50,310 +50,295 @@ myApp.controller('statController', function statController($scope, $modal) {
         type: "Human",
         perks: "+ All",
         increase_array: [0, 1, 2, 3, 4, 5],
-        speed:30
+        speed: 30,
+        size: 'Medium'
     }, {
         id: 2,
         type: "Lightfoot Halfling",
         perks: "++ dex, + cha",
         increase_array: [1, 1, 5],
-        speed:25
+        speed: 25,
+        size: 'Small'
     }, {
         id: 3,
         type: "Stout Halfling",
         perks: "++ dex, + con",
         increase_array: [1, 1, 2],
-        speed:25
+        speed: 25,
+        size: 'Small'
     }, {
         id: 4,
         type: "Hill Dwarf",
         perks: "++ con, + wis",
         increase_array: [2, 2, 4],
-        speed: 25
+        speed: 25,
+        size: 'Medium'
     }, {
         id: 5,
         type: "Mountain Dwarf",
         perks: "++ con, ++ str",
         increase_array: [0, 0, 2, 2],
-        speed:25
+        speed: 25,
+        size: 'Medium'
     }, {
         id: 6,
         type: "High Elf",
         perks: "++ dex, + int",
         increase_array: [1, 1, 3],
-        speed:30
+        speed: 30,
+        size: 'Medium',
+
     }, {
         id: 7,
         type: "Wood Elf",
         perks: "++ dex, + wis",
         increase_array: [1, 1, 4],
-        speed:35
+        speed: 35,
+        size: 'Medium'
     }, {
         id: 8,
         type: "Dark Elf",
         perks: "++ dex, + cha",
         increase_array: [1, 1, 5],
-        speed:30
+        speed: 30,
+        size: 'Medium'
     }, {
         id: 9,
         type: "Forest Gnome",
         perks: "++ int, + dex",
         increase_array: [3, 3, 1],
-        speed:25
+        speed: 25,
+        size: 'Small'
     }, {
         id: 10,
         type: "Rock Gnome",
         perks: "++ int, + con",
         increase_array: [3, 3, 2],
-        speed:25
+        speed: 25,
+        size: 'Small'
     }, {
         id: 11,
         type: "Half-Orc",
         perks: "++ str, + con",
         increase_array: [0, 0, 2],
-        speed:30
+        speed: 30,
+        size: 'Medium'
     }, {
         id: 12,
         type: "Dragonborn",
         perks: "++ str, + cha",
         increase_array: [0, 0, 5],
-        speed:30
+        speed: 30,
+        size: 'Medium'
     }, {
         id: 13,
         type: "Tiefling",
         perks: "++cha, + int",
         increase_array: [5, 5, 3],
-        speed:30
+        speed: 30,
+        size: 'Medium'
     }, {
         id: 14,
         type: "Half Elf",
         perks: "++cha +any two",
         increase_array: [5, 5],
-        speed:30
+        speed: 30,
+        size: 'Medium'
     }];
 
-    $scope.classList =[
-    { 
-        id: 1, 
-        type:"Barbarian",
+    $scope.classList = [{
+        id: 1,
+        type: "Barbarian",
         health: 12,
-        saveThrows: [0,2],
-        skillOptions:["Animal Handling","Athletics","Intimidation","Nature",
-        "Perception","Survival"],
-        maxSkills:4,
+        saveThrows: [0, 2],
+        skillOptions: ["Animal Handling", "Athletics", "Intimidation", "Nature",
+            "Perception", "Survival"
+        ],
+        maxSkills: 4,
         wpn1Choices: ['martial']
-    },
-    { 
-        id: 2, 
-        type:"Bard",
-        health:8,
-        saveThrows:[1,5],
-        skillOptions:["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight Of Hand","Stealth","Survival"],
-        maxSkills:5,
-        wpn1Choices:['simple','Rapier','Longsword']
+    }, {
+        id: 2,
+        type: "Bard",
+        health: 8,
+        saveThrows: [1, 5],
+        skillOptions: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight Of Hand", "Stealth", "Survival"],
+        maxSkills: 5,
+        wpn1Choices: ['simple', 'Rapier', 'Longsword']
 
-    },
-    { 
-        id: 3, 
-        type:"Cleric",
-        health:8,
-        saveThrows:[4,5],
-        skillOptions:["History","Insight","Medicine","Persuasion","Religion"],
-        maxSkills:4,
-        wpn1Choices:['Mace','Warhammer']
+    }, {
+        id: 3,
+        type: "Cleric",
+        health: 8,
+        saveThrows: [4, 5],
+        skillOptions: ["History", "Insight", "Medicine", "Persuasion", "Religion"],
+        maxSkills: 4,
+        wpn1Choices: ['Mace', 'Warhammer']
 
-    },
-    { 
-        id: 4, 
-        type:"Druid",
-        health:8,
-        saveThrows:[3,4],
-        skillOptions:["Arcana","Animal Handling","Insight","Medicine","Nature","Perception","Religion","Survival"],
-        maxSkills:4,
-        wpn1Choices:['simple']
+    }, {
+        id: 4,
+        type: "Druid",
+        health: 8,
+        saveThrows: [3, 4],
+        skillOptions: ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
+        maxSkills: 4,
+        wpn1Choices: ['simple']
 
-    },
-    { 
-        id: 5, 
-        type:"Fighter",
-        health:10,
-        saveThrows:[1,2],
-        skillOptions:["Acrobatics","Animal Handling","Athletics","History","Insight","Intimidation","Perception","Survival"],
-        maxSkills:4,
-        wpn1Choices:['martial']
+    }, {
+        id: 5,
+        type: "Fighter",
+        health: 10,
+        saveThrows: [1, 2],
+        skillOptions: ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"],
+        maxSkills: 4,
+        wpn1Choices: ['martial']
 
-    },
-    { 
-        id: 6, 
-        type:"Monk",
-        health:8,
-        saveThrows:[1,4],
-        skillOptions:["Acrobatics","Athletics","History","Insight","Religion","Stealth"],
-        maxSkills:4,
-        wpn1Choices:['Martial Arts']
+    }, {
+        id: 6,
+        type: "Monk",
+        health: 8,
+        saveThrows: [1, 4],
+        skillOptions: ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"],
+        maxSkills: 4,
+        wpn1Choices: ['Martial Arts']
 
-    },
-    { 
-        id: 7, 
-        type:"Paladin",
-        health:10,
-        saveThrows:[0,4],
-        skillOptions:["Athletics","Insight","Intimidation","Medicine","Persuasion","Religion"],
-        maxSkills:4,
-        wpn1Choices:['martial']
+    }, {
+        id: 7,
+        type: "Paladin",
+        health: 10,
+        saveThrows: [0, 4],
+        skillOptions: ["Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"],
+        maxSkills: 4,
+        wpn1Choices: ['martial']
 
-    },
-    { 
-        id: 8, 
-        type:"Ranger",
-        health:10,
-        saveThrows:[1,4],
-        skillOptions:["Animal Handling","Athletics","Insight","Investigation","Nature","Perception","Stealth","Survival"],
-        maxSkills:5,
-        wpn1Choices:['simple','shortsword','Scimitar']
+    }, {
+        id: 8,
+        type: "Ranger",
+        health: 10,
+        saveThrows: [1, 4],
+        skillOptions: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
+        maxSkills: 5,
+        wpn1Choices: ['simple', 'shortsword', 'Scimitar']
 
-    },
-    { 
-        id: 9, 
-        type:"Rogue",
-        health:8,
-        saveThrows:[1,3],
-        skillOptions:["Acrobatics","Athletics","Deception","Insight","Intimidation","Investigation","Perception","Performance","Persuasion","Sleight of Hand","Stealth"],
-        maxSkills:6,
-        wpn1Choices:['Rapier','Shortsword','Dagger']
+    }, {
+        id: 9,
+        type: "Rogue",
+        health: 8,
+        saveThrows: [1, 3],
+        skillOptions: ["Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand", "Stealth"],
+        maxSkills: 6,
+        wpn1Choices: ['Rapier', 'Shortsword', 'Dagger']
 
-    },
-    { 
-        id: 10, 
-        type:"Sorceror",
-        health:6,
-        saveThrows:[2,5],
-        skillOptions:["Arcana","Deception","Insight","Intimidation","Persuasion","Religion"],
-        maxSkills:4,
-        wpn1Choices:['simple']
+    }, {
+        id: 10,
+        type: "Sorceror",
+        health: 6,
+        saveThrows: [2, 5],
+        skillOptions: ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"],
+        maxSkills: 4,
+        wpn1Choices: ['simple']
 
-    },
-    { 
-        id: 11, 
-        type:"Wizard",
-        health:6,
-        saveThrows:[3,4],
-        skillOptions:["Arcana","History","Insight","Investigation","Medicine","Religion"],
-        maxSkills:4,
-        wpn1Choices:['Quarterstaff','Dagger']
+    }, {
+        id: 11,
+        type: "Wizard",
+        health: 6,
+        saveThrows: [3, 4],
+        skillOptions: ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"],
+        maxSkills: 4,
+        wpn1Choices: ['Quarterstaff', 'Dagger']
 
-    },
-    { 
-        id: 12, 
-        type:"Warlock",
-        health:8,
-        saveThrows:[4,5],
-        skillOptions:["Arcana","Deception","History","Intimidation","Investigation","Nature","Religion"],
-        maxSkills:4,
-        wpn1Choices:['simple']
+    }, {
+        id: 12,
+        type: "Warlock",
+        health: 8,
+        saveThrows: [4, 5],
+        skillOptions: ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"],
+        maxSkills: 4,
+        wpn1Choices: ['simple']
 
-    }
-    ];
+    }];
 
 
-    $scope.skills = [
-    {
-        label: "Acrobatics",
-        req: "dex",
-        proficient:false
-    },
-    {
-        label: "Animal Handling",
-        req: "wis",
-        proficient:false
-    },
-    {
-        label: "Arcana",
-        req: "int",
-        proficient:false
-    },
-    {
-        label: "Athletics",
-        req: "str",
-        proficient:false
-    },
-    {
-        label: "Deception",
-        req: "cha",
-        proficient:false
-    },
-    {
-        label: "History",
-        req: "int",
-        proficient:false
-    },
-    {
-        label: "Insight",
-        req: "wis",
-        proficient:false
-    },
-    {
-        label: "Intimidation",
-        req: "cha",
-        proficient:false
-    },
-    {
-        label: "Investigation",
-        req: "int",
-        proficient:false
-    },
-    {
-        label: "Medicine",
-        req: "wis",
-        proficient:false
-    },
-    {
-        label: "Nature",
-        req: "int",
-        proficient:false
-    },
-    {
-        label: "Perception",
-        req: "wis",
-        proficient:false
-    },
-    {
-        label: "Performance",
-        req: "cha",
-        proficient:false
-    },
-    {
-        label: "Persuasion",
-        req: "cha",
-        proficient:false
-    },
-    {
-        label: "Religion",
-        req: "int",
-        proficient:false
-    },
-    {
-        label: "Sleight of Hand",
-        req: "dex",
-        proficient:false
-    },
-    {
-        label: "Stealth",
-        req: "dex",
-        proficient:false
-    },
-    {
-        label: "Survival",
-        req: "wis",
-        proficient:false
-    }
+    $scope.skills = [{
+            label: "Acrobatics",
+            req: "dex",
+            proficient: false
+        }, {
+            label: "Animal Handling",
+            req: "wis",
+            proficient: false
+        }, {
+            label: "Arcana",
+            req: "int",
+            proficient: false
+        }, {
+            label: "Athletics",
+            req: "str",
+            proficient: false
+        }, {
+            label: "Deception",
+            req: "cha",
+            proficient: false
+        }, {
+            label: "History",
+            req: "int",
+            proficient: false
+        }, {
+            label: "Insight",
+            req: "wis",
+            proficient: false
+        }, {
+            label: "Intimidation",
+            req: "cha",
+            proficient: false
+        }, {
+            label: "Investigation",
+            req: "int",
+            proficient: false
+        }, {
+            label: "Medicine",
+            req: "wis",
+            proficient: false
+        }, {
+            label: "Nature",
+            req: "int",
+            proficient: false
+        }, {
+            label: "Perception",
+            req: "wis",
+            proficient: false
+        }, {
+            label: "Performance",
+            req: "cha",
+            proficient: false
+        }, {
+            label: "Persuasion",
+            req: "cha",
+            proficient: false
+        }, {
+            label: "Religion",
+            req: "int",
+            proficient: false
+        }, {
+            label: "Sleight of Hand",
+            req: "dex",
+            proficient: false
+        }, {
+            label: "Stealth",
+            req: "dex",
+            proficient: false
+        }, {
+            label: "Survival",
+            req: "wis",
+            proficient: false
+        }
 
 
     ];
 
-    $scope.skillsPicked = function(){
+    $scope.skillsPicked = function() {
         var total = 0;
-        for(var i = 0; i < $scope.skills.length; i++){
-            if($scope.skills[i].proficient === true){
+        for (var i = 0; i < $scope.skills.length; i++) {
+            if ($scope.skills[i].proficient === true) {
                 total += 1;
             }
         }
@@ -361,241 +346,208 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
 
-    $scope.backgrounds = [
-    {
-        label:'Acolyte',
-        skills:['Insight','Religion']
-    },
-    {
-        label:'Charlatan',
-        skills:['Deception','Sleight of Hand']
-    },
-    {
-        label:'Criminal',
-        skills:['Deception','Stealth']
-    },
-    {
-        label:'Entertainer',
-        skills:['Acrobatics','Performance']
-    },
-    {
-        label:'Folk Hero',
-        skills:['Animal Handling','Survival']
-    },
-    {
-        label:'Guild Artisan',
-        skills:['Insight','Persuasion']
-    },
-    {
-        label:'Hermit',
-        skills:['Medicine','Religion']
-    },
-    {
-        label:'Noble',
-        skills:['History','Persuasion']
-    },
-    {
-        label:'Outlander',
-        skills:['Athletics','Survival']
-    },
-    {
-        label:'Sage',
-        skills:['Arcana','History']
-    },
-    {
-        label:'Sailor',
-        skills:['Athletics','Perception']
-    },
-    {
-        label:'Soldier',
-        skills:['Athletics','Intimidation']
-    },
-    {
-        label:'Urchin',
-        skills:['Sleight of Hand','Stealth']
-    }
-    ];
+    $scope.backgrounds = [{
+        label: 'Acolyte',
+        skills: ['Insight', 'Religion']
+    }, {
+        label: 'Charlatan',
+        skills: ['Deception', 'Sleight of Hand']
+    }, {
+        label: 'Criminal',
+        skills: ['Deception', 'Stealth']
+    }, {
+        label: 'Entertainer',
+        skills: ['Acrobatics', 'Performance']
+    }, {
+        label: 'Folk Hero',
+        skills: ['Animal Handling', 'Survival']
+    }, {
+        label: 'Guild Artisan',
+        skills: ['Insight', 'Persuasion']
+    }, {
+        label: 'Hermit',
+        skills: ['Medicine', 'Religion']
+    }, {
+        label: 'Noble',
+        skills: ['History', 'Persuasion']
+    }, {
+        label: 'Outlander',
+        skills: ['Athletics', 'Survival']
+    }, {
+        label: 'Sage',
+        skills: ['Arcana', 'History']
+    }, {
+        label: 'Sailor',
+        skills: ['Athletics', 'Perception']
+    }, {
+        label: 'Soldier',
+        skills: ['Athletics', 'Intimidation']
+    }, {
+        label: 'Urchin',
+        skills: ['Sleight of Hand', 'Stealth']
+    }];
 
 
-    $scope.meleeWeapons = [
-        {
-            name:'Dagger',
-            type:'simple',
-            damage:'1d4',
-            reqStat: 1,
-            twoHanded:false,
-            light:true
-        },
-        {
-            name:'Handaxe',
-            type:'simple',
-            damage:'1d6',
-            reqStat:0,
-            twoHanded:false,
-            light:true
-        },
-        {
-            name:'Javelin',
-            type:'simple',
-            damage:'1d6',
-            reqStat:0,
-            twoHanded:false
-        },
-        {
-            name:'Mace',
-            type:'simple',
-            damage:'1d6',
-            reqStat:0,
-            twoHanded:false
-        },
-        {
-            name:'Quarterstaff',
-            type:'simple',
-            damage:'1d6',
-            reqStat:0,
-            properties:'Versatile(1d8)',
-            twoHanded:false
-        },
-        {
-            name:'Spear',
-            type:'simple',
-            damage:'1d6',
-            reqStat:0,
-            properties:'Versatile(1d8)',
-            twoHanded:false
-        },
-        {
-            name:'BattleAxe',
-            type:'martial',
-            damage:'1d8',
-            reqStat:0,
-            properties:'Versatile(1d10)',
-            twoHanded:false
-        },
-        {
-            name:'Flail',
-            type:'martial',
-            damage:'1d8',
-            reqStat:0,
-            twoHanded:false
-        },
-        {
-            name:'Glaive',
-            type:'martial',
-            damage:'1d10',
-            reqStat:0,
-            properties:'reach',
-            twoHanded:true
-        },
-        {
-            name:'Greataxe',
-            type:'martial',
-            damage:'1d12',
-            reqStat:0,
-            twoHanded:true
-        },
-        {
-            name:'Greatsword',
-            type:'martial',
-            damage:'2d6',
-            reqStat:0,
-            twoHanded:true
-        },
-        {
-            name:'Maul',
-            type:'martial',
-            damage:'2d6',
-            reqStat:0,
-            twoHanded:true
-        },
-        {
-            name:'Halberd',
-            type:'martial',
-            damage:'1d10',
-            reqStat:0,
-            properties:'reach',
-            twoHanded:true
-        },
-        {
-            name:'Longsword',
-            type:'martial',
-            damage:'1d8',
-            reqStat:0,
-            properties:'Versatile(1d10)',
-            twoHanded:false
-        },
-        {
-            name:'Rapier',
-            type:'martial',
-            damage:'1d8',
-            reqStat:1,
-            twoHanded:false
-        },
-        {
-            name:'Scimitar',
-            type:'martial',
-            damage:'1d6',
-            reqStat:1,
-            twoHanded:false,
-            light:true
-        },
-        {
-            name:'Shortsword',
-            type:'martial',
-            damage:'1d6',
-            reqStat:1,
-            twoHanded:false,
-            light:true
-        },
-        {
-            name:'Warhammer',
-            type:'martial',
-            damage:'1d8',
-            reqStat:0,
-            properties:'Versatile(1d10)',
-            twoHanded:false
-        },
-        {
-            name:'Whip',
-            type:'martial',
-            damage:'1d4',
-            reqStat:1,
-            properties:'reach'
-        },
-        {
-            name:'Martial Arts',
-            damage:'1d4',
-            reqStat:1
-        }
-    ]
+    $scope.meleeWeapons = [{
+        name: 'Dagger',
+        type: 'simple',
+        damage: '1d4',
+        reqStat: 1,
+        twoHanded: false,
+        light: true
+    }, {
+        name: 'Handaxe',
+        type: 'simple',
+        damage: '1d6',
+        reqStat: 0,
+        twoHanded: false,
+        light: true
+    }, {
+        name: 'Javelin',
+        type: 'simple',
+        damage: '1d6',
+        reqStat: 0,
+        twoHanded: false
+    }, {
+        name: 'Mace',
+        type: 'simple',
+        damage: '1d6',
+        reqStat: 0,
+        twoHanded: false
+    }, {
+        name: 'Quarterstaff',
+        type: 'simple',
+        damage: '1d6',
+        reqStat: 0,
+        properties: 'Versatile(1d8)',
+        twoHanded: false
+    }, {
+        name: 'Spear',
+        type: 'simple',
+        damage: '1d6',
+        reqStat: 0,
+        properties: 'Versatile(1d8)',
+        twoHanded: false
+    }, {
+        name: 'BattleAxe',
+        type: 'martial',
+        damage: '1d8',
+        reqStat: 0,
+        properties: 'Versatile(1d10)',
+        twoHanded: false
+    }, {
+        name: 'Flail',
+        type: 'martial',
+        damage: '1d8',
+        reqStat: 0,
+        twoHanded: false
+    }, {
+        name: 'Glaive',
+        type: 'martial',
+        damage: '1d10',
+        reqStat: 0,
+        properties: 'reach',
+        twoHanded: true
+    }, {
+        name: 'Greataxe',
+        type: 'martial',
+        damage: '1d12',
+        reqStat: 0,
+        twoHanded: true
+    }, {
+        name: 'Greatsword',
+        type: 'martial',
+        damage: '2d6',
+        reqStat: 0,
+        twoHanded: true
+    }, {
+        name: 'Maul',
+        type: 'martial',
+        damage: '2d6',
+        reqStat: 0,
+        twoHanded: true
+    }, {
+        name: 'Halberd',
+        type: 'martial',
+        damage: '1d10',
+        reqStat: 0,
+        properties: 'reach',
+        twoHanded: true
+    }, {
+        name: 'Longsword',
+        type: 'martial',
+        damage: '1d8',
+        reqStat: 0,
+        properties: 'Versatile(1d10)',
+        twoHanded: false
+    }, {
+        name: 'Rapier',
+        type: 'martial',
+        damage: '1d8',
+        reqStat: 1,
+        twoHanded: false
+    }, {
+        name: 'Scimitar',
+        type: 'martial',
+        damage: '1d6',
+        reqStat: 1,
+        twoHanded: false,
+        light: true
+    }, {
+        name: 'Shortsword',
+        type: 'martial',
+        damage: '1d6',
+        reqStat: 1,
+        twoHanded: false,
+        light: true
+    }, {
+        name: 'Warhammer',
+        type: 'martial',
+        damage: '1d8',
+        reqStat: 0,
+        properties: 'Versatile(1d10)',
+        twoHanded: false
+    }, {
+        name: 'Whip',
+        type: 'martial',
+        damage: '1d4',
+        reqStat: 1,
+        properties: 'reach'
+    }, {
+        name: 'Martial Arts',
+        damage: '1d4',
+        reqStat: 1
+    }]
 
-    $scope.meleeWeapons.getOptions = function(options){
+    $scope.meleeWeapons.getOptions = function(options) {
         var choices = [];
-        this.forEach(function(weapon){
-            for(var prop in weapon){
-                if(options.indexOf(weapon[prop]) >= 0)
+        this.forEach(function(weapon) {
+            for (var prop in weapon) {
+                if (options.indexOf(weapon[prop]) >= 0){
                     choices.push(weapon);
+                    if(weapon.twoHanded === true && $scope.race.size === 'Small'){
+                        choices.splice(-1,1)
+                    }
+                }
             }
         })
         return choices
     }
 
-    $scope.chooseMelee = function(weapon1){
+    $scope.chooseMelee = function(weapon1) {
         $scope.weapon1 = weapon1;
     }
 
-    
 
-    $scope.rangedWeapons=[
-        {
-            name:'Dagger',
-            type:'simple',
-            damage:'1d4',
-            reqStat: 1,
-            twoHanded:false,
-            light:true
-        },
-    ]
+
+    $scope.rangedWeapons = [{
+        name: 'Dagger',
+        type: 'simple',
+        damage: '1d4',
+        reqStat: 1,
+        twoHanded: false,
+        light: true
+    }, ]
 
 
 
@@ -604,36 +556,36 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.revertStats = function() {
         $scope.total = 27;
         $scope.stats = [{
-        'label': 'str',
-        'value': 8,
-        'modifier': " -1 ",
-        'proficient': false
-    }, {
-        'label': 'dex',
-        'value': 8,
-        'modifier': " -1 ",
-        'proficient': false
-    }, {
-        'label': 'con',
-        'value': 8,
-        'modifier': " -1 ",
-        'proficient': false
-    }, {
-        'label': 'int',
-        'value': 8,
-        'modifier': " -1 ",
-        'proficient': false
-    }, {
-        'label': 'wis',
-        'value': 8,
-        'modifier': " -1 ",
-        'proficient': false
-    }, {
-        'label': 'cha',
-        'value': 8,
-        'modifier': " -1 ",
-        'proficient': false
-    }];
+            'label': 'str',
+            'value': 8,
+            'modifier': " -1 ",
+            'proficient': false
+        }, {
+            'label': 'dex',
+            'value': 8,
+            'modifier': " -1 ",
+            'proficient': false
+        }, {
+            'label': 'con',
+            'value': 8,
+            'modifier': " -1 ",
+            'proficient': false
+        }, {
+            'label': 'int',
+            'value': 8,
+            'modifier': " -1 ",
+            'proficient': false
+        }, {
+            'label': 'wis',
+            'value': 8,
+            'modifier': " -1 ",
+            'proficient': false
+        }, {
+            'label': 'cha',
+            'value': 8,
+            'modifier': " -1 ",
+            'proficient': false
+        }];
     };
 
     $scope.selectedRace = function(selected) {
@@ -652,25 +604,26 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
     };
 
-    $scope.setClass = function(classChoice){
+    $scope.setClass = function(classChoice) {
         console.log(classChoice);
         $scope.selectedClass = classChoice;
         console.log($scope.selectedClass.saveThrows);
 
 
-        for(var i = 0; i < $scope.stats.length; i++){
-            if($scope.selectedClass.saveThrows.indexOf(i) >= 0){
+        for (var i = 0; i < $scope.stats.length; i++) {
+            if ($scope.selectedClass.saveThrows.indexOf(i) >= 0) {
                 $scope.stats[i].proficient = true;
-            }
-            else{
+            } else {
                 $scope.stats[i].proficient = false;
             }
         }
-        if($scope.selectedBackground){$scope.setSkillProficiencies();}
+        if ($scope.selectedBackground) {
+            $scope.setSkillProficiencies();
+        }
         $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices)
     };
 
-    $scope.setBackground = function(backgroundChoice){
+    $scope.setBackground = function(backgroundChoice) {
         console.log(backgroundChoice);
         $scope.selectedBackground = backgroundChoice;
         console.log($scope.selectedBackground);
@@ -709,7 +662,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         $scope.getSkillModifiers();
     };
 
-    
+
 
     $scope.increaseStat = function(stat) {
         if ($scope.benefitsToggle === false) {
@@ -785,39 +738,38 @@ myApp.controller('statController', function statController($scope, $modal) {
 
     //
 
-     $scope.revertHalfElfBonus = function() {
-            if ($scope.race.type != 'Half Elf') {
-                //Uncheck the boxes from H-E bonus
-                angular.forEach($scope.stats, function(stat, box) {
-                    if (stat.box === true) {
-                        stat.box = false;
-                        // console.log(stat.label + " has been unchecked");
-                        stat.value--;
-                    }
-                    $scope.checked = 0;
-                });
-            }
-        };
-
-        //this getSkillModifiers function works for now... but needs to be refactored
-    $scope.getSkillModifiers = function(){
-        for(var i = 0;i < $scope.skills.length;i++){
-                for(var ii = 0;ii < $scope.stats.length;ii++){
-                    if($scope.skills[i].req == $scope.stats[ii].label){
-                         $scope.skills[i].mod = $scope.stats[ii].mod;
-                         console.log($scope.skills[i].mod);
-                    }
+    $scope.revertHalfElfBonus = function() {
+        if ($scope.race.type != 'Half Elf') {
+            //Uncheck the boxes from H-E bonus
+            angular.forEach($scope.stats, function(stat, box) {
+                if (stat.box === true) {
+                    stat.box = false;
+                    // console.log(stat.label + " has been unchecked");
+                    stat.value--;
                 }
+                $scope.checked = 0;
+            });
+        }
+    };
+
+    //this getSkillModifiers function works for now... but needs to be refactored
+    $scope.getSkillModifiers = function() {
+        for (var i = 0; i < $scope.skills.length; i++) {
+            for (var ii = 0; ii < $scope.stats.length; ii++) {
+                if ($scope.skills[i].req == $scope.stats[ii].label) {
+                    $scope.skills[i].mod = $scope.stats[ii].mod;
+                    console.log($scope.skills[i].mod);
+                }
+            }
         }
     };
     //Seriously, refactor this when you get the chance ^
 
-    $scope.setSkillProficiencies = function(){
-        for(var i=0;i < $scope.skills.length;i++){
-            if($scope.selectedBackground.skills.indexOf($scope.skills[i].label) >= 0){
+    $scope.setSkillProficiencies = function() {
+        for (var i = 0; i < $scope.skills.length; i++) {
+            if ($scope.selectedBackground.skills.indexOf($scope.skills[i].label) >= 0) {
                 $scope.skills[i].proficient = true;
-            }
-            else
+            } else
                 $scope.skills[i].proficient = false;
         }
     };
@@ -826,8 +778,8 @@ myApp.controller('statController', function statController($scope, $modal) {
 
 
 
-        //this is the end of the controller, where we simply call getAllModifier once.
-          $scope.getAllModifier();
+    //this is the end of the controller, where we simply call getAllModifier once.
+    $scope.getAllModifier();
 });
 
 
