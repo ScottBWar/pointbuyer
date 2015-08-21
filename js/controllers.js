@@ -149,11 +149,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[1,5],
         skillOptions:["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight Of Hand","Stealth","Survival"],
         maxSkills:5,
-        wpn1:{
-            name:"Rapier",
-            damage: "1d8",
-            reqStat: 1
-        }
+        wpn1Choices:['simple','Rapier','Longsword']
 
     },
     { 
@@ -163,11 +159,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[4,5],
         skillOptions:["History","Insight","Medicine","Persuasion","Religion"],
         maxSkills:4,
-        wpn1:{
-            name:"Mace",
-            damage: "1d6",
-            reqStat: 0
-        }
+        wpn1Choices:['Mace','Warhammer']
 
     },
     { 
@@ -177,11 +169,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[3,4],
         skillOptions:["Arcana","Animal Handling","Insight","Medicine","Nature","Perception","Religion","Survival"],
         maxSkills:4,
-        wpn1:{
-            name:"Scimitar",
-            damage: "1d6",
-            reqStat: 1
-        }
+        wpn1Choices:['simple']
 
     },
     { 
@@ -191,11 +179,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[1,2],
         skillOptions:["Acrobatics","Animal Handling","Athletics","History","Insight","Intimidation","Perception","Survival"],
         maxSkills:4,
-        wpn1:{
-            name:"Long Sword",
-            damage: "1d8",
-            reqStat: 0
-        }
+        wpn1Choices:['martial']
 
     },
     { 
@@ -205,11 +189,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[1,4],
         skillOptions:["Acrobatics","Athletics","History","Insight","Religion","Stealth"],
         maxSkills:4,
-        wpn1:{
-            name:"Martial Arts x2",
-            damage: "1d4",
-            reqStat: 1
-        }
+        wpn1Choices:['Martial Arts']
 
     },
     { 
@@ -219,11 +199,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[0,4],
         skillOptions:["Athletics","Insight","Intimidation","Medicine","Persuasion","Religion"],
         maxSkills:4,
-        wpn1:{
-            name:"Long Sword",
-            damage: "1d8",
-            reqStat: 0
-        }
+        wpn1Choices:['martial']
 
     },
     { 
@@ -233,11 +209,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[1,4],
         skillOptions:["Animal Handling","Athletics","Insight","Investigation","Nature","Perception","Stealth","Survival"],
         maxSkills:5,
-        wpn1:{
-            name:"Short Swords x2",
-            damage: "1d6",
-            reqStat: 1
-        }
+        wpn1Choices:['simple','shortsword','Scimitar']
 
     },
     { 
@@ -247,11 +219,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[1,3],
         skillOptions:["Acrobatics","Athletics","Deception","Insight","Intimidation","Investigation","Perception","Performance","Persuasion","Sleight of Hand","Stealth"],
         maxSkills:6,
-        wpn1:{
-            name:"Short Swords x2",
-            damage: "1d6",
-            reqStat: 1
-        }
+        wpn1Choices:['Rapier','Shortsword','Dagger']
 
     },
     { 
@@ -261,10 +229,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[2,5],
         skillOptions:["Arcana","Deception","Insight","Intimidation","Persuasion","Religion"],
         maxSkills:4,
-        wpn1:{
-            name:"Fire Bolt",
-            damage: "1d10"
-        }
+        wpn1Choices:['simple']
 
     },
     { 
@@ -274,10 +239,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[3,4],
         skillOptions:["Arcana","History","Insight","Investigation","Medicine","Religion"],
         maxSkills:4,
-        wpn1:{
-            name:"Fire Bolt",
-            damage: "1d10"
-        }
+        wpn1Choices:['Quarterstaff','Dagger']
 
     },
     { 
@@ -287,10 +249,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows:[4,5],
         skillOptions:["Arcana","Deception","History","Intimidation","Investigation","Nature","Religion"],
         maxSkills:4,
-        wpn1:{
-            name:"Eldritch Blast",
-            damage: "1d10"
-        }
+        wpn1Choices:['simple']
 
     }
     ];
@@ -602,6 +561,11 @@ myApp.controller('statController', function statController($scope, $modal) {
             damage:'1d4',
             reqStat:1,
             properties:'reach'
+        },
+        {
+            name:'Martial Arts',
+            damage:'1d4',
+            reqStat:1
         }
     ]
 
@@ -613,7 +577,6 @@ myApp.controller('statController', function statController($scope, $modal) {
                     choices.push(weapon);
             }
         })
-        console.log(choices)
         return choices
     }
 
