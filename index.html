@@ -64,7 +64,8 @@
 			
 			<div class="weaponDiv">
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
-				<h3>{{weapon1.name}} | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h3>
+				<h3>Melee Weapon: {{weapon1.name}} | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h3>
+				<h3>Offhand: {{weapon2.name}} | {{weapon2.damage}}</h3>
 			</div>
 		</div>
 		<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
@@ -143,10 +144,21 @@
 
            <div class="tab-pane" id="tab3">
         <div class="weaponSelectionArea">
-        	You can pick weapons here
+        	You can pick weapons here<br>
         	<span>Melee Weapon:</span><select class=""  ng-model="weapon1" ng-change="chooseMelee(weapon1)" data-ng-options="weapon as weapon.name for weapon in meleeChoices">
-								</select>
+					</select><br>
+
+					<span>Offhand:</span><select class=""  ng-model="weapon2" ng-change="chooseOffHand(weapon2)" data-ng-options="weapon as weapon.name for weapon in offHandChoices">
+					</select>
+
+
+
+
         	</div>
+
+
+
+
         </div>
 
 

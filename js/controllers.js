@@ -155,7 +155,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             "Perception", "Survival"
         ],
         maxSkills: 4,
-        wpn1Choices: ['martial']
+        wpn1Choices: ['martial', 'Handaxe', 'Light Hammer']
     }, {
         id: 2,
         type: "Bard",
@@ -190,7 +190,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [1, 2],
         skillOptions: ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"],
         maxSkills: 4,
-        wpn1Choices: ['martial']
+        wpn1Choices: ['martial', 'Handaxe', 'Light Hammer']
 
     }, {
         id: 6,
@@ -208,7 +208,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [0, 4],
         skillOptions: ["Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"],
         maxSkills: 4,
-        wpn1Choices: ['martial']
+        wpn1Choices: ['martial', 'Handaxe', 'Light Hammer']
 
     }, {
         id: 8,
@@ -217,7 +217,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [1, 4],
         skillOptions: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
         maxSkills: 5,
-        wpn1Choices: ['simple', 'shortsword', 'Scimitar']
+        wpn1Choices: ['simple', 'martial']
 
     }, {
         id: 9,
@@ -403,6 +403,12 @@ myApp.controller('statController', function statController($scope, $modal) {
         twoHanded: false,
         light: true
     }, {
+        name: 'Light Hammer',
+        type: 'simple',
+        damage: '1d4',
+        reqStat: 0,
+        light: true
+    }, {
         name: 'Javelin',
         type: 'simple',
         damage: '1d6',
@@ -428,6 +434,12 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 0,
         properties: 'Versatile(1d8)',
         twoHanded: false
+    }, {
+        name: 'Sickle',
+        type: 'simple',
+        damage: '1d4',
+        reqStat: 1,
+        light: true
     }, {
         name: 'BattleAxe',
         type: 'martial',
@@ -517,16 +529,20 @@ myApp.controller('statController', function statController($scope, $modal) {
         name: 'Martial Arts',
         damage: '1d4',
         reqStat: 1
+    }, {
+        name: 'Shield',
+        damage:'AC+2',
+        armorClass: 2
     }]
 
     $scope.meleeWeapons.getOptions = function(options) {
         var choices = [];
         this.forEach(function(weapon) {
             for (var prop in weapon) {
-                if (options.indexOf(weapon[prop]) >= 0){
+                if (options.indexOf(weapon[prop]) >= 0) {
                     choices.push(weapon);
-                    if(weapon.twoHanded === true && $scope.race.size === 'Small'){
-                        choices.splice(-1,1)
+                    if (weapon.twoHanded === true && $scope.race.size === 'Small') {
+                        choices.splice(-1, 1)
                     }
                 }
             }
@@ -536,6 +552,21 @@ myApp.controller('statController', function statController($scope, $modal) {
 
     $scope.chooseMelee = function(weapon1) {
         $scope.weapon1 = weapon1;
+        if($scope.weapon1){$scope.findOffHands();}
+    }
+
+    $scope.findOffHands = function() {
+        $scope.offHandChoices = []
+        for (var i = 0; i < $scope.meleeWeapons.length; i++) {
+            if ($scope.weapon1.light === true && $scope.meleeWeapons[i].light === true && $scope.meleeWeapons[i].type === 'simple') {
+                $scope.offHandChoices.push($scope.meleeWeapons[i])
+            }
+        }
+        if ($scope.selectedClass.type === 'Barbarian' || 'Fighter' || 'Cleric' || 'Paladin' || 'Ranger' || 'Druid') {
+            if ($scope.weapon1.twoHanded != true) {
+                $scope.offHandChoices.push($scope.meleeWeapons[$scope.meleeWeapons.length - 1])
+            }
+        }
     }
 
 
@@ -602,14 +633,12 @@ myApp.controller('statController', function statController($scope, $modal) {
             console.log("now it's " + $scope.race.type);
             document.getElementById("benefitsToggle").style.display = "block";
         }
+        if($scope.selectedClass){$scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices)}
     };
 
     $scope.setClass = function(classChoice) {
         console.log(classChoice);
         $scope.selectedClass = classChoice;
-        console.log($scope.selectedClass.saveThrows);
-
-
         for (var i = 0; i < $scope.stats.length; i++) {
             if ($scope.selectedClass.saveThrows.indexOf(i) >= 0) {
                 $scope.stats[i].proficient = true;
@@ -620,7 +649,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         if ($scope.selectedBackground) {
             $scope.setSkillProficiencies();
         }
-        $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices)
+            $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices)
     };
 
     $scope.setBackground = function(backgroundChoice) {
