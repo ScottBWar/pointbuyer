@@ -63,7 +63,8 @@
 			<div class="clear"></div>
 			
 			<div class="weaponDiv">
-				<h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3>
+				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
+				<h3>{{weapon1.name}} | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h3>
 			</div>
 		</div>
 		<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
@@ -83,6 +84,7 @@
         <ul class="nav nav-tabs">
         <li class="active" id="statsTab"><a href="#openModal" data-toggle="tab">Stats</a></li>
         <li id="skillsTab"><a href="#openModal" data-toggle="tab">Skills</a></li>
+        <li id="weaponsTab"><a href="#openModal" data-toggle="tab">Weapons</a>
         </ul>
         <div class="tab-content">
         <div class="tab-pane active" id="tab1">
@@ -121,12 +123,9 @@
 								<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
 							</div>
 						</div>
-
-
-
-
-
         </div>
+
+
         <div class="tab-pane" id="tab2">
         <div class="skillSelectionArea">
         	You can pick {{selectedClass.maxSkills - skillsPicked()}} more skills
@@ -141,6 +140,21 @@
 								</div>
         	</div>
         </div>
+
+           <div class="tab-pane" id="tab3">
+        <div class="weaponSelectionArea">
+        	You can pick weapons here
+        	<span>Melee Weapon:</span><select class=""  ng-model="weapon1" ng-change="chooseMelee(weapon1)" data-ng-options="weapon as weapon.name for weapon in meleeChoices">
+								</select>
+        	</div>
+        </div>
+
+
+
+
+
+
+
         </div>
         </div>
 

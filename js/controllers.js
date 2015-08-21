@@ -140,12 +140,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         skillOptions:["Animal Handling","Athletics","Intimidation","Nature",
         "Perception","Survival"],
         maxSkills:4,
-        wpn1:{
-            name:"Great Axe",
-            damage: "1d12",
-            reqStat: 0
-        }
-
+        wpn1Choices: ['martial']
     },
     { 
         id: 2, 
@@ -463,6 +458,183 @@ myApp.controller('statController', function statController($scope, $modal) {
     ];
 
 
+    $scope.meleeWeapons = [
+        {
+            name:'Dagger',
+            type:'simple',
+            damage:'1d4',
+            reqStat: 1,
+            twoHanded:false,
+            light:true
+        },
+        {
+            name:'Handaxe',
+            type:'simple',
+            damage:'1d6',
+            reqStat:0,
+            twoHanded:false,
+            light:true
+        },
+        {
+            name:'Javelin',
+            type:'simple',
+            damage:'1d6',
+            reqStat:0,
+            twoHanded:false
+        },
+        {
+            name:'Mace',
+            type:'simple',
+            damage:'1d6',
+            reqStat:0,
+            twoHanded:false
+        },
+        {
+            name:'Quarterstaff',
+            type:'simple',
+            damage:'1d6',
+            reqStat:0,
+            properties:'Versatile(1d8)',
+            twoHanded:false
+        },
+        {
+            name:'Spear',
+            type:'simple',
+            damage:'1d6',
+            reqStat:0,
+            properties:'Versatile(1d8)',
+            twoHanded:false
+        },
+        {
+            name:'BattleAxe',
+            type:'martial',
+            damage:'1d8',
+            reqStat:0,
+            properties:'Versatile(1d10)',
+            twoHanded:false
+        },
+        {
+            name:'Flail',
+            type:'martial',
+            damage:'1d8',
+            reqStat:0,
+            twoHanded:false
+        },
+        {
+            name:'Glaive',
+            type:'martial',
+            damage:'1d10',
+            reqStat:0,
+            properties:'reach',
+            twoHanded:true
+        },
+        {
+            name:'Greataxe',
+            type:'martial',
+            damage:'1d12',
+            reqStat:0,
+            twoHanded:true
+        },
+        {
+            name:'Greatsword',
+            type:'martial',
+            damage:'2d6',
+            reqStat:0,
+            twoHanded:true
+        },
+        {
+            name:'Maul',
+            type:'martial',
+            damage:'2d6',
+            reqStat:0,
+            twoHanded:true
+        },
+        {
+            name:'Halberd',
+            type:'martial',
+            damage:'1d10',
+            reqStat:0,
+            properties:'reach',
+            twoHanded:true
+        },
+        {
+            name:'Longsword',
+            type:'martial',
+            damage:'1d8',
+            reqStat:0,
+            properties:'Versatile(1d10)',
+            twoHanded:false
+        },
+        {
+            name:'Rapier',
+            type:'martial',
+            damage:'1d8',
+            reqStat:1,
+            twoHanded:false
+        },
+        {
+            name:'Scimitar',
+            type:'martial',
+            damage:'1d6',
+            reqStat:1,
+            twoHanded:false,
+            light:true
+        },
+        {
+            name:'Shortsword',
+            type:'martial',
+            damage:'1d6',
+            reqStat:1,
+            twoHanded:false,
+            light:true
+        },
+        {
+            name:'Warhammer',
+            type:'martial',
+            damage:'1d8',
+            reqStat:0,
+            properties:'Versatile(1d10)',
+            twoHanded:false
+        },
+        {
+            name:'Whip',
+            type:'martial',
+            damage:'1d4',
+            reqStat:1,
+            properties:'reach'
+        }
+    ]
+
+    $scope.meleeWeapons.getOptions = function(options){
+        var choices = [];
+        this.forEach(function(weapon){
+            for(var prop in weapon){
+                if(options.indexOf(weapon[prop]) >= 0)
+                    choices.push(weapon);
+            }
+        })
+        console.log(choices)
+        return choices
+    }
+
+    $scope.chooseMelee = function(weapon1){
+        $scope.weapon1 = weapon1;
+    }
+
+    
+
+    $scope.rangedWeapons=[
+        {
+            name:'Dagger',
+            type:'simple',
+            damage:'1d4',
+            reqStat: 1,
+            twoHanded:false,
+            light:true
+        },
+    ]
+
+
 
     $scope.benefitsToggle = false;
 
@@ -532,6 +704,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
         }
         if($scope.selectedBackground){$scope.setSkillProficiencies();}
+        $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices)
     };
 
     $scope.setBackground = function(backgroundChoice){
