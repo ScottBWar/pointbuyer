@@ -87,7 +87,7 @@
         <ul class="nav nav-tabs">
         <li class="active" id="statsTab"><a href="#openModal" data-toggle="tab">Stats</a></li>
         <li id="skillsTab"><a href="#openModal" data-toggle="tab">Skills</a></li>
-        <li id="weaponsTab"><a href="#openModal" data-toggle="tab">Weapons</a>
+        <li id="weaponsTab"><a href="#openModal" data-toggle="tab">Equipment</a>
         </ul>
         <div class="tab-content">
         <div class="tab-pane active" id="tab1">
@@ -154,6 +154,9 @@
 					</select><br>
 
 					<span>Ranged:</span><select class=""  ng-model="weapon3" ng-change="chooseRanged(weapon3)" data-ng-options="weapon as weapon.name for weapon in rangedChoices">
+					</select><br>
+
+					<span>Armor:</span><select class=""  ng-model="armor1" ng-change="chooseArmor(armor1)" data-ng-options="armor as armor.name for armor in armorChoices">
 					</select>
 
 
