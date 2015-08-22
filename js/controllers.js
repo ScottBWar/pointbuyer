@@ -72,14 +72,16 @@ myApp.controller('statController', function statController($scope, $modal) {
         perks: "++ con, + wis",
         increase_array: [2, 2, 4],
         speed: 25,
-        size: 'Medium'
+        size: 'Medium',
+        hillDwarfHealthBonus: 1
     }, {
         id: 5,
         type: "Mountain Dwarf",
         perks: "++ con, ++ str",
         increase_array: [0, 0, 2, 2],
         speed: 25,
-        size: 'Medium'
+        size: 'Medium',
+        armorTraining: ['Leather', 'Hide', 'Scale Mail']
     }, {
         id: 6,
         type: "High Elf",
@@ -87,6 +89,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [1, 1, 3],
         speed: 30,
         size: 'Medium',
+        weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow']
 
     }, {
         id: 7,
@@ -94,14 +97,16 @@ myApp.controller('statController', function statController($scope, $modal) {
         perks: "++ dex, + wis",
         increase_array: [1, 1, 4],
         speed: 35,
-        size: 'Medium'
+        size: 'Medium',
+        weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow']
     }, {
         id: 8,
         type: "Dark Elf",
         perks: "++ dex, + cha",
         increase_array: [1, 1, 5],
         speed: 30,
-        size: 'Medium'
+        size: 'Medium',
+        weaponTraining: ['Rapier', 'Shortsword', 'Hand Crossbow']
     }, {
         id: 9,
         type: "Forest Gnome",
@@ -156,9 +161,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         ],
         maxSkills: 4,
         wpn1Choices: ['martial', 'Handaxe', 'Light Hammer'],
-        rangedChoices: ['simple','Handaxe','Light Hammer'],
+        rangedChoices: ['simple', 'Handaxe', 'Light Hammer'],
         hasShield: true,
-        armorChoices:['Natural(Barbarian)','Leather']
+        armorChoices: ['Natural(Barbarian)', 'Leather']
     }, {
         id: 2,
         type: "Bard",
@@ -169,7 +174,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['simple', 'Rapier', 'Longsword'],
         rangedChoices: ['simple', 'Hand Crossbow'],
         spellAbility: 'cha',
-        armorChoices:['None','Leather']
+        armorChoices: ['None', 'Leather']
 
     }, {
         id: 3,
@@ -182,7 +187,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['simple', 'thrown'],
         hasShield: true,
         spellAbility: 'wis',
-        armorChoices:['Leather','Scale Mail','Chain Mail']
+        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail']
 
     }, {
         id: 4,
@@ -195,7 +200,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['Dart', 'Javelin', 'Sling'],
         hasShield: true,
         spellAbility: 'wis',
-        armorChoices:['None','Leather']
+        armorChoices: ['None', 'Leather']
     }, {
         id: 5,
         type: "Fighter",
@@ -206,7 +211,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['martial', 'Handaxe', 'Light Hammer'],
         rangedChoices: ['simple', 'martial'],
         hasShield: true,
-        armorChoices:['Leather','Scale Mail','Chain Mail']
+        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail']
 
     }, {
         id: 6,
@@ -218,7 +223,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['Martial Arts'],
         rangedChoices: ['Dart', 'Shortbow'],
         spellAbility: 'wis',
-        armorChoices:['Natual(Monk)']
+        armorChoices: ['Natural(Monk)']
 
     }, {
         id: 7,
@@ -231,7 +236,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         hasShield: true,
         spellAbility: 'wis',
         rangedChoices: ['Javelin', 'Light Hammer'],
-        armorChoices:['Leather','Scale Mail','Chain Mail']
+        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail']
 
     }, {
         id: 8,
@@ -244,7 +249,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         hasShield: true,
         spellAbility: 'wis',
         rangedChoices: ['Shortbow', 'martial'],
-        armorChoices:['Leather','Hide','Scale Mail']
+        armorChoices: ['Leather', 'Hide', 'Scale Mail']
 
     }, {
         id: 9,
@@ -255,7 +260,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         maxSkills: 6,
         wpn1Choices: ['Rapier', 'Shortsword', 'Dagger'],
         rangedChoices: ['Shortbow', 'Hand Crossbow', 'Dart'],
-        armorChoices:['Leather']
+        armorChoices: ['Leather']
 
     }, {
         id: 10,
@@ -267,7 +272,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['simple'],
         spellAbility: 'cha',
         rangedChoices: ['Dart', 'Sling'],
-        armorChoices:['None']
+        armorChoices: ['None']
 
     }, {
         id: 11,
@@ -279,7 +284,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['Quarterstaff', 'Dagger'],
         spellAbility: 'int',
         rangedChoices: ['Dart', 'Sling', 'Light Crossbow'],
-        armorChoices:['None']
+        armorChoices: ['None']
 
     }, {
         id: 12,
@@ -291,7 +296,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['simple'],
         spellAbility: 'cha',
         rangedChoices: ['simple'],
-        armorChoices:['Leather']
+        armorChoices: ['Leather']
     }];
 
 
@@ -648,50 +653,55 @@ myApp.controller('statController', function statController($scope, $modal) {
         type: 'martial'
     }];
 
-    $scope.armorList = [
-        {
-            name:'None',
-            baseAC:10,
-            maxDexBonus:5
-        },
-        {
-            name:'Leather',
-            baseAC:11,
-            maxDexBonus:5
-        },
-        {
-            name:'Scale Mail',
-            baseAC:14,
-            maxDexBonus:2,
-            stealthDisadvantage:true
-        },
-        {
-            name:'Chain Mail',
-            baseAC:16,
-            maxDexBonus:0,
-            stealthDisadvantage:true
-        },
-        {
-            name:'Natural(Barbarian)',
-            baseAC:10,
-            bonusStats:['dex','con']
-        },
-        {
-            name:'Natural(Monk)',
-            baseAC:10,
-            bonusStats:['dex','wis']
-        },
-    ]
+    $scope.armorList = [{
+        name: 'None',
+        baseAC: 10,
+        maxDexBonus: 5
+    }, {
+        name: 'Leather',
+        baseAC: 11,
+        maxDexBonus: 5
+    }, {
+        name: 'Hide',
+        baseAC: 12,
+        maxDexBonus: 2,
+    }, {
+        name: 'Scale Mail',
+        baseAC: 14,
+        maxDexBonus: 2,
+        stealthDisadvantage: true
+    }, {
+        name: 'Chain Mail',
+        baseAC: 16,
+        maxDexBonus: 0,
+        stealthDisadvantage: true
+    }, {
+        name: 'Natural(Barbarian)',
+        baseAC: 10,
+        maxDexBonus: 5,
+        extraStat: 'con'
+    }, {
+        name: 'Natural(Monk)',
+        baseAC: 10,
+        maxDexBonus: 5,
+        extraStat: 'wis'
+    }, ]
 
-    $scope.armorList.getOptions = function(options){
-      var choices = [];
+    $scope.armorList.getOptions = function(options) {
+        var choices = [];
         this.forEach(function(armor) {
             for (var prop in armor) {
                 if (options.indexOf(armor[prop]) >= 0) {
                     choices.push(armor);
                 }
+                if ($scope.race.armorTraining) {
+                    if ($scope.race.armorTraining.indexOf(armor[prop]) >= 0 && options.indexOf(armor[prop]) < 0) {
+                        choices.push(armor);
+                    }
+                }
             }
         })
+        console.log(choices)
         return choices
     }
 
@@ -705,6 +715,11 @@ myApp.controller('statController', function statController($scope, $modal) {
                         choices.splice(-1, 1)
                     }
                 }
+                if ($scope.race.weaponTraining) {
+                    if ($scope.race.weaponTraining.indexOf(weapon[prop]) >= 0 && options.indexOf(weapon[prop]) < 0) {
+                        choices.push(weapon);
+                    }
+                }
             }
         })
         return choices
@@ -712,15 +727,20 @@ myApp.controller('statController', function statController($scope, $modal) {
 
     $scope.rangedWeapons.getOptions = function(options) {
         var choices = [];
-        this.forEach(function(weapon){
-            for(var prop in weapon){
-                if(options.indexOf(weapon[prop]) >= 0){
+        this.forEach(function(weapon) {
+            for (var prop in weapon) {
+                if (options.indexOf(weapon[prop]) >= 0) {
                     choices.push(weapon);
                     if (weapon.name === 'Longbow' && $scope.race.size === 'Small') {
                         choices.splice(-1, 1)
                     }
                     if (weapon.name === 'Heavy Crossbow' && $scope.race.size === 'Small') {
                         choices.splice(-1, 1)
+                    } 
+                }
+                if ($scope.race.weaponTraining) {
+                    if ($scope.race.weaponTraining.indexOf(weapon[prop]) >= 0 && options.indexOf(weapon[prop]) < 0) {
+                        choices.push(weapon);
                     }
                 }
             }
@@ -735,11 +755,11 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
     }
 
-    $scope.chooseRanged = function(weapon3){
+    $scope.chooseRanged = function(weapon3) {
         $scope.weapon3 = weapon3;
     }
 
-    $scope.chooseArmor = function(armor1){
+    $scope.chooseArmor = function(armor1) {
         $scope.armor = armor1;
     }
 
@@ -839,7 +859,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices)
         $scope.rangedChoices = $scope.rangedWeapons.getOptions($scope.selectedClass.rangedChoices)
         $scope.armorChoices = $scope.armorList.getOptions($scope.selectedClass.armorChoices);
-        if($scope.weapon1){$scope.findOffHands();}
+        if ($scope.weapon1) {
+            $scope.findOffHands();
+        }
     };
 
     $scope.setBackground = function(backgroundChoice) {
@@ -891,8 +913,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             } else if (stat.value >= 13 && $scope.total >= 2) {
                 stat.value++;
                 $scope.total -= 2;
-            } else {
-            }
+            } else {}
             $scope.getModifier(stat);
         }
         $scope.getSkillModifiers();
