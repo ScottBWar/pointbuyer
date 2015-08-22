@@ -67,6 +67,7 @@
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
 				<h3>Melee Weapon: {{weapon1.name}} | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h3>
 				<h3>Offhand: {{weapon2.name}} | {{weapon2.damage}}</h3>
+				<h3>Ranged: {{weapon3.name}} | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h3>
 			</div>
 		</div>
 		<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
@@ -150,6 +151,9 @@
 					</select><br>
 
 					<span>Offhand:</span><select class=""  ng-model="weapon2" ng-change="chooseOffHand(weapon2)" data-ng-options="weapon as weapon.name for weapon in offHandChoices">
+					</select><br>
+
+					<span>Ranged:</span><select class=""  ng-model="weapon3" ng-change="chooseRanged(weapon3)" data-ng-options="weapon as weapon.name for weapon in rangedChoices">
 					</select>
 
 
