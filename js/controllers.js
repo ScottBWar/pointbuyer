@@ -164,7 +164,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [1, 5],
         skillOptions: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight Of Hand", "Stealth", "Survival"],
         maxSkills: 5,
-        wpn1Choices: ['simple', 'Rapier', 'Longsword']
+        wpn1Choices: ['simple', 'Rapier', 'Longsword'],
+        spellAbility:'cha'
 
     }, {
         id: 3,
@@ -174,7 +175,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         skillOptions: ["History", "Insight", "Medicine", "Persuasion", "Religion"],
         maxSkills: 4,
         wpn1Choices: ['Mace', 'Warhammer'],
-        hasShield:true
+        hasShield:true,
+        spellAbility:'wis'
 
     }, {
         id: 4,
@@ -184,7 +186,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         skillOptions: ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
         maxSkills: 4,
         wpn1Choices: ['simple'],
-        hasShield:true
+        hasShield:true,
+        spellAbility:'wis'
 
     }, {
         id: 5,
@@ -203,7 +206,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [1, 4],
         skillOptions: ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"],
         maxSkills: 4,
-        wpn1Choices: ['Martial Arts']
+        wpn1Choices: ['Martial Arts'],
+        spellAbility:'wis'
 
     }, {
         id: 7,
@@ -213,7 +217,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         skillOptions: ["Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"],
         maxSkills: 4,
         wpn1Choices: ['martial', 'Handaxe', 'Light Hammer'],
-        hasShield:true
+        hasShield:true,
+        spellAbility:'wis'
 
     }, {
         id: 8,
@@ -223,7 +228,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         skillOptions: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
         maxSkills: 5,
         wpn1Choices: ['simple', 'martial'],
-        hasShield:true
+        hasShield:true,
+        spellAbility:'wis'
 
     }, {
         id: 9,
@@ -241,7 +247,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [2, 5],
         skillOptions: ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"],
         maxSkills: 4,
-        wpn1Choices: ['simple']
+        wpn1Choices: ['simple'],
+        spellAbility:'cha'
 
     }, {
         id: 11,
@@ -250,7 +257,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [3, 4],
         skillOptions: ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"],
         maxSkills: 4,
-        wpn1Choices: ['Quarterstaff', 'Dagger']
+        wpn1Choices: ['Quarterstaff', 'Dagger'],
+        spellAbility:'int'
 
     }, {
         id: 12,
@@ -259,7 +267,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         saveThrows: [4, 5],
         skillOptions: ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"],
         maxSkills: 4,
-        wpn1Choices: ['simple']
+        wpn1Choices: ['simple'],
+        spellAbility:'cha'
 
     }];
 
@@ -729,6 +738,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             $scope.getModifier(stat);
         }
         $scope.getSkillModifiers();
+        $scope.getSpellSaveDC();
     };
 
     $scope.decreaseStat = function(stat) {
@@ -764,6 +774,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             $scope.benefitsToggle = false;
         }
         $scope.getAllModifier();
+        $scope.getSpellSaveDC();
     };
 
     $scope.bonusStat = function(stat, box) {
@@ -822,6 +833,15 @@ myApp.controller('statController', function statController($scope, $modal) {
                 $scope.skills[i].proficient = false;
         }
     };
+
+
+    $scope.getSpellSaveDC = function(){
+       for(var i = 0; i < $scope.stats.length;i++){
+        if($scope.stats[i].label === $scope.selectedClass.spellAbility){
+            $scope.spellSaveDC = 10 + $scope.stats[i].mod
+        }
+       }
+    }
 
 
 

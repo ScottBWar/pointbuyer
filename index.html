@@ -29,6 +29,7 @@
 				<span class="hp"> HP | {{selectedClass.health + stats[2].mod}}</span>
 				<span class="init"> Initiative | {{stats[1].modifier}}</span>
 				<span class="speed"> Speed: {{race.speed}}ft.</span>
+				<span class="spellSave" ng-if="selectedClass.spellAbility"> Spell DC: {{spellSaveDC}}</span>
 			</div>
 			
 			<div class="statsheetlist">
