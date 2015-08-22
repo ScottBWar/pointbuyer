@@ -248,7 +248,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['simple', 'martial'],
         hasShield: true,
         spellAbility: 'wis',
-        rangedChoices: ['Shortbow', 'martial'],
+        rangedChoices: ['Shortbow', 'Light Crossbow', 'martial'],
         armorChoices: ['Leather', 'Hide', 'Scale Mail']
 
     }, {
@@ -705,6 +705,40 @@ myApp.controller('statController', function statController($scope, $modal) {
         return choices
     }
 
+    $scope.determineArmorClass = function(){
+        var ac = $scope.armor.baseAC;
+        switch ($scope.armor.maxDexBonus) {
+            case 5:
+                ac += $scope.stats[1].mod
+                break;
+            case 2:
+                if ($scope.stats[1].mod < 3) {
+                    ac += $scope.stats[1].mod;
+                } else {
+                    ac += 2;
+                }
+                break;
+            case 0:
+                ac = $scope.armor.baseAC;
+                break;
+        }
+        if ($scope.weapon2) {
+            if ($scope.weapon2.name === 'Shield') {
+                ac += 2;
+            }
+        }
+        if($scope.race.type = 'Barbarian' || 'Monk'){
+            console.log("YOU GOT HERE")
+            $scope.stats.forEach(function(stat){
+                if(stat.label === $scope.armor.extraStat){
+                    ac += stat.mod;
+                }
+            })
+        }
+
+        $scope.armorClass = ac;
+    }
+
     $scope.meleeWeapons.getOptions = function(options) {
         var choices = [];
         this.forEach(function(weapon) {
@@ -736,7 +770,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                     }
                     if (weapon.name === 'Heavy Crossbow' && $scope.race.size === 'Small') {
                         choices.splice(-1, 1)
-                    } 
+                    }
                 }
                 if ($scope.race.weaponTraining) {
                     if ($scope.race.weaponTraining.indexOf(weapon[prop]) >= 0 && options.indexOf(weapon[prop]) < 0) {
@@ -755,12 +789,18 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
     }
 
+    $scope.chooseOffHand = function(weapon2) {
+        $scope.weapon2 = weapon2;
+        $scope.determineArmorClass();
+    }
+
     $scope.chooseRanged = function(weapon3) {
         $scope.weapon3 = weapon3;
     }
 
     $scope.chooseArmor = function(armor1) {
         $scope.armor = armor1;
+        $scope.determineArmorClass();
     }
 
 
@@ -778,6 +818,9 @@ myApp.controller('statController', function statController($scope, $modal) {
                 $scope.offHandChoices.push($scope.meleeWeapons[i]);
             }
             if ($scope.weapon1.light === true && $scope.meleeWeapons[i].name === 'Shortsword' && $scope.selectedClass.type === 'Fighter') {
+                $scope.offHandChoices.push($scope.meleeWeapons[i]);
+            }
+            if ($scope.weapon1.name === 'Martial Arts' && $scope.meleeWeapons[i].name === 'Martial Arts') {
                 $scope.offHandChoices.push($scope.meleeWeapons[i]);
             }
         }
@@ -918,6 +961,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
         $scope.getSkillModifiers();
         $scope.getSpellSaveDC();
+        if ($scope.armor) {
+            $scope.determineArmorClass();
+        }
     };
 
     $scope.decreaseStat = function(stat) {
@@ -934,6 +980,9 @@ myApp.controller('statController', function statController($scope, $modal) {
             $scope.getModifier(stat);
         }
         $scope.getSkillModifiers();
+        if ($scope.armor) {
+            $scope.determineArmorClass();
+        }
     };
 
     $scope.applyRacialBenefits = function() {
@@ -954,6 +1003,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
         $scope.getAllModifier();
         $scope.getSpellSaveDC();
+        if ($scope.armor) {
+            $scope.determineArmorClass();
+        }
     };
 
     $scope.bonusStat = function(stat, box) {
