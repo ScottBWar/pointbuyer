@@ -21,7 +21,7 @@ $(document).ready(function() {
 
    $('#skillsTab').click(function(){
    	$('#statsTab').removeClass('active');
-   	$('weaponsTab').removeClass('active');
+   	$('#weaponsTab').removeClass('active');
    	$('#skillsTab').addClass('active');
 
    	$('#tab1').removeClass('active');
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     $('#statsTab').click(function(){
    	$('#skillsTab').removeClass('active');
-   	$('weaponsTab').removeClass('active');
+   	$('#weaponsTab').removeClass('active');
    	$('#statsTab').addClass('active');
 
    	$('#tab2').removeClass('active');
