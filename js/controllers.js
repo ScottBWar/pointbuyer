@@ -727,7 +727,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                 ac += 2;
             }
         }
-        if($scope.race.type = 'Barbarian' || 'Monk'){
+        if($scope.selectedClass.type === 'Barbarian' || 'Monk'){
             console.log("YOU GOT HERE")
             $scope.stats.forEach(function(stat){
                 if(stat.label === $scope.armor.extraStat){
