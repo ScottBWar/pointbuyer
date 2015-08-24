@@ -134,8 +134,8 @@
         <div class="skillSelectionArea">
         	You can pick {{selectedClass.maxSkills - skillsPicked()}} more skills
         	<div id="skillsChecklist">
-        				<ul>
-        					<li  ng-if="selectedBackground && selectedClass && selectedClass.skillOptions.indexOf(skill.label) >= 0 || selectedBackground.skills.indexOf(skill.label) >= 0" ng-repeat="skill in skills" class="checkableSkill">
+        				<ul class="listStyle">
+        					<li ng-class="{'filledIn':skill.proficient}" ng-if="selectedBackground && selectedClass && selectedClass.skillOptions.indexOf(skill.label) >= 0 || selectedBackground.skills.indexOf(skill.label) >= 0" ng-repeat="skill in skills" class="checkableSkill">
 									<label>{{skill.label}}
 										<input type="checkbox" ng-model="skill.proficient" ng-disabled="skillsPicked() >= selectedClass.maxSkills && !skill.proficient"name="proficiencyCheck">
 									</label>
