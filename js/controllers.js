@@ -197,7 +197,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         skillOptions: ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
         maxSkills: 4,
         wpn1Choices: ['simple'],
-        rangedChoices: ['Dart', 'Javelin', 'Sling'],
+        rangedChoices: ['Dart', 'Javelin', 'Sling','Shortbow'],
         hasShield: true,
         spellAbility: 'wis',
         armorChoices: ['None', 'Leather']
@@ -791,7 +791,7 @@ myApp.controller('statController', function statController($scope, $modal) {
 
     $scope.chooseOffHand = function(weapon2) {
         $scope.weapon2 = weapon2;
-        $scope.determineArmorClass();
+        if($scope.armor){$scope.determineArmorClass();}
     }
 
     $scope.chooseRanged = function(weapon3) {
@@ -876,7 +876,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             $scope.getAllModifier();
         } else {
             $scope.race = selected;
-            document.getElementById("benefitsToggle").style.display = "block";
+            // document.getElementById("benefitsToggle").style.display = "block";
         }
         if ($scope.selectedClass) {
             $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices);
