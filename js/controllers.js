@@ -197,7 +197,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         skillOptions: ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
         maxSkills: 4,
         wpn1Choices: ['simple'],
-        rangedChoices: ['Dart', 'Javelin', 'Sling','Shortbow'],
+        rangedChoices: ['Dart', 'Javelin', 'Sling', 'Shortbow'],
         hasShield: true,
         spellAbility: 'wis',
         armorChoices: ['None', 'Leather']
@@ -685,7 +685,62 @@ myApp.controller('statController', function statController($scope, $modal) {
         baseAC: 10,
         maxDexBonus: 5,
         extraStat: 'wis'
-    }, ]
+    }, ];
+
+
+    $scope.levelOneFeatures = [{
+        name: 'Rage',
+        belongsTo: 'Barbarian',
+        pageNum: 'pg.48',
+        choices: false
+    }, {
+        name: 'Unarmored Defense(Con)',
+        belongsTo: 'Barbarian',
+        pgNum: 'pg.48',
+        choices: false
+    }, {
+        name: 'Bardic Inspiration',
+        belongsTo: 'Bard',
+        pgNum: 'pg.53',
+        choices: false
+    }, {
+        name: 'Divine Domain',
+        belongsTo: 'Cleric',
+        pgNum: 'pg.58',
+        choices: [{
+            title: 'Knowledge',
+            details:'Domain Spells: Command, Identify'
+        }, {
+            title: 'Life',
+            details:'Domain Spells: Bless, Cure Wounds'
+        }, {
+            title: 'Light',
+            details:'Domain Spells: Burning Hands, Faerie Fire'
+        }, {
+            title: 'Nature',
+            details:'Domain Spells: Animal Friendship, Speak with Animals'
+        }, {
+            title: 'Tempest',
+            details:'Domain Spells: Fog Cloud, Thunderwave'
+        }, {
+            title: 'Trickery',
+            details:'Domain Spells: Charm Person, Disguise Self'
+        }, {
+            title: 'War',
+            details:'Domain Spells: Divine Favor, Shield of Faith'
+        }]
+    }, {
+        name:'Druidic',
+        belongsTo:'Druid',
+        pgNum:'pg.66'
+
+    },{
+        
+    }
+
+
+
+    ];
 
     $scope.armorList.getOptions = function(options) {
         var choices = [];
@@ -705,7 +760,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         return choices
     }
 
-    $scope.determineArmorClass = function(){
+    $scope.determineArmorClass = function() {
         var ac = $scope.armor.baseAC;
         switch ($scope.armor.maxDexBonus) {
             case 5:
@@ -727,10 +782,10 @@ myApp.controller('statController', function statController($scope, $modal) {
                 ac += 2;
             }
         }
-        if($scope.selectedClass.type === 'Barbarian' || 'Monk'){
+        if ($scope.selectedClass.type === 'Barbarian' || 'Monk') {
             console.log("YOU GOT HERE")
-            $scope.stats.forEach(function(stat){
-                if(stat.label === $scope.armor.extraStat){
+            $scope.stats.forEach(function(stat) {
+                if (stat.label === $scope.armor.extraStat) {
                     ac += stat.mod;
                 }
             })
@@ -791,7 +846,9 @@ myApp.controller('statController', function statController($scope, $modal) {
 
     $scope.chooseOffHand = function(weapon2) {
         $scope.weapon2 = weapon2;
-        if($scope.armor){$scope.determineArmorClass();}
+        if ($scope.armor) {
+            $scope.determineArmorClass();
+        }
     }
 
     $scope.chooseRanged = function(weapon3) {

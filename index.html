@@ -19,7 +19,7 @@
 		<div class="displayArea" >
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
-					<span class="nametag"><h1 class="namebox">{{user.name}}</h1></span>
+					<span class="nametag"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
 					<div class="levelName"></div>
 				</div>
 				<div class="classRace">Level 1 {{race.type}}   {{selectedClass.type}}</div>
@@ -65,9 +65,9 @@
 			
 			<div class="weaponDiv">
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
-				<h3>Melee Weapon: {{weapon1.name}} | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h3>
-				<h3>Offhand: {{weapon2.name}} | {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts'">{{stats[1].modifier}}</span></h3>
-				<h3>Ranged: {{weapon3.name}} | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h3>
+				<h3>Melee Weapon: {{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h3>
+				<h3>Offhand: {{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts'">{{stats[1].modifier}}</span></h3>
+				<h3>Ranged: {{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h3>
 				<h3>Armor: {{armor.name}} || {{armorClass}} AC
 			</div>
 		</div>
@@ -146,7 +146,7 @@
         </div>
 
            <div class="tab-pane" id="tab3">
-        <div class="weaponSelectionArea">
+        <div class="weaponSelectionArea selectionArea">
         	You can pick weapons here<br>
         	<span>Melee Weapon:</span><select class=""  ng-model="weapon1" ng-change="chooseMelee(weapon1)" data-ng-options="weapon as weapon.name for weapon in meleeChoices">
 					</select><br>
