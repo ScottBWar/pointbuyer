@@ -70,12 +70,15 @@
 				<br>
 			</span>
 			<span ng-if="chosenFeat">
-				{{chosenFeat.title}}
+				{{chosenFeat.title}}:  
 				{{chosenFeat.details}}
 			</span>
-
-
-
+			<br>
+			<span ng-if="selectedClass.cantrips">You can pick {{selectedClass.cantrips}} cantrips from the {{selectedClass.type}} cantrip list.</span>
+			<br>
+			<span ng-if="selectedClass.spellsKnown">Your spellbook contains {{selectedClass.spellsKnown}} level 1 spells from the {{selectedClass.type}} spell list</span>
+			<br>
+			<span ng-if="selectedClass.spellsDaily">You can cast {{selectedClass.spellsDaily}} level 1 spells per day</span>
 			</div>
 
 

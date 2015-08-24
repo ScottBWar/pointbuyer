@@ -857,7 +857,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         }, {
             name: 'Otherworldly Patron',
             belongsTo: 'Warlock',
-            pgNum: '107',
+            pgNum: 'pg.107',
             choices: [{
                 title: 'The Archfey',
                 details: 'Details on pg.108',
@@ -922,8 +922,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                 }
             })
         }
-        if($scope.chosenFeat.title === 'Draconic Resilience'){
-            console.log("DRAGONNONON")
+        if ($scope.chosenFeat.title === 'Draconic Resilience') {
             ac = 13 + $scope.stats[1].mod;
         }
         $scope.armorClass = ac;
@@ -1269,14 +1268,14 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.getSpellSaveDC = function() {
         for (var i = 0; i < $scope.stats.length; i++) {
             if ($scope.stats[i].label === $scope.selectedClass.spellAbility) {
-                $scope.spellSaveDC = 10 + $scope.stats[i].mod
+                $scope.spellSaveDC = 10 + $scope.stats[i].mod;
             }
         }
-    }
+    };
 
     $scope.featureChoice = function(choice) {
         $scope.chosenFeat = choice;
-    }
+    };
 
 
 
