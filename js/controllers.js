@@ -1076,7 +1076,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.setClass = function(classChoice) {
-       
+
         $scope.selectedClass = classChoice;
         for (var i = 0; i < $scope.stats.length; i++) {
             if ($scope.selectedClass.saveThrows.indexOf(i) >= 0) {
@@ -1088,21 +1088,24 @@ myApp.controller('statController', function statController($scope, $modal) {
         if ($scope.selectedBackground) {
             $scope.setSkillProficiencies();
         }
-        if($scope.race){
-        $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices);
-        $scope.rangedChoices = $scope.rangedWeapons.getOptions($scope.selectedClass.rangedChoices);
-        $scope.armorChoices = $scope.armorList.getOptions($scope.selectedClass.armorChoices);
+        if ($scope.race) {
+            $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices);
+            $scope.rangedChoices = $scope.rangedWeapons.getOptions($scope.selectedClass.rangedChoices);
+            $scope.armorChoices = $scope.armorList.getOptions($scope.selectedClass.armorChoices);
         }
         if ($scope.weapon1) {
             $scope.findOffHands();
         }
+        if ($scope.weapon2.name === "Martial Arts") {
+            $scope.weapon2 = "";
+        }
         $scope.features = [];
-        $scope.levelOneFeatures.forEach(function(feature){
-            if(feature.belongsTo === $scope.selectedClass.type){
+        $scope.levelOneFeatures.forEach(function(feature) {
+            if (feature.belongsTo === $scope.selectedClass.type) {
                 $scope.features.push(feature);
             }
         });
-        $scope.chosenFeat="";
+        $scope.chosenFeat = "";
     };
 
     $scope.setBackground = function(backgroundChoice) {
@@ -1271,7 +1274,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
     }
 
-    $scope.featureChoice = function(choice){
+    $scope.featureChoice = function(choice) {
         $scope.chosenFeat = choice;
     }
 
