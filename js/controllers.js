@@ -164,9 +164,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['simple', 'Handaxe', 'Light Hammer'],
         hasShield: true,
         armorChoices: ['Natural(Barbarian)', 'Leather'],
-        cantrips:false,
-        spellsKnown:false,
-        spellsDaily:false
+        cantrips: false,
+        spellsKnown: false,
+        spellsDaily: false
     }, {
         id: 2,
         type: "Bard",
@@ -178,9 +178,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['simple', 'Hand Crossbow'],
         spellAbility: 'cha',
         armorChoices: ['None', 'Leather'],
-        cantrips:2,
-        spellsKnown:4,
-        spellsDaily:2
+        cantrips: 2,
+        spellsKnown: 4,
+        spellsDaily: 2
     }, {
         id: 3,
         type: "Cleric",
@@ -193,8 +193,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         hasShield: true,
         spellAbility: 'wis',
         armorChoices: ['Leather', 'Scale Mail', 'Chain Mail'],
-        cantrips:3,
-        spellsDaily:2
+        cantrips: 3,
+        spellsDaily: 2
     }, {
         id: 4,
         type: "Druid",
@@ -207,8 +207,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         hasShield: true,
         spellAbility: 'wis',
         armorChoices: ['None', 'Leather'],
-        cantrips:2,
-        spellsDaily:2
+        cantrips: 2,
+        spellsDaily: 2
     }, {
         id: 5,
         type: "Fighter",
@@ -220,9 +220,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['simple', 'martial'],
         hasShield: true,
         armorChoices: ['Leather', 'Scale Mail', 'Chain Mail'],
-        cantrips:false,
-        spellsKnown:false,
-        spellsDaily:false
+        cantrips: false,
+        spellsKnown: false,
+        spellsDaily: false
     }, {
         id: 6,
         type: "Monk",
@@ -234,9 +234,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['Dart', 'Shortbow'],
         spellAbility: 'wis',
         armorChoices: ['Natural(Monk)'],
-        cantrips:false,
-        spellsKnown:false,
-        spellsDaily:false
+        cantrips: false,
+        spellsKnown: false,
+        spellsDaily: false
     }, {
         id: 7,
         type: "Paladin",
@@ -249,8 +249,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         spellAbility: 'wis',
         rangedChoices: ['Javelin', 'Light Hammer'],
         armorChoices: ['Leather', 'Scale Mail', 'Chain Mail'],
-        cantrips:false,
-        spellsDaily:false,
+        cantrips: false,
+        spellsDaily: false,
     }, {
         id: 8,
         type: "Ranger",
@@ -263,8 +263,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         spellAbility: 'wis',
         rangedChoices: ['Shortbow', 'Light Crossbow', 'martial'],
         armorChoices: ['Leather', 'Hide', 'Scale Mail'],
-        cantrips:false,
-        spellsDaily:false
+        cantrips: false,
+        spellsDaily: false
     }, {
         id: 9,
         type: "Rogue",
@@ -275,8 +275,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['Rapier', 'Shortsword', 'Dagger'],
         rangedChoices: ['Shortbow', 'Hand Crossbow', 'Dart'],
         armorChoices: ['Leather'],
-        cantrips:false,
-        spellsDaily:false
+        cantrips: false,
+        spellsDaily: false
     }, {
         id: 10,
         type: "Sorceror",
@@ -288,9 +288,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         spellAbility: 'cha',
         rangedChoices: ['Dart', 'Sling'],
         armorChoices: ['None'],
-        cantrips:4,
-        spellsKnown:2,
-        spellsDaily:2
+        cantrips: 4,
+        spellsKnown: 2,
+        spellsDaily: 2
     }, {
         id: 11,
         type: "Wizard",
@@ -302,9 +302,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         spellAbility: 'int',
         rangedChoices: ['Dart', 'Sling', 'Light Crossbow'],
         armorChoices: ['None'],
-        cantrips:3,
-        spellsKnown:6,
-        spellsDaily:2
+        cantrips: 3,
+        spellsKnown: 6,
+        spellsDaily: 2
     }, {
         id: 12,
         type: "Warlock",
@@ -316,9 +316,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         spellAbility: 'cha',
         rangedChoices: ['simple'],
         armorChoices: ['Leather'],
-        cantrips:2,
-        spellsKnown:2,
-        spellsDaily:1
+        cantrips: 2,
+        spellsKnown: 2,
+        spellsDaily: 1
     }];
 
 
@@ -713,7 +713,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.levelOneFeatures = [{
             name: 'Rage',
             belongsTo: 'Barbarian',
-            pageNum: 'pg.48',
+            pgNum: 'pg.48',
             choices: false
         }, {
             name: 'Unarmored Defense(Con)',
@@ -858,23 +858,19 @@ myApp.controller('statController', function statController($scope, $modal) {
             name: 'Otherworldly Patron',
             belongsTo: 'Warlock',
             pgNum: '107',
-            choices: [
-            {
-                title:'The Archfey',
-                details:'Details on pg.108',
-                active:false
-            },
-            {
-                title:'The Fiend',
-                details:'Details on pg.109',
-                active:false
-            },
-            {
-                title:'The Great Old One',
-                details:'Details on pg.110',
-                active:'false'
-            }
-            ]
+            choices: [{
+                title: 'The Archfey',
+                details: 'Details on pg.108',
+                active: false
+            }, {
+                title: 'The Fiend',
+                details: 'Details on pg.109',
+                active: false
+            }, {
+                title: 'The Great Old One',
+                details: 'Details on pg.110',
+                active: 'false'
+            }]
         }
     ];
 
@@ -885,7 +881,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                 if (options.indexOf(armor[prop]) >= 0) {
                     choices.push(armor);
                 }
-                if ($scope.race.armorTraining) {
+                if ($scope.race && $scope.race.armorTraining) {
                     if ($scope.race.armorTraining.indexOf(armor[prop]) >= 0 && options.indexOf(armor[prop]) < 0) {
                         choices.push(armor);
                     }
@@ -940,7 +936,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                         choices.splice(-1, 1)
                     }
                 }
-                if ($scope.race.weaponTraining) {
+                if ($scope.race && $scope.race.weaponTraining) {
                     if ($scope.race.weaponTraining.indexOf(weapon[prop]) >= 0 && options.indexOf(weapon[prop]) < 0) {
                         choices.push(weapon);
                     }
@@ -963,7 +959,7 @@ myApp.controller('statController', function statController($scope, $modal) {
                         choices.splice(-1, 1)
                     }
                 }
-                if ($scope.race.weaponTraining) {
+                if ($scope.race && $scope.race.weaponTraining) {
                     if ($scope.race.weaponTraining.indexOf(weapon[prop]) >= 0 && options.indexOf(weapon[prop]) < 0) {
                         choices.push(weapon);
                     }
@@ -1080,7 +1076,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
     $scope.setClass = function(classChoice) {
-        console.log(classChoice);
+       
         $scope.selectedClass = classChoice;
         for (var i = 0; i < $scope.stats.length; i++) {
             if ($scope.selectedClass.saveThrows.indexOf(i) >= 0) {
@@ -1092,12 +1088,21 @@ myApp.controller('statController', function statController($scope, $modal) {
         if ($scope.selectedBackground) {
             $scope.setSkillProficiencies();
         }
-        $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices)
-        $scope.rangedChoices = $scope.rangedWeapons.getOptions($scope.selectedClass.rangedChoices)
+        if($scope.race){
+        $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices);
+        $scope.rangedChoices = $scope.rangedWeapons.getOptions($scope.selectedClass.rangedChoices);
         $scope.armorChoices = $scope.armorList.getOptions($scope.selectedClass.armorChoices);
+        }
         if ($scope.weapon1) {
             $scope.findOffHands();
         }
+        $scope.features = [];
+        $scope.levelOneFeatures.forEach(function(feature){
+            if(feature.belongsTo === $scope.selectedClass.type){
+                $scope.features.push(feature);
+            }
+        });
+        $scope.chosenFeat="";
     };
 
     $scope.setBackground = function(backgroundChoice) {
@@ -1264,6 +1269,10 @@ myApp.controller('statController', function statController($scope, $modal) {
                 $scope.spellSaveDC = 10 + $scope.stats[i].mod
             }
         }
+    }
+
+    $scope.featureChoice = function(choice){
+        $scope.chosenFeat = choice;
     }
 
 
