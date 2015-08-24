@@ -843,7 +843,7 @@ myApp.controller('statController', function statController($scope, $modal) {
             pgNum: 'pg.101',
             choices: [{
                 title: 'Draconic Resilience',
-                details: 'AC = 13 + Dex without armor',
+                details: 'AC boosted when unarmored',
                 active: false
             }, {
                 title: 'Wild Magic',
@@ -922,7 +922,10 @@ myApp.controller('statController', function statController($scope, $modal) {
                 }
             })
         }
-
+        if($scope.chosenFeat.title === 'Draconic Resilience'){
+            console.log("DRAGONNONON")
+            ac = 13 + $scope.stats[1].mod;
+        }
         $scope.armorClass = ac;
     }
 
@@ -1095,9 +1098,6 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
         if ($scope.weapon1) {
             $scope.findOffHands();
-        }
-        if ($scope.weapon2.name === "Martial Arts") {
-            $scope.weapon2 = "";
         }
         $scope.features = [];
         $scope.levelOneFeatures.forEach(function(feature) {

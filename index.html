@@ -61,6 +61,28 @@
 					</li>
 				</ul>
 			</div>
+
+			<div class="featuresDiv">
+			Class Features At Level One:
+			<br>
+			<span ng-repeat="feature in features">
+				{{feature.name}} | {{feature.pgNum}}
+				<br>
+			</span>
+			<span ng-if="chosenFeat">
+				{{chosenFeat.title}}
+				{{chosenFeat.details}}
+			</span>
+
+
+
+			</div>
+
+
+
+
+
+
 			<div class="clear"></div>
 			
 			<div class="weaponDiv">
@@ -71,6 +93,8 @@
 				<h3>Armor: {{armor.name}} || {{armorClass}} AC
 			</div>
 		</div>
+
+
 		<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
 		<a href="#openModal">Open Modal</a>
 		<div id="openModal" data-drag="true" jqyoui-draggable class="modalDialog">

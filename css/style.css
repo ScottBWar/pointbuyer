@@ -133,3 +133,7 @@
 .filledIn{
 	list-style-type: disc;
 }
+
+.featuresDiv{
+	border:1px solid purple;
+}
