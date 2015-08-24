@@ -163,7 +163,10 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['martial', 'Handaxe', 'Light Hammer'],
         rangedChoices: ['simple', 'Handaxe', 'Light Hammer'],
         hasShield: true,
-        armorChoices: ['Natural(Barbarian)', 'Leather']
+        armorChoices: ['Natural(Barbarian)', 'Leather'],
+        cantrips:false,
+        spellsKnown:false,
+        spellsDaily:false
     }, {
         id: 2,
         type: "Bard",
@@ -174,8 +177,10 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['simple', 'Rapier', 'Longsword'],
         rangedChoices: ['simple', 'Hand Crossbow'],
         spellAbility: 'cha',
-        armorChoices: ['None', 'Leather']
-
+        armorChoices: ['None', 'Leather'],
+        cantrips:2,
+        spellsKnown:4,
+        spellsDaily:2
     }, {
         id: 3,
         type: "Cleric",
@@ -187,8 +192,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['simple', 'thrown'],
         hasShield: true,
         spellAbility: 'wis',
-        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail']
-
+        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail'],
+        cantrips:3,
+        spellsDaily:2
     }, {
         id: 4,
         type: "Druid",
@@ -200,7 +206,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['Dart', 'Javelin', 'Sling', 'Shortbow'],
         hasShield: true,
         spellAbility: 'wis',
-        armorChoices: ['None', 'Leather']
+        armorChoices: ['None', 'Leather'],
+        cantrips:2,
+        spellsDaily:2
     }, {
         id: 5,
         type: "Fighter",
@@ -211,8 +219,10 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['martial', 'Handaxe', 'Light Hammer'],
         rangedChoices: ['simple', 'martial'],
         hasShield: true,
-        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail']
-
+        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail'],
+        cantrips:false,
+        spellsKnown:false,
+        spellsDaily:false
     }, {
         id: 6,
         type: "Monk",
@@ -223,8 +233,10 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['Martial Arts'],
         rangedChoices: ['Dart', 'Shortbow'],
         spellAbility: 'wis',
-        armorChoices: ['Natural(Monk)']
-
+        armorChoices: ['Natural(Monk)'],
+        cantrips:false,
+        spellsKnown:false,
+        spellsDaily:false
     }, {
         id: 7,
         type: "Paladin",
@@ -236,8 +248,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         hasShield: true,
         spellAbility: 'wis',
         rangedChoices: ['Javelin', 'Light Hammer'],
-        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail']
-
+        armorChoices: ['Leather', 'Scale Mail', 'Chain Mail'],
+        cantrips:false,
+        spellsDaily:false,
     }, {
         id: 8,
         type: "Ranger",
@@ -249,8 +262,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         hasShield: true,
         spellAbility: 'wis',
         rangedChoices: ['Shortbow', 'Light Crossbow', 'martial'],
-        armorChoices: ['Leather', 'Hide', 'Scale Mail']
-
+        armorChoices: ['Leather', 'Hide', 'Scale Mail'],
+        cantrips:false,
+        spellsDaily:false
     }, {
         id: 9,
         type: "Rogue",
@@ -260,8 +274,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         maxSkills: 6,
         wpn1Choices: ['Rapier', 'Shortsword', 'Dagger'],
         rangedChoices: ['Shortbow', 'Hand Crossbow', 'Dart'],
-        armorChoices: ['Leather']
-
+        armorChoices: ['Leather'],
+        cantrips:false,
+        spellsDaily:false
     }, {
         id: 10,
         type: "Sorceror",
@@ -272,8 +287,10 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['simple'],
         spellAbility: 'cha',
         rangedChoices: ['Dart', 'Sling'],
-        armorChoices: ['None']
-
+        armorChoices: ['None'],
+        cantrips:4,
+        spellsKnown:2,
+        spellsDaily:2
     }, {
         id: 11,
         type: "Wizard",
@@ -284,8 +301,10 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['Quarterstaff', 'Dagger'],
         spellAbility: 'int',
         rangedChoices: ['Dart', 'Sling', 'Light Crossbow'],
-        armorChoices: ['None']
-
+        armorChoices: ['None'],
+        cantrips:3,
+        spellsKnown:6,
+        spellsDaily:2
     }, {
         id: 12,
         type: "Warlock",
@@ -296,7 +315,10 @@ myApp.controller('statController', function statController($scope, $modal) {
         wpn1Choices: ['simple'],
         spellAbility: 'cha',
         rangedChoices: ['simple'],
-        armorChoices: ['Leather']
+        armorChoices: ['Leather'],
+        cantrips:2,
+        spellsKnown:2,
+        spellsDaily:1
     }];
 
 
@@ -689,57 +711,171 @@ myApp.controller('statController', function statController($scope, $modal) {
 
 
     $scope.levelOneFeatures = [{
-        name: 'Rage',
-        belongsTo: 'Barbarian',
-        pageNum: 'pg.48',
-        choices: false
-    }, {
-        name: 'Unarmored Defense(Con)',
-        belongsTo: 'Barbarian',
-        pgNum: 'pg.48',
-        choices: false
-    }, {
-        name: 'Bardic Inspiration',
-        belongsTo: 'Bard',
-        pgNum: 'pg.53',
-        choices: false
-    }, {
-        name: 'Divine Domain',
-        belongsTo: 'Cleric',
-        pgNum: 'pg.58',
-        choices: [{
-            title: 'Knowledge',
-            details:'Domain Spells: Command, Identify'
+            name: 'Rage',
+            belongsTo: 'Barbarian',
+            pageNum: 'pg.48',
+            choices: false
         }, {
-            title: 'Life',
-            details:'Domain Spells: Bless, Cure Wounds'
+            name: 'Unarmored Defense(Con)',
+            belongsTo: 'Barbarian',
+            pgNum: 'pg.48',
+            choices: false
         }, {
-            title: 'Light',
-            details:'Domain Spells: Burning Hands, Faerie Fire'
+            name: 'Bardic Inspiration',
+            belongsTo: 'Bard',
+            pgNum: 'pg.53',
+            choices: false
         }, {
-            title: 'Nature',
-            details:'Domain Spells: Animal Friendship, Speak with Animals'
+            name: 'Divine Domain',
+            belongsTo: 'Cleric',
+            pgNum: 'pg.58',
+            choices: [{
+                title: 'Knowledge',
+                details: 'Domain Spells: Command, Identify'
+            }, {
+                title: 'Life',
+                details: 'Domain Spells: Bless, Cure Wounds'
+            }, {
+                title: 'Light',
+                details: 'Domain Spells: Burning Hands, Faerie Fire'
+            }, {
+                title: 'Nature',
+                details: 'Domain Spells: Animal Friendship, Speak with Animals'
+            }, {
+                title: 'Tempest',
+                details: 'Domain Spells: Fog Cloud, Thunderwave'
+            }, {
+                title: 'Trickery',
+                details: 'Domain Spells: Charm Person, Disguise Self'
+            }, {
+                title: 'War',
+                details: 'Domain Spells: Divine Favor, Shield of Faith'
+            }]
         }, {
-            title: 'Tempest',
-            details:'Domain Spells: Fog Cloud, Thunderwave'
-        }, {
-            title: 'Trickery',
-            details:'Domain Spells: Charm Person, Disguise Self'
-        }, {
-            title: 'War',
-            details:'Domain Spells: Divine Favor, Shield of Faith'
-        }]
-    }, {
-        name:'Druidic',
-        belongsTo:'Druid',
-        pgNum:'pg.66'
+            name: 'Druidic',
+            belongsTo: 'Druid',
+            pgNum: 'pg.66',
+            choices: false
 
-    },{
-        
-    }
+        }, {
+            name: 'Fighting Style',
+            belongsTo: 'Fighter',
+            pgNum: 'pg.72',
+            choices: [{
+                title: 'Archery',
+                details: '+2 to hit w/Ranged weapon',
+                active: false
+            }, {
+                title: 'Defense',
+                details: '+1 to AC while wearing armor',
+                active: false
+            }, {
+                title: 'Dueling',
+                details: '+2 damage w/1h weapon',
+                active: false
+            }, {
+                title: 'Great Weapon Fighting',
+                details: 'Re-Roll 1&2 w/2h weapon',
+                active: false
+            }, {
+                title: 'Protection',
+                details: 'Protect Allies within 5ft w/shield',
+                active: false
+            }, {
+                title: 'Two Weapon Fighting',
+                details: 'Add damamge modifier to offhand weapon',
+                active: false
+            }]
+        },
 
-
-
+        {
+            name: 'Second Wind',
+            belongsTo: 'Fighter',
+            pgNum: 'pg.72',
+            choices: false
+        }, {
+            name: 'Unarmored Defense(wis)',
+            belongsTo: 'Monk',
+            pgNum: 'pg.78',
+            choices: false
+        }, {
+            name: 'Martial Arts',
+            belongsTo: 'Monk',
+            pgNum: 'pg.78',
+            choices: false
+        }, {
+            name: 'Divine Sense',
+            belongsTo: 'Paladin',
+            pgNum: 'pg.84',
+            choices: false
+        }, {
+            name: 'Lay on Hands',
+            belongsTo: 'Paladin',
+            pgNum: 'pg.84',
+            choices: false
+        }, {
+            name: 'Favored Enemy',
+            belongsTo: 'Ranger',
+            pgNum: 'pg.91',
+            choices: false
+        }, {
+            name: 'Natural Explorer',
+            belongsTo: 'Ranger',
+            pgNum: 'pg.91',
+            choices: false
+        }, {
+            name: 'Expertise',
+            belongsTo: 'Rogue',
+            pgNum: 'pg.96'
+        }, {
+            name: 'Sneak Attack (1d6)',
+            belongsTo: 'Rogue',
+            pgNum: 'pg.96',
+            choices: false
+        }, {
+            name: 'Thieves Cant',
+            belongsTo: 'Rogue',
+            pgNum: 'pg.96',
+            choices: false
+        }, {
+            name: 'Sorcerous Origin',
+            belongsTo: 'Sorceror',
+            pgNum: 'pg.101',
+            choices: [{
+                title: 'Draconic Resilience',
+                details: 'AC = 13 + Dex without armor',
+                active: false
+            }, {
+                title: 'Wild Magic',
+                details: 'Wild Magic Surge on a roll of 1; Tides of Chaos 1x/day',
+                active: false
+            }]
+        }, {
+            name: 'Arcane Revoery',
+            belongsTo: 'Wizard',
+            pgNum: 'pg.115'
+        }, {
+            name: 'Otherworldly Patron',
+            belongsTo: 'Warlock',
+            pgNum: '107',
+            choices: [
+            {
+                title:'The Archfey',
+                details:'Details on pg.108',
+                active:false
+            },
+            {
+                title:'The Fiend',
+                details:'Details on pg.109',
+                active:false
+            },
+            {
+                title:'The Great Old One',
+                details:'Details on pg.110',
+                active:'false'
+            }
+            ]
+        }
     ];
 
     $scope.armorList.getOptions = function(options) {
