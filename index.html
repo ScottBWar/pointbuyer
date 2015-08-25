@@ -17,7 +17,8 @@
 	</head>
 	<body ng-controller = "statController">
 		<div class="displayArea" >
-		<img ng-src="images/{{selectedClass.type}}.png" style="width:140px;position:absolute;top:50px;left:150px">
+		<img ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:200px;position:absolute;top:25px;left:25px">
+		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:200px;height:200px;position:absolute;top:25px;left:25px">
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
 					<span class="nametag"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
@@ -26,12 +27,13 @@
 				<div class="classRace">Level 1 {{race.type}}   {{selectedClass.type}}</div>
 			</div>
 			
-			<div id="hpDetails">
+			<div id="hpDetails" style="margin-bottom:75px;">
 				<span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span>
 				<span class="init"> Initiative | {{stats[1].modifier}}</span>
 				<span class="speed"> Speed: {{race.speed}}ft.</span>
 				<span class="spellSave" ng-if="selectedClass.spellAbility"> Spell DC: {{spellSaveDC}}</span>
 			</div>
+
 			
 			<div class="statsheetlist">
 				<ul class="statboxul" ng-repeat="stat in stats">
