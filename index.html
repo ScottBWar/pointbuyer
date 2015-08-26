@@ -77,6 +77,15 @@
 				</ul>
 			</div>
 
+			<div class="languagelistbox">
+				<h6>Languages</h6>
+				<ul class = "languages listStyle">
+					<li ng-repeat="language in knownLanguages track by $index">
+					<span>{{language.name}}</span>
+					</li>
+				</ul>
+			</div>
+
 			<div class="clear"></div>
 
 			<div class="featuresDiv">

@@ -4,7 +4,7 @@ var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop']);
 
 myApp.controller('statController', function statController($scope, $modal) {
 
-  
+
 
     $scope.user = {
         name: ""
@@ -53,7 +53,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [0, 1, 2, 3, 4, 5],
         speed: 30,
         size: 'Medium',
-        languageArray:[0,Math.floor(Math.random() * 16) + 1 ]
+        languageArray: [0]
     }, {
         id: 2,
         type: "Lightfoot Halfling",
@@ -61,7 +61,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [1, 1, 5],
         speed: 25,
         size: 'Small',
-        languageArray:[0,6]
+        languageArray: [0, 6]
     }, {
         id: 3,
         type: "Stout Halfling",
@@ -69,7 +69,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [1, 1, 2],
         speed: 25,
         size: 'Small',
-        languageArray:[0,6]
+        languageArray: [0, 6]
     }, {
         id: 4,
         type: "Hill Dwarf",
@@ -78,7 +78,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         speed: 25,
         size: 'Medium',
         hillDwarfHealthBonus: 1,
-        languageArray:[0,1]
+        languageArray: [0, 1]
     }, {
         id: 5,
         type: "Mountain Dwarf",
@@ -87,7 +87,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         speed: 25,
         size: 'Medium',
         armorTraining: ['Leather', 'Hide', 'Scale Mail'],
-        languageArray:[0,1]
+        languageArray: [0, 1]
     }, {
         id: 6,
         type: "High Elf",
@@ -96,7 +96,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         speed: 30,
         size: 'Medium',
         weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow'],
-        languageArray:[0,2]
+        languageArray: [0, 2]
 
     }, {
         id: 7,
@@ -106,7 +106,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         speed: 35,
         size: 'Medium',
         weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow'],
-        languageArray:[0,2]
+        languageArray: [0, 2]
 
     }, {
         id: 8,
@@ -116,7 +116,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         speed: 30,
         size: 'Medium',
         weaponTraining: ['Rapier', 'Shortsword', 'Hand Crossbow'],
-        languageArray:[0,2]
+        languageArray: [0, 2]
 
     }, {
         id: 9,
@@ -125,7 +125,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [3, 3, 1],
         speed: 25,
         size: 'Small',
-        languageArray:[0,4]
+        languageArray: [0, 4]
     }, {
         id: 10,
         type: "Rock Gnome",
@@ -133,7 +133,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [3, 3, 2],
         speed: 25,
         size: 'Small',
-        languageArray:[0,4]
+        languageArray: [0, 4]
 
     }, {
         id: 11,
@@ -142,7 +142,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [0, 0, 2],
         speed: 30,
         size: 'Medium',
-        languageArray:[0,7]
+        languageArray: [0, 7]
     }, {
         id: 12,
         type: "Dragonborn",
@@ -150,7 +150,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [0, 0, 5],
         speed: 30,
         size: 'Medium',
-        languageArray:[0,10]
+        languageArray: [0, 10]
     }, {
         id: 13,
         type: "Tiefling",
@@ -158,7 +158,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [5, 5, 3],
         speed: 30,
         size: 'Medium',
-        languageArray:[0,12]
+        languageArray: [0, 12]
     }, {
         id: 14,
         type: "Half Elf",
@@ -166,7 +166,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [5, 5],
         speed: 30,
         size: 'Medium',
-        languageArray:[0,2,Math.floor(Math.random() * 13) + 3]
+        languageArray: [0, 2, Math.floor(Math.random() * 13) + 3]
     }];
 
     $scope.classList = [{
@@ -430,7 +430,8 @@ myApp.controller('statController', function statController($scope, $modal) {
 
     $scope.backgrounds = [{
         label: 'Acolyte',
-        skills: ['Insight', 'Religion']
+        skills: ['Insight', 'Religion'],
+        languages: 2
     }, {
         label: 'Charlatan',
         skills: ['Deception', 'Sleight of Hand']
@@ -445,19 +446,24 @@ myApp.controller('statController', function statController($scope, $modal) {
         skills: ['Animal Handling', 'Survival']
     }, {
         label: 'Guild Artisan',
-        skills: ['Insight', 'Persuasion']
+        skills: ['Insight', 'Persuasion'],
+        languages: 1
     }, {
         label: 'Hermit',
-        skills: ['Medicine', 'Religion']
+        skills: ['Medicine', 'Religion'],
+        languages: 1
     }, {
         label: 'Noble',
-        skills: ['History', 'Persuasion']
+        skills: ['History', 'Persuasion'],
+        languages: 1
     }, {
         label: 'Outlander',
-        skills: ['Athletics', 'Survival']
+        skills: ['Athletics', 'Survival'],
+        languages: 1
     }, {
         label: 'Sage',
-        skills: ['Arcana', 'History']
+        skills: ['Arcana', 'History'],
+        languages: 2
     }, {
         label: 'Sailor',
         skills: ['Athletics', 'Perception']
@@ -469,72 +475,55 @@ myApp.controller('statController', function statController($scope, $modal) {
         skills: ['Sleight of Hand', 'Stealth']
     }];
 
-    $scope.languages= [
-    {
-        id:1,
-        name:'Common'
-    },
-    {
-        id:2,
-        name:'Dwarvish'
-    },
-    {
-        id:3,
-        name:'Elvish'
-    },
-    {
-        id:4,
-        name:'Giant'
-    },
-    {
-        id:5,
-        name:'Gnomish'
-    },
-    {
-        id:6,
-        name:'Goblin'
-    },
-    {
-        id:7,
-        name:'Halfling'
-    },
-    {
-        id:8,
-        name:'Orc'
-    },
-    {
-        id:9,
-        name:'Abyssal'
-    },
-    {
-        id:10,
-        name:'Celestial'
-    },
-    {
-        id:11,
-        name:'Draconic'
-    },
-    {
-        id:12,
-        name:'Deep Speech'
-    },
-    {
-        id:13,
-        name:'Infernal'
-    },
-    {
-        id:14,
-        name:'Primordial'
-    },
-    {
-        id:15,
-        name:'Sylvan'
-    },
-    {
-        id:16,
-        name:'Undercommon'
-    }
-    ];
+    $scope.languages = [{
+        id: 1,
+        name: 'Common'
+    }, {
+        id: 2,
+        name: 'Dwarvish'
+    }, {
+        id: 3,
+        name: 'Elvish'
+    }, {
+        id: 4,
+        name: 'Giant'
+    }, {
+        id: 5,
+        name: 'Gnomish'
+    }, {
+        id: 6,
+        name: 'Goblin'
+    }, {
+        id: 7,
+        name: 'Halfling'
+    }, {
+        id: 8,
+        name: 'Orc'
+    }, {
+        id: 9,
+        name: 'Abyssal'
+    }, {
+        id: 10,
+        name: 'Celestial'
+    }, {
+        id: 11,
+        name: 'Draconic'
+    }, {
+        id: 12,
+        name: 'Deep Speech'
+    }, {
+        id: 13,
+        name: 'Infernal'
+    }, {
+        id: 14,
+        name: 'Primordial'
+    }, {
+        id: 15,
+        name: 'Sylvan'
+    }, {
+        id: 16,
+        name: 'Undercommon'
+    }];
 
 
     $scope.meleeWeapons = [{
@@ -959,6 +948,23 @@ myApp.controller('statController', function statController($scope, $modal) {
         }
     ];
 
+
+    $scope.determineLaguages = function() {
+        $scope.knownLanguages = [];
+        for (var i = 0; i < $scope.race.languageArray.length; i++) {
+            $scope.knownLanguages.push($scope.languages[$scope.race.languageArray[i]]);
+        }
+        if ($scope.race.type === 'Human' || $scope.race.type === 'Half Elf') {
+            $scope.knownLanguages.push($scope.languages[Math.floor(Math.random() * 15) + 1]);
+        }
+        if ($scope.selectedBackground) {
+            var times = $scope.selectedBackground.languages;
+            for (var l = 0; l < times; l++) {
+                $scope.knownLanguages.push($scope.languages[Math.floor(Math.random() * 15) + 1]);
+            }
+        }
+    };
+
     $scope.armorList.getOptions = function(options) {
         var choices = [];
         this.forEach(function(armor) {
@@ -1158,7 +1164,9 @@ myApp.controller('statController', function statController($scope, $modal) {
             $scope.meleeChoices = $scope.meleeWeapons.getOptions($scope.selectedClass.wpn1Choices);
             $scope.armorChoices = $scope.armorList.getOptions($scope.selectedClass.armorChoices);
             $scope.rangedChoices = $scope.rangedWeapons.getOptions($scope.selectedClass.rangedChoices);
-            console.log("your ranged choices are " + $scope.rangedChoices)
+        }
+        if ($scope.selectedBackground) {
+            $scope.determineLaguages();
         }
     };
 
@@ -1195,6 +1203,8 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.setBackground = function(backgroundChoice) {
         $scope.selectedBackground = backgroundChoice;
         $scope.setSkillProficiencies();
+        $scope.determineLaguages();
+        console.log($scope.knownLanguages);
     };
 
     //This selectedRace function works but make it less UGLY AND GROSS.
