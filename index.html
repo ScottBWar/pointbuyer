@@ -39,6 +39,8 @@
 			</div>
 			<div id="heart" ng-if="selectedClass"><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
 
+			<div id="shield" ng-if="armorClass"><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div></div>
+
 			<div class="clear"></div>
 			<div class="statsheetlist">
 				<ul class="statboxul" ng-repeat="stat in stats">
