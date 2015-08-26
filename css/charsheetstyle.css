@@ -53,12 +53,24 @@
 }
 
 .statboxul {
-	width:140px;
+	width:100px;
 	border: 1px solid black;
 	list-style-type: none;
 	text-align: center;
 	padding-left:0;
 	margin:0 auto;
+}
+
+.greyed{
+	background-color: rgba(54, 25, 25, .1);
+}
+
+.Smodifier{
+	border-top:1px solid gray;
+}
+
+.Slabel{
+	font-size:10px;
 }
 
 .savingthrowlistbox{
