@@ -4,6 +4,7 @@ var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop']);
 
 myApp.controller('statController', function statController($scope, $modal) {
 
+  
 
     $scope.user = {
         name: ""
@@ -1164,6 +1165,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         if ($scope.armor) {
             $scope.determineArmorClass();
         }
+        // $scope.getSpellMod();
     };
 
     $scope.decreaseStat = function(stat) {
@@ -1183,6 +1185,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         if ($scope.armor) {
             $scope.determineArmorClass();
         }
+        // $scope.getSpellMod();
     };
 
     $scope.applyRacialBenefits = function() {
@@ -1278,9 +1281,14 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
 
+    // $scope.getSpellMod = function(){
+    //     if($scope.selectedClass){
+    //     console.log($scope.stats[$scope.selectedClass.spellAbility])
+    //     // console.log($scope.spellMod);
+    // }
+    // };
 
-
-
+    // $scope.getSpellMod();
     //this is the end of the controller, where we simply call getAllModifier once.
     $scope.getAllModifier();
 });

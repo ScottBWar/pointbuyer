@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp" class="ng-cloak">
 	<head>
 		<meta charset="UTF-8">
-		<title>Let's learn Angular, by playing RPGS!</title>
+		<title>Let's learn Angular, by playing Pathfinder!</title>
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 		<script src="lib/angular/angular.js"></script>
@@ -17,29 +17,53 @@
 	</head>
 	<body ng-controller = "statController">
 		<div class="displayArea" >
-		<img ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:200px;position:absolute;top:25px;left:25px">
-		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:200px;height:200px;position:absolute;top:25px;left:25px">
+		<img ng-if="selectedClass.type != 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:50px;height:100px;position:relative;top:25px;left:25px;float:left;">
+		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:100px;position:relative;top:25px;left:25px;float:left;">
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
 					<span class="nametag"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
 					<div class="levelName"></div>
 				</div>
-				<div class="classRace">Level 1 {{race.type}}   {{selectedClass.type}}</div>
-			</div>
-			
-			<div id="hpDetails" style="margin-bottom:75px;">
-				<span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span>
+				<div class="classRace">Level 1 {{race.type}}   {{selectedClass.type}}
+
+					<div id="hpDetails" style="margin-bottom:75px;">
+				<!-- <span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span> -->
 				<span class="init"> Initiative | {{stats[1].modifier}}</span>
 				<span class="speed"> Speed: {{race.speed}}ft.</span>
 				<span class="spellSave" ng-if="selectedClass.spellAbility"> Spell DC: {{spellSaveDC}}</span>
+				<span class="spellAttackMod" ng-if="selectedClass.spellAbility"> Spell Attack Mod:{{stats[selectedClass.spellAbility].label}}</span>
 			</div>
 
-			
+
+				</div>
+
+			</div>
+			<div id="heart" ><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
+			<br>
+
+			<div id="shield" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div></div>
+
+			<div class="clear"></div>
 			<div class="statsheetlist">
 				<ul class="statboxul" ng-repeat="stat in stats">
-					<li class="Slabel">{{stat.label}}</li>
+				<div class='greyed'>
+					<li class="Slabel">{{stat.label.toUpperCase()}}</li>
 					<li class="Snum">{{stat.value}}</li>
+					</div>
 					<li class="Smodifier">({{stat.modifier}})</li>
+				</ul>
+			</div>
+			
+			<div class="skillslistbox">
+				<h6>Skills</h6>
+				<ul class = "listStyle">
+					<li ng-class="{'filledIn':skill.proficient}" ng-repeat="skill in skills">
+						<span ng-if="skill.label">{{skill.label}}</span>
+						<span style="font-size:10px;">  ({{skill.req}}) </span>
+						<span ng-if="skill.proficient == true">+ {{skill.mod + 2}}</span>
+						<span ng-if="skill.proficient == false && skill.mod >= 0">+{{skill.mod}} </span>
+						<span ng-if="skill.proficient == false && skill.mod === -1">{{skill.mod}} </span>
+					</li>
 				</ul>
 			</div>
 			<div class="savingthrowlistbox">
@@ -52,18 +76,8 @@
 					</li>
 				</ul>
 			</div>
-			<div class="skillslistbox">
-				<h6>Skills</h6>
-				<ul class = "listStyle">
-					<li ng-class="{'filledIn':skill.proficient}" ng-repeat="skill in skills">
-						<span ng-if="skill.label">{{skill.label}}</span>
-						<span>  ({{skill.req}}) </span>
-						<span ng-if="skill.proficient == true">+ {{skill.mod + 2}}</span>
-						<span ng-if="skill.proficient == false && skill.mod >= 0">+{{skill.mod}} </span>
-						<span ng-if="skill.proficient == false && skill.mod === -1">{{skill.mod}} </span>
-					</li>
-				</ul>
-			</div>
+
+			<div class="clear"></div>
 
 			<div class="featuresDiv">
 			Class Features At Level One:
@@ -93,10 +107,10 @@
 			
 			<div class="weaponDiv">
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
-				<h3>Melee Weapon: {{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h3>
-				<h3>Offhand: {{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h3>
-				<h3>Ranged: {{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h3>
-				<h3>Armor: {{armor.name}} || {{armorClass}} AC
+				<h4>Melee Weapon: {{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h4>
+				<h4>Offhand: {{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h4>
+				<h4>Ranged: {{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h4>
+				<h4>Armor: {{armor.name}} || {{armorClass}} AC
 			</div>
 		</div>
 
@@ -123,7 +137,7 @@
 						<div class="tab-content">
 							<div class="tab-pane active" id="tab1">
 								<div class="selectionArea">
-									<span>Name:</span><input type="text" ng-model="user.name">
+									<span>Name:</span><input type="text" maxlength="20" ng-model="user.name">
 									<div>
 										<span>Race:</span><select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
 									</select><br>
