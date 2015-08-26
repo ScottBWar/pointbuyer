@@ -6,22 +6,25 @@
 }
 
 .nameDisplayArea{
-	text-align: center;
+	border:1px solid green;
+	margin-top:25px;
+	text-align:left;
 }
 
 .nameClassHeader{
-	text-align: center;
+	border:1px solid orange;
+	max-width:300px;
+	margin-left:100px;
 }
 
 .nametag {
-	text-align: center;
 	display:inline;
 }
 .namebox {
 	border-bottom:3px double black;
-	font-size: 60px;
-	min-width: 200px;
-	min-height:60px;
+	font-size: 35px;
+	min-width: 150px;
+	min-height:40px;
 	display:inline-block;
 }
 
@@ -34,12 +37,12 @@
 }
 
 .classRace {
-	font-size:35px;
+	font-size:20px;
 	}
 
 
 #hpDetails{
-	text-align: center;
+	font-size:15px;
 }
 
 .statsheetlist{
