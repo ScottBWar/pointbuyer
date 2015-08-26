@@ -37,14 +37,8 @@
 				</div>
 
 			</div>
-	<!-- 		
-			<div id="hpDetails" style="margin-bottom:75px;">
-				<span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span>
-				<span class="init"> Initiative | {{stats[1].modifier}}</span>
-				<span class="speed"> Speed: {{race.speed}}ft.</span>
-				<span class="spellSave" ng-if="selectedClass.spellAbility"> Spell DC: {{spellSaveDC}}</span>
-			</div>
- -->
+			<div id="heart" ng-if="selectedClass"><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
+
 			<div class="clear"></div>
 			<div class="statsheetlist">
 				<ul class="statboxul" ng-repeat="stat in stats">
