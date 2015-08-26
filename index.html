@@ -37,9 +37,10 @@
 				</div>
 
 			</div>
-			<div id="heart" ng-if="selectedClass"><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
+			<div id="heart" ><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
+			<br>
 
-			<div id="shield" ng-if="armorClass"><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div></div>
+			<div id="shield" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div></div>
 
 			<div class="clear"></div>
 			<div class="statsheetlist">
@@ -130,7 +131,7 @@
 						<div class="tab-content">
 							<div class="tab-pane active" id="tab1">
 								<div class="selectionArea">
-									<span>Name:</span><input type="text" maxlength="22" ng-model="user.name">
+									<span>Name:</span><input type="text" maxlength="20" ng-model="user.name">
 									<div>
 										<span>Race:</span><select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
 									</select><br>
