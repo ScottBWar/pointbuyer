@@ -5,7 +5,8 @@
 		<title>Let's learn Angular, by playing Pathfinder!</title>
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/jquery-ui/jquery-ui.js"></script>
-		<script src="lib/angular/angular.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -14,6 +15,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/charsheetstyle.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/animate.css">
 	</head>
 	<body ng-controller = "statController">
 		<div class="displayArea" >
@@ -21,10 +23,10 @@
 		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:100px;position:relative;top:25px;left:25px;float:left;">
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
-					<span class="nametag"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
+					<span class="nametag bounceInRight" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
 					<div class="levelName"></div>
 				</div>
-				<div class="classRace">Level 1 {{race.type}}   {{selectedClass.type}}
+				<div class="classRace bounceInRight">Level 1 {{race.type}}   {{selectedClass.type}}
 
 					<div id="hpDetails" style="margin-bottom:75px;">
 				<!-- <span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span> -->

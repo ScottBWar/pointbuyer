@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop']);
+var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop','ngAnimate']);
 
 
 
