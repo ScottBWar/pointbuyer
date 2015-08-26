@@ -52,21 +52,24 @@ myApp.controller('statController', function statController($scope, $modal) {
         perks: "+ All",
         increase_array: [0, 1, 2, 3, 4, 5],
         speed: 30,
-        size: 'Medium'
+        size: 'Medium',
+        languageArray:[0,Math.floor(Math.random() * 16) + 1 ]
     }, {
         id: 2,
         type: "Lightfoot Halfling",
         perks: "++ dex, + cha",
         increase_array: [1, 1, 5],
         speed: 25,
-        size: 'Small'
+        size: 'Small',
+        languageArray:[0,6]
     }, {
         id: 3,
         type: "Stout Halfling",
         perks: "++ dex, + con",
         increase_array: [1, 1, 2],
         speed: 25,
-        size: 'Small'
+        size: 'Small',
+        languageArray:[0,6]
     }, {
         id: 4,
         type: "Hill Dwarf",
@@ -74,7 +77,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [2, 2, 4],
         speed: 25,
         size: 'Medium',
-        hillDwarfHealthBonus: 1
+        hillDwarfHealthBonus: 1,
+        languageArray:[0,1]
     }, {
         id: 5,
         type: "Mountain Dwarf",
@@ -82,7 +86,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [0, 0, 2, 2],
         speed: 25,
         size: 'Medium',
-        armorTraining: ['Leather', 'Hide', 'Scale Mail']
+        armorTraining: ['Leather', 'Hide', 'Scale Mail'],
+        languageArray:[0,1]
     }, {
         id: 6,
         type: "High Elf",
@@ -90,7 +95,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [1, 1, 3],
         speed: 30,
         size: 'Medium',
-        weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow']
+        weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow'],
+        languageArray:[0,2]
 
     }, {
         id: 7,
@@ -99,7 +105,9 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [1, 1, 4],
         speed: 35,
         size: 'Medium',
-        weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow']
+        weaponTraining: ['Longsword', 'Shortsword', 'Shortbow', 'Longbow'],
+        languageArray:[0,2]
+
     }, {
         id: 8,
         type: "Dark Elf",
@@ -107,49 +115,58 @@ myApp.controller('statController', function statController($scope, $modal) {
         increase_array: [1, 1, 5],
         speed: 30,
         size: 'Medium',
-        weaponTraining: ['Rapier', 'Shortsword', 'Hand Crossbow']
+        weaponTraining: ['Rapier', 'Shortsword', 'Hand Crossbow'],
+        languageArray:[0,2]
+
     }, {
         id: 9,
         type: "Forest Gnome",
         perks: "++ int, + dex",
         increase_array: [3, 3, 1],
         speed: 25,
-        size: 'Small'
+        size: 'Small',
+        languageArray:[0,4]
     }, {
         id: 10,
         type: "Rock Gnome",
         perks: "++ int, + con",
         increase_array: [3, 3, 2],
         speed: 25,
-        size: 'Small'
+        size: 'Small',
+        languageArray:[0,4]
+
     }, {
         id: 11,
         type: "Half-Orc",
         perks: "++ str, + con",
         increase_array: [0, 0, 2],
         speed: 30,
-        size: 'Medium'
+        size: 'Medium',
+        languageArray:[0,7]
     }, {
         id: 12,
         type: "Dragonborn",
         perks: "++ str, + cha",
         increase_array: [0, 0, 5],
         speed: 30,
-        size: 'Medium'
+        size: 'Medium',
+        languageArray:[0,10]
     }, {
         id: 13,
         type: "Tiefling",
         perks: "++cha, + int",
         increase_array: [5, 5, 3],
         speed: 30,
-        size: 'Medium'
+        size: 'Medium',
+        languageArray:[0,12]
     }, {
         id: 14,
         type: "Half Elf",
         perks: "++cha +any two",
         increase_array: [5, 5],
         speed: 30,
-        size: 'Medium'
+        size: 'Medium',
+        languageArray:[0,2,Math.floor(Math.random() * 13) + 3]
     }];
 
     $scope.classList = [{
@@ -451,6 +468,73 @@ myApp.controller('statController', function statController($scope, $modal) {
         label: 'Urchin',
         skills: ['Sleight of Hand', 'Stealth']
     }];
+
+    $scope.languages= [
+    {
+        id:1,
+        name:'Common'
+    },
+    {
+        id:2,
+        name:'Dwarvish'
+    },
+    {
+        id:3,
+        name:'Elvish'
+    },
+    {
+        id:4,
+        name:'Giant'
+    },
+    {
+        id:5,
+        name:'Gnomish'
+    },
+    {
+        id:6,
+        name:'Goblin'
+    },
+    {
+        id:7,
+        name:'Halfling'
+    },
+    {
+        id:8,
+        name:'Orc'
+    },
+    {
+        id:9,
+        name:'Abyssal'
+    },
+    {
+        id:10,
+        name:'Celestial'
+    },
+    {
+        id:11,
+        name:'Draconic'
+    },
+    {
+        id:12,
+        name:'Deep Speech'
+    },
+    {
+        id:13,
+        name:'Infernal'
+    },
+    {
+        id:14,
+        name:'Primordial'
+    },
+    {
+        id:15,
+        name:'Sylvan'
+    },
+    {
+        id:16,
+        name:'Undercommon'
+    }
+    ];
 
 
     $scope.meleeWeapons = [{
@@ -1291,6 +1375,8 @@ myApp.controller('statController', function statController($scope, $modal) {
     // $scope.getSpellMod();
     //this is the end of the controller, where we simply call getAllModifier once.
     $scope.getAllModifier();
+
+    console.log($scope.racesList)
 });
 
 
