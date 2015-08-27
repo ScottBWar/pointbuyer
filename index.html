@@ -23,10 +23,10 @@
 		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:100px;position:relative;top:25px;left:25px;float:left;">
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
-					<span class="nametag bounceInRight" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
+					<span class="nametag" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
 					<div class="levelName"></div>
 				</div>
-				<div class="classRace bounceInRight">Level 1 {{race.type}}   {{selectedClass.type}}
+				<div class="classRace" ng-if="race">Level 1 {{race.type}}   {{selectedClass.type}}
 
 					<div id="hpDetails" style="margin-bottom:75px;">
 				<!-- <span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span> -->
@@ -49,8 +49,8 @@
 			<div id="shield" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
 
 			<div class="clear"></div>
-			<div class="statsheetlist">
-				<ul class="statboxul" ng-repeat="stat in stats">
+			<div class="statsheetlist" ng-if="total < 27">
+				<ul class="statboxul" ng-repeat="stat in stats" ng-if="stat.value > 8 || benefitsToggle === true">
 				<div class='greyed'>
 					<li class="Slabel">{{stat.label.toUpperCase()}}</li>
 					<li class="Snum">{{stat.value}}</li>
