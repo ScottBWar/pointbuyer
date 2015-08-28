@@ -62,7 +62,7 @@
 }
 
 .statsheetlist.ng-enter{
-	animation: slideInLeft 1s;
+	animation: slideInLeft 2s;
 }
 
 .statboxul {
@@ -75,7 +75,7 @@
 }
 
 .statboxul.ng-enter {
-	animation: slideInLeft 1s;
+	animation: slideInLeft 2s;
 }
 
 .greyed{
@@ -103,6 +103,12 @@
 	float:left;
 }
 
+.skillslistbox.ng-enter{
+	animation: slideInLeft 1s;
+}
+
+
+
 .featuresDiv{
 	border:1px solid purple;
 }
@@ -120,6 +126,10 @@
   width:100px;
   height:150px;
   text-align:center;
+}
+
+#heart.ng-enter{
+	animation: slideInDown 2s;
 }
 
 .hp{
@@ -180,6 +190,11 @@
     transform-origin :100% 100%;
 }
 
+#shield.ng-enter{
+	animation: slideInDown 2s;
+}
+
+
 #inShield{
 	font-size:22px;
 	text-align: center
@@ -196,4 +211,19 @@
 .weaponDiv{
 	border: 2px inset cyan;
 	max-width:450px;
+}
+
+.skill.ng-enter{
+	animation: slideInLeft 1s;
+}
+
+.skill.ng-leave{
+	animation: slideOutLeft 1s;
+}
+
+.skill.ng-enter-stagger{
+	-webkit-transition-delay:2s;
+	transition-delay:2s;
+	-webkit-animation-delay:2s;
+	animation-delay:2s;
 }

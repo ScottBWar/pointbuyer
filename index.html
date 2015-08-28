@@ -43,10 +43,10 @@
 				</div>
 
 			</div>
-			<div id="heart" ><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
+			<div id="heart" ng-if="selectedClass"><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
 			<br>
 
-			<div id="shield" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
+			<div id="shield" ng-if="armorClass" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
 
 			<div class="clear"></div>
 			<div class="statsheetlist" ng-if="total < 27">
@@ -59,11 +59,11 @@
 				</ul>
 			</div>
 			
-			<div class="skillslistbox">
+			<div class="skillslistbox" ng-if="selectedBackground">
 				<h6>Skills</h6>
 				<ul class = "listStyle">
-					<li ng-class="{'filledIn':skill.proficient}" ng-repeat="skill in skills">
-						<span ng-if="skill.label">{{skill.label}}</span>
+					<li ng-if="skill.proficient || skillsPicked() === selectedClass.maxSkills" ng-class="{'filledIn':skill.proficient}"  ng-repeat="skill in skills" class="skill">
+						<span>{{skill.label}}</span>
 						<span style="font-size:10px;">  ({{skill.req}}) </span>
 						<span ng-if="skill.proficient == true">+ {{skill.mod + 2}}</span>
 						<span ng-if="skill.proficient == false && skill.mod >= 0">+{{skill.mod}} </span>
@@ -72,7 +72,7 @@
 				</ul>
 			</div>
 			
-			<div class="savingthrowlistbox">
+			<div ng-if="selectedClass" class="savingthrowlistbox">
 				<h6>Saving Throws</h6>
 				<ul class = "savingthrowlist listStyle">
 					<li ng-class="{'filledIn':stat.proficient}" ng-repeat="stat in stats">
@@ -83,7 +83,7 @@
 				</ul>
 			</div>
 
-			<div class="languagelistbox">
+			<div class="languagelistbox" ng-if="selectedBackground">
 				<h6>Languages</h6>
 				<ul class = "languages listStyle">
 					<li ng-repeat="language in knownLanguages track by $index">

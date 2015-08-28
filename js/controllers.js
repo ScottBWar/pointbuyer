@@ -1058,8 +1058,8 @@ myApp.controller('statController', function statController($scope, $modal) {
                     }
                 }
             }
-        })
-        return choices
+        });
+        return choices;
     }
 
     $scope.chooseMelee = function(weapon1) {
