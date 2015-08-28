@@ -95,7 +95,7 @@
 			<div class="clear"></div>
 			<div class="weaponDiv">
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
-				<h4>Melee Weapon: <img ng-src="WPNIcons/{{weapon1.img}}.svg"style="width:30px;height:30px;">{{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h4>
+				<h4>Melee Weapon: <img ng-src="WPNIcons/{{weapon1.img}}.svg"style="width:30px;height:30px;">{{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}} <span ng-if="chosenFeat.title === 'Dueling' && !weapon2 && !weapon1.twoHanded">+2</span></h4>
 				<h4>Offhand: <img ng-if="!weapon2.isLightBlade" ng-src="WPNIcons/{{weapon2.img}}.svg"style="width:30px;height:30px;"><img ng-if="weapon2.isLightBlade" ng-src="WPNIcons/DoubleBlade.svg"style="width:30px;height:30px;">{{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h4>
 				<h4>Ranged: <img ng-src="WPNIcons/{{weapon3.img}}.svg"style="width:30px;height:30px;">{{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h4>
 				<!-- <h4>Armor: {{armor.name}} || {{armorClass}} AC</h4> -->
