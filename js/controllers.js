@@ -533,7 +533,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 1,
         twoHanded: false,
         light: true,
-        img:'Blade'
+        img:'Blade',
+        isLightBlade:true
     }, {
         name: 'Handaxe',
         type: 'simple',
@@ -657,7 +658,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 1,
         twoHanded: false,
         light: true,
-        img:'Blade'
+        img:'Blade',
+        isLightBlade:true
     }, {
         name: 'Shortsword',
         type: 'martial',
@@ -665,7 +667,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 1,
         twoHanded: false,
         light: true,
-        img:'Blade'
+        img:'Blade',
+        isLightBlade:true
     }, {
         name: 'Warhammer',
         type: 'martial',
