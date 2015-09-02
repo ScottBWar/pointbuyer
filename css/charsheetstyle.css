@@ -33,6 +33,11 @@
 	display:inline-block;
 }
 
+.namebox.ng-enter{
+	animation: fadeIn 2s;
+
+}
+
 .infobox{
 	border: 3px solid black;
 }

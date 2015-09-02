@@ -19,9 +19,16 @@
 	</head>
 	<body ng-controller = "statController">
 		<div class="displayArea" >
+
+
+
+
 		<img ng-if="selectedClass.type != 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:50px;height:100px;position:relative;top:25px;left:25px;float:left;">
 		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:100px;position:relative;top:25px;left:25px;float:left;">
-			<div ng-if="user.name" class="nameClassHeader">
+
+
+
+			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
 					<span class="nametag" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
 					<div class="levelName"></div>
@@ -47,6 +54,11 @@
 			<br>
 
 			<div id="shield" ng-if="armorClass" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
+
+		<div class="intro animated fadeInDown">
+		<h1 class="intro">Click anywhere to start.</h1>
+		</div>
+
 
 			<div class="clear"></div>
 			<div class="statsheetlist" ng-if="total < 27">
