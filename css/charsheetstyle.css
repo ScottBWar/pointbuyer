@@ -7,13 +7,11 @@
 }
 
 .nameDisplayArea{
-	border:1px solid green;
 	margin-top:25px;
 	text-align:left;
 }
 
 .nameClassHeader{
-	border:1px solid orange;
 	max-width:500px;
 	margin-left:50px;
 	float:left;
@@ -58,7 +56,6 @@
 
 .statsheetlist{
 	width: 180px ;
-	border:1px solid red;
 	float:left;
 	position:absolute;
 }
@@ -97,12 +94,12 @@
   top: 596px;
   left: 198px;
   width: 166px;
-  border: 1px solid blue;
+  /*border: 1px solid black;*/
 }
 
 .skillslistbox{
 	font-size:11px;
-	border:1px solid green;
+	border:1px solid black;
 	float:left;
 	position:absolute;
 	left:198px;
@@ -117,7 +114,7 @@
 
 .featuresDiv{
 	position:absolute;
-	border:1px solid purple;
+/*	border:1px solid black;*/
 	position: absolute;
   top: 445px;
   left: 365px;
@@ -222,7 +219,7 @@
 }
 
 .languagelistbox{
-	  border: 2px solid magenta;
+	  border: 2px solid black;
     position: absolute;
     top: 626px;
     left: 15px;
@@ -231,7 +228,7 @@
 }
 
 .weaponDiv{
-    border: 2px inset cyan;
+   /* border: 2px inset cyan;*/
     max-width: 385px;
     min-width: 383px;
     float: left;
@@ -268,7 +265,7 @@
 }
 
 .Equipment{
-	  border: 2px solid green;
+	  border: 2px solid black;
     max-width: 350px;
     position: absolute;
     left: 365px;
@@ -278,7 +275,6 @@
 .notes{
 	position: absolute;
   top: 760px;
-  border: 1px solid blue;
 }
 
 .Equipment.ng-enter{
