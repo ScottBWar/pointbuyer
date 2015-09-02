@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop']);
+var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop','ngAnimate']);
 
 
 
@@ -533,6 +533,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 1,
         twoHanded: false,
         light: true,
+        img:'Blade',
+        isLightBlade:true
     }, {
         name: 'Handaxe',
         type: 'simple',
@@ -541,7 +543,8 @@ myApp.controller('statController', function statController($scope, $modal) {
         twoHanded: false,
         light: true,
         thrown: true,
-        range: '20/60'
+        range: '20/60',
+        img:'HandAxe'
     }, {
         name: 'Light Hammer',
         type: 'simple',
@@ -549,126 +552,148 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 0,
         light: true,
         thrown: true,
-        range: '20/60'
+        range: '20/60',
+        img:'LightHammer'
     }, {
         name: 'Mace',
         type: 'simple',
         damage: '1d6',
         reqStat: 0,
-        twoHanded: false
+        twoHanded: false,
+        img:'LightHammer'
     }, {
         name: 'Quarterstaff',
         type: 'simple',
         damage: '1d6',
         reqStat: 0,
         properties: 'Versatile(1d8)',
-        twoHanded: false
+        twoHanded: false,
+        img:'QuarterStaff'
     }, {
         name: 'Spear',
         type: 'simple',
         damage: '1d6',
         reqStat: 0,
         properties: 'Versatile(1d8)',
-        twoHanded: false
+        twoHanded: false,
+        img:'Spear'
     }, {
         name: 'Sickle',
         type: 'simple',
         damage: '1d4',
         reqStat: 1,
-        light: true
+        light: true,
+        img:'Sickle'
     }, {
         name: 'BattleAxe',
         type: 'martial',
         damage: '1d8',
         reqStat: 0,
         properties: 'Versatile(1d10)',
-        twoHanded: false
+        twoHanded: false,
+        img:'BattleAxe'
     }, {
         name: 'Flail',
         type: 'martial',
         damage: '1d8',
         reqStat: 0,
-        twoHanded: false
+        twoHanded: false,
+        img:'Warhammer'
     }, {
         name: 'Glaive',
         type: 'martial',
         damage: '1d10',
         reqStat: 0,
         properties: 'reach',
-        twoHanded: true
+        twoHanded: true,
+        img:'Spear'
     }, {
         name: 'Greataxe',
         type: 'martial',
         damage: '1d12',
         reqStat: 0,
-        twoHanded: true
+        twoHanded: true,
+        img:'BattleAxe'
     }, {
         name: 'Greatsword',
         type: 'martial',
         damage: '2d6',
         reqStat: 0,
-        twoHanded: true
+        twoHanded: true,
+        img:'GreatSword'
     }, {
         name: 'Maul',
         type: 'martial',
         damage: '2d6',
         reqStat: 0,
-        twoHanded: true
+        twoHanded: true,
+        img:'WarHammer'
     }, {
         name: 'Halberd',
         type: 'martial',
         damage: '1d10',
         reqStat: 0,
         properties: 'reach',
-        twoHanded: true
+        twoHanded: true,
+        img:'Spear'
     }, {
         name: 'Longsword',
         type: 'martial',
         damage: '1d8',
         reqStat: 0,
         properties: 'Versatile(1d10)',
-        twoHanded: false
+        twoHanded: false,
+        img:'LongSword'
     }, {
         name: 'Rapier',
         type: 'martial',
         damage: '1d8',
         reqStat: 1,
-        twoHanded: false
+        twoHanded: false,
+        img:'LongSword'
     }, {
         name: 'Scimitar',
         type: 'martial',
         damage: '1d6',
         reqStat: 1,
         twoHanded: false,
-        light: true
+        light: true,
+        img:'Blade',
+        isLightBlade:true
     }, {
         name: 'Shortsword',
         type: 'martial',
         damage: '1d6',
         reqStat: 1,
         twoHanded: false,
-        light: true
+        light: true,
+        img:'Blade',
+        isLightBlade:true
     }, {
         name: 'Warhammer',
         type: 'martial',
         damage: '1d8',
         reqStat: 0,
         properties: 'Versatile(1d10)',
-        twoHanded: false
+        twoHanded: false,
+        img:'WarHammer'
     }, {
         name: 'Whip',
         type: 'martial',
         damage: '1d4',
         reqStat: 1,
-        properties: 'reach'
+        properties: 'reach',
+        img:'Whip'
     }, {
         name: 'Martial Arts',
         damage: '1d4',
-        reqStat: 1
+        reqStat: 1,
+        img:'Fist'
     }, {
         name: 'Shield',
         damage: 'AC+2',
-        armorClass: 2
+        armorClass: 2,
+        img:'Shield'
     }]
 
     $scope.rangedWeapons = [{
@@ -677,13 +702,15 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 1,
         thrown: true,
         range: '20/60',
-        type: 'simple'
+        type: 'simple',
+        img:'Dart'
     }, {
         name: 'Sling',
         damage: '1d4',
         reqStat: 1,
         range: '30/120',
-        type: 'simple'
+        type: 'simple',
+        img:'Sling'
     }, {
         name: 'Javelin',
         type: 'simple',
@@ -691,14 +718,16 @@ myApp.controller('statController', function statController($scope, $modal) {
         reqStat: 0,
         twoHanded: false,
         thrown: true,
-        range: '30/120'
+        range: '30/120',
+        img:'Spear'
     }, {
         name: 'Light Hammer',
         damage: '1d4',
         reqStat: 0,
         light: true,
         thrown: true,
-        range: '20/60'
+        range: '20/60',
+        img:'LightHammer'
     }, {
         name: 'Handaxe',
         damage: '1d6',
@@ -706,47 +735,55 @@ myApp.controller('statController', function statController($scope, $modal) {
         twoHanded: false,
         light: true,
         thrown: true,
-        range: '20/60'
+        range: '20/60',
+        img:'HandAxe'
     }, {
         name: 'Shortbow',
         damage: '1d6',
         reqStat: 1,
         range: '80/320',
-        type: 'simple'
+        type: 'simple',
+        img:'ShortBow'
     }, {
         name: 'Light Crossbow',
         damage: '1d6',
         reqStat: 1,
         range: '80/320',
-        type: 'simple'
+        type: 'simple',
+        img:'ShortBow'
     }, {
         name: 'Blowgun',
         damage: '1',
         range: '35/100',
-        type: 'martial'
+        type: 'martial',
+        img:'Dart'
     }, {
         name: 'Hand Crossbow',
         damage: '1d6',
         reqStat: 1,
         range: '40/150',
-        type: 'martial'
+        type: 'martial',
+        img:'ShortBow'
     }, {
         name: 'Heavy Crossbow',
         damage: '1d10',
         reqStat: 1,
         range: '100/400',
-        type: 'martial'
+        type: 'martial',
+        img:'LongBow'
     }, {
         name: 'Longbow',
         damage: '1d8',
         reqStat: 1,
         range: '150/600',
-        type: 'martial'
+        type: 'martial',
+        img:'LongBow'
     }, {
         name: 'Net',
         damage: 'special',
         range: '5/15',
-        type: 'martial'
+        type: 'martial',
+        img:'Whip'
     }];
 
     $scope.armorList = [{
@@ -1058,8 +1095,8 @@ myApp.controller('statController', function statController($scope, $modal) {
                     }
                 }
             }
-        })
-        return choices
+        });
+        return choices;
     }
 
     $scope.chooseMelee = function(weapon1) {

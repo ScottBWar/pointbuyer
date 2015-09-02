@@ -5,7 +5,8 @@
 		<title>Let's learn Angular, by playing Pathfinder!</title>
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/jquery-ui/jquery-ui.js"></script>
-		<script src="lib/angular/angular.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -14,17 +15,25 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/charsheetstyle.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/animate.css">
 	</head>
 	<body ng-controller = "statController">
 		<div class="displayArea" >
+
+
+
+
 		<img ng-if="selectedClass.type != 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:50px;height:100px;position:relative;top:25px;left:25px;float:left;">
 		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:100px;position:relative;top:25px;left:25px;float:left;">
+
+
+
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
-					<span class="nametag"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
+					<span class="nametag" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
 					<div class="levelName"></div>
 				</div>
-				<div class="classRace">Level 1 {{race.type}}   {{selectedClass.type}}
+				<div class="classRace" ng-if="race">Level 1 {{race.type}}   {{selectedClass.type}}
 
 					<div id="hpDetails" style="margin-bottom:75px;">
 				<!-- <span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span> -->
@@ -41,14 +50,19 @@
 				</div>
 
 			</div>
-			<div id="heart" ><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
+			<div id="heart" ng-if="selectedClass"><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
 			<br>
 
-			<div id="shield" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
+			<div id="shield" ng-if="armorClass" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
+
+		<div class="intro animated fadeInDown">
+		<h1 class="intro">Click anywhere to start.</h1>
+		</div>
+
 
 			<div class="clear"></div>
-			<div class="statsheetlist">
-				<ul class="statboxul" ng-repeat="stat in stats">
+			<div class="statsheetlist" ng-if="total < 27">
+				<ul class="statboxul" ng-repeat="stat in stats" ng-if="stat.value > 8 || benefitsToggle === true">
 				<div class='greyed'>
 					<li class="Slabel">{{stat.label.toUpperCase()}}</li>
 					<li class="Snum">{{stat.value}}</li>
@@ -57,11 +71,11 @@
 				</ul>
 			</div>
 			
-			<div class="skillslistbox">
+			<div class="skillslistbox" ng-if="selectedBackground">
 				<h6>Skills</h6>
 				<ul class = "listStyle">
-					<li ng-class="{'filledIn':skill.proficient}" ng-repeat="skill in skills">
-						<span ng-if="skill.label">{{skill.label}}</span>
+					<li ng-if="skill.proficient || skillsPicked() === selectedClass.maxSkills" ng-class="{'filledIn':skill.proficient}"  ng-repeat="skill in skills" class="skill">
+						<span>{{skill.label}}</span>
 						<span style="font-size:10px;">  ({{skill.req}}) </span>
 						<span ng-if="skill.proficient == true">+ {{skill.mod + 2}}</span>
 						<span ng-if="skill.proficient == false && skill.mod >= 0">+{{skill.mod}} </span>
@@ -70,7 +84,7 @@
 				</ul>
 			</div>
 			
-			<div class="savingthrowlistbox">
+			<div ng-if="selectedClass" class="savingthrowlistbox">
 				<h6>Saving Throws</h6>
 				<ul class = "savingthrowlist listStyle">
 					<li ng-class="{'filledIn':stat.proficient}" ng-repeat="stat in stats">
@@ -81,7 +95,7 @@
 				</ul>
 			</div>
 
-			<div class="languagelistbox">
+			<div class="languagelistbox" ng-if="selectedBackground">
 				<h6>Languages</h6>
 				<ul class = "languages listStyle">
 					<li ng-repeat="language in knownLanguages track by $index">
@@ -90,19 +104,22 @@
 				</ul>
 			</div>
 
+
+
 			<div class="clear"></div>
-			<div class="weaponDiv">
+			<div ng-if="selectedClass && weapon1.name" class="weaponDiv">
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
-				<h4>Melee Weapon: {{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}}</h4>
-				<h4>Offhand: {{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h4>
-				<h4>Ranged: {{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h4>
+				<h4 class="weap">Melee Weapon: <img ng-src="WPNIcons/{{weapon1.img}}.svg"style="width:30px;height:30px;">{{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}} <span ng-if="chosenFeat.title === 'Dueling' && !weapon2 && !weapon1.twoHanded">+2</span></h4>
+				<h4 class="weap">Offhand: <img ng-if="!weapon2.isLightBlade" ng-src="WPNIcons/{{weapon2.img}}.svg"style="width:30px;height:30px;"><img ng-if="weapon2.isLightBlade" ng-src="WPNIcons/DoubleBlade.svg"style="width:30px;height:30px;">{{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h4>
+				<h4 class="weap">Ranged: <img ng-src="WPNIcons/{{weapon3.img}}.svg"style="width:30px;height:30px;">{{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h4>
 				<!-- <h4>Armor: {{armor.name}} || {{armorClass}} AC</h4> -->
 			</div>
 
-			<div class="featuresDiv">
+			<div ng-if="selectedClass && selectedBackground" class="featuresDiv">
 			Class Features At Level One:
 			<br>
-			<span ng-repeat="feature in features">
+			<ul class="featureUL">
+			<li class="featureLI"><span ng-repeat="feature in features">
 				{{feature.name}} | {{feature.pgNum}}
 				<br>
 			</span>
@@ -110,27 +127,45 @@
 				{{chosenFeat.title}}:  
 				{{chosenFeat.details}}
 			</span>
+			</li>
+			</ul>
 			<br>
+			<div class="spellstuff">
 			<span ng-if="selectedClass.cantrips">You can pick {{selectedClass.cantrips}} cantrips from the {{selectedClass.type}} cantrip list.</span>
 			<br>
 			<span ng-if="selectedClass.spellsKnown">Your spellbook contains {{selectedClass.spellsKnown}} level 1 spells from the {{selectedClass.type}} spell list</span>
 			<br>
 			<span ng-if="selectedClass.spellsDaily">You can cast {{selectedClass.spellsDaily}} level 1 spells per day</span>
 			</div>
+			</div>
 
+			<div ng-if="selectedBackground && skillsPicked() >= selectedClass.maxSkills"class="Equipment">
+			<h5>Adventuring Equipment:</h5>
+			________________________________________________
+			________________________________________________			________________________________________________
+			________________________________________________
 
-
-
-
-
+			</div>
 			<div class="clear"></div>
+
+			<div ng-if="selectedClass && selectedBackground && skillsPicked() >= selectedClass.maxSkills"class="notes">
+			<h6 style="margin-bottom:30px;">Character Traits, Factions, Treasures, and Other Notes:</h6>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			</div>
 			
 			
 		</div>
 
 
 		<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
-		<a href="#openModal">Open Modal</a>
+		<!-- <a href="#openModal">Open Modal</a> -->
 		<div id="openModal" data-drag="true" jqyoui-draggable class="modalDialog">
 			<div>
 				
@@ -257,7 +292,9 @@
 </div>
 </div>
 </div>
+<div style="margin-top:50px;">Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
 <script src="bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 </body>
+
 </html>

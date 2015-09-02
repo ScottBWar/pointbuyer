@@ -3,17 +3,16 @@
 	margin-top:10px;
 	margin-left:10px;
 	margin-right:10px;
+	height:1045px;
 }
 
 .nameDisplayArea{
-	border:1px solid green;
 	margin-top:25px;
 	text-align:left;
 }
 
 .nameClassHeader{
-	border:1px solid orange;
-	max-width:300px;
+	max-width:500px;
 	margin-left:50px;
 	float:left;
 }
@@ -21,12 +20,22 @@
 .nametag {
 	display:inline;
 }
+
+.nametag.ng-enter{
+	animation: fadeIn 2s;
+}
+
 .namebox {
 	border-bottom:3px double black;
 	font-size: 35px;
 	min-width: 150px;
 	min-height:40px;
 	display:inline-block;
+}
+
+.namebox.ng-enter{
+	animation: fadeIn 2s;
+
 }
 
 .infobox{
@@ -41,6 +50,10 @@
 	font-size:20px;
 	}
 
+.classRace.ng-enter{
+ animation: slideInLeft 1s;
+}
+
 
 #hpDetails{
 	font-size:15px;
@@ -48,8 +61,12 @@
 
 .statsheetlist{
 	width: 180px ;
-	border:1px solid red;
 	float:left;
+	position:absolute;
+}
+
+.statsheetlist.ng-enter{
+	animation: slideInLeft 2s;
 }
 
 .statboxul {
@@ -59,6 +76,10 @@
 	text-align: center;
 	padding-left:0;
 	margin:0 auto;
+}
+
+.statboxul.ng-enter {
+	animation: slideInLeft 2s;
 }
 
 .greyed{
@@ -74,20 +95,45 @@
 }
 
 .savingthrowlistbox{
-	position:absolute;
-	top:253px;
-	right:50px;
-	width:100px;
-	border:1px solid blue;
+	position: absolute;
+  top: 596px;
+  left: 198px;
+  width: 166px;
+  /*border: 1px solid black;*/
 }
 
 .skillslistbox{
-	border:1px solid green;
+	font-size:11px;
+	border:1px solid black;
 	float:left;
+	position:absolute;
+	left:198px;
+	width:166px;
 }
 
+.skillslistbox.ng-enter{
+	animation: slideInLeft 1s;
+}
+
+
+
 .featuresDiv{
-	border:1px solid purple;
+	position:absolute;
+/*	border:1px solid black;*/
+	position: absolute;
+  top: 445px;
+  left: 365px;
+  min-width:383px;
+  max-width:383px;
+  min-height:145px;
+}
+
+.featuresDiv.ng-enter{
+	animation:fadeIn 1s;
+}
+
+.featuresDiv.ng-leave{
+	animation:fadeOut 1s;
 }
 
 #heart {
@@ -103,6 +149,10 @@
   width:100px;
   height:150px;
   text-align:center;
+}
+
+#heart.ng-enter{
+	animation: slideInDown 2s;
 }
 
 .hp{
@@ -163,20 +213,75 @@
     transform-origin :100% 100%;
 }
 
+#shield.ng-enter{
+	animation: slideInDown 2s;
+}
+
+
 #inShield{
 	font-size:22px;
 	text-align: center
 }
 
 .languagelistbox{
-	border: 2px solid magenta;
-	position:absolute;
-	top:450px;
-	right:50px;
-	width:180px;
+	  border: 2px solid black;
+    position: absolute;
+    top: 626px;
+    left: 15px;
+    width: 183px;
+    height: 134px;
 }
 
 .weaponDiv{
-	border: 2px inset cyan;
-	max-width:450px;
+   /* border: 2px inset cyan;*/
+    max-width: 385px;
+    min-width: 383px;
+    float: left;
+    position: absolute;
+    left: 365px;
+    min-height:163px;
+}
+
+.weaponDiv.ng-enter{
+	animation:slideInDown 1s;
+}
+
+.weaponDiv.ng-leave{
+	animation:fadeOut 1s;
+}
+
+.skill.ng-enter{
+	animation: slideInLeft 1s;
+}
+
+.skill.ng-leave{
+	animation: fadeOut 1s;
+}
+
+.skill.ng-enter-stagger{
+	-webkit-transition-delay:2s;
+	transition-delay:2s;
+	-webkit-animation-delay:2s;
+	animation-delay:2s;
+}
+
+.spellstuff{
+	font-size:12px;
+}
+
+.Equipment{
+	  border: 2px solid black;
+    max-width: 350px;
+    position: absolute;
+    left: 365px;
+    top: 591px;
+}
+
+.notes{
+	position: absolute;
+  top: 760px;
+}
+
+.Equipment.ng-enter{
+	animation:fadeIn 1s;
 }

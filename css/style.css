@@ -1,3 +1,15 @@
+
+.intro{
+	font-family: Helvetica;
+	font-size:50px !important;
+	text-align: center;
+}
+
+
+.weap{
+font-size:16px !important;
+}
+
 .clear{
 	clear:both;
 }
@@ -132,5 +144,11 @@
 
 .filledIn{
 	list-style-type: disc;
+}
+
+.line{
+	border-bottom: 1px solid black; 
+	min-width: 710px;
+	margin-bottom:25px;
 }
 

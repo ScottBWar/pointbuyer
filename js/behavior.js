@@ -1,9 +1,14 @@
 
 $(document).ready(function() {
+
 	//Custom Modal Stuff
 	MODAL_OPEN = false;
 
 	$('.displayArea').click(function() {
+      $('.intro').addClass('animated fadeOut');
+      window.setTimeout(function(){
+         $('.intro').css('display', 'none');
+      },200);
 		if(MODAL_OPEN === false){
 			window.location = ('#openModal');
 		MODAL_OPEN = true;
