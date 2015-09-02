@@ -21,7 +21,7 @@
 		<div class="displayArea" >
 		<img ng-if="selectedClass.type != 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:50px;height:100px;position:relative;top:25px;left:25px;float:left;">
 		<img ng-if="selectedClass.type === 'Fighter'" ng-src="pointbuyimages/{{selectedClass.type}}.png" style="width:100px;height:100px;position:relative;top:25px;left:25px;float:left;">
-			<div class="nameClassHeader">
+			<div ng-if="user.name" class="nameClassHeader">
 				<div class="nameDisplayArea">
 					<span class="nametag" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
 					<div class="levelName"></div>
@@ -92,16 +92,18 @@
 				</ul>
 			</div>
 
+
+
 			<div class="clear"></div>
-			<div class="weaponDiv">
+			<div ng-if="selectedClass && weapon1.name" class="weaponDiv">
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
-				<h5>Melee Weapon: <img ng-src="WPNIcons/{{weapon1.img}}.svg"style="width:30px;height:30px;">{{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}} <span ng-if="chosenFeat.title === 'Dueling' && !weapon2 && !weapon1.twoHanded">+2</span></h5>
-				<h5>Offhand: <img ng-if="!weapon2.isLightBlade" ng-src="WPNIcons/{{weapon2.img}}.svg"style="width:30px;height:30px;"><img ng-if="weapon2.isLightBlade" ng-src="WPNIcons/DoubleBlade.svg"style="width:30px;height:30px;">{{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h5>
-				<h5>Ranged: <img ng-src="WPNIcons/{{weapon3.img}}.svg"style="width:30px;height:30px;">{{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h5>
+				<h4 class="weap">Melee Weapon: <img ng-src="WPNIcons/{{weapon1.img}}.svg"style="width:30px;height:30px;">{{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}} <span ng-if="chosenFeat.title === 'Dueling' && !weapon2 && !weapon1.twoHanded">+2</span></h4>
+				<h4 class="weap">Offhand: <img ng-if="!weapon2.isLightBlade" ng-src="WPNIcons/{{weapon2.img}}.svg"style="width:30px;height:30px;"><img ng-if="weapon2.isLightBlade" ng-src="WPNIcons/DoubleBlade.svg"style="width:30px;height:30px;">{{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h4>
+				<h4 class="weap">Ranged: <img ng-src="WPNIcons/{{weapon3.img}}.svg"style="width:30px;height:30px;">{{weapon3.name}} <span ng-if="weapon3">+{{stats[weapon3.reqStat].mod + 2}} to hit </span>  | {{weapon3.damage}}{{stats[weapon3.reqStat].modifier}} | {{weapon3.range}}</h4>
 				<!-- <h4>Armor: {{armor.name}} || {{armorClass}} AC</h4> -->
 			</div>
 
-			<div class="featuresDiv">
+			<div ng-if="selectedClass && selectedBackground" class="featuresDiv">
 			Class Features At Level One:
 			<br>
 			<ul class="featureUL">
@@ -125,6 +127,14 @@
 			</div>
 			</div>
 
+			<div ng-if="selectedBackground && skillsPicked() >= selectedClass.maxSkills"class="Equipment">
+			<h5>Other Equipment:</h5>
+			_________________________________________
+			_________________________________________
+			_________________________________________
+			_________________________________________
+
+			</div>
 
 
 
@@ -137,7 +147,7 @@
 
 
 		<!-- <button data-toggle="modal" data-target="#myModal">open modal</button> -->
-		<a href="#openModal">Open Modal</a>
+		<!-- <a href="#openModal">Open Modal</a> -->
 		<div id="openModal" data-drag="true" jqyoui-draggable class="modalDialog">
 			<div>
 				
@@ -264,7 +274,7 @@
 </div>
 </div>
 </div>
-<div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+<div style="margin-top:50px;">Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
 <script src="bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 </body>

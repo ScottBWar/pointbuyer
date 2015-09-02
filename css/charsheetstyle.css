@@ -3,7 +3,7 @@
 	margin-top:10px;
 	margin-left:10px;
 	margin-right:10px;
-	height:2000px;
+	height:1045px;
 }
 
 .nameDisplayArea{
@@ -96,7 +96,7 @@
 	position: absolute;
   top: 596px;
   left: 198px;
-  width: 100px;
+  width: 166px;
   border: 1px solid blue;
 }
 
@@ -106,6 +106,7 @@
 	float:left;
 	position:absolute;
 	left:198px;
+	width:166px;
 }
 
 .skillslistbox.ng-enter{
@@ -120,6 +121,17 @@
 	position: absolute;
   top: 445px;
   left: 365px;
+  min-width:383px;
+  max-width:383px;
+  min-height:145px;
+}
+
+.featuresDiv.ng-enter{
+	animation:fadeIn 1s;
+}
+
+.featuresDiv.ng-leave{
+	animation:fadeOut 1s;
 }
 
 #heart {
@@ -219,10 +231,20 @@
 
 .weaponDiv{
     border: 2px inset cyan;
-    max-width: 384px;
+    max-width: 385px;
+    min-width: 383px;
     float: left;
     position: absolute;
     left: 365px;
+    min-height:163px;
+}
+
+.weaponDiv.ng-enter{
+	animation:slideInDown 1s;
+}
+
+.weaponDiv.ng-leave{
+	animation:fadeOut 1s;
 }
 
 .skill.ng-enter{
@@ -241,5 +263,18 @@
 }
 
 .spellstuff{
-	font-size:13px;
+	font-size:12px;
+}
+
+.Equipment{
+	  border: 2px solid green;
+    max-width: 300px;
+    position: absolute;
+    left: 365px;
+    top: 591px;
+}
+
+
+.Equipment.ng-enter{
+	animation:fadeIn 1s;
 }
