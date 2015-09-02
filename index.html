@@ -128,19 +128,25 @@
 			</div>
 
 			<div ng-if="selectedBackground && skillsPicked() >= selectedClass.maxSkills"class="Equipment">
-			<h5>Other Equipment:</h5>
-			_________________________________________
-			_________________________________________
-			_________________________________________
-			_________________________________________
+			<h5>Adventuring Equipment:</h5>
+			________________________________________________
+			________________________________________________			________________________________________________
+			________________________________________________
 
 			</div>
-
-
-
-
-
 			<div class="clear"></div>
+
+			<div ng-if="selectedClass && selectedBackground && skillsPicked() >= selectedClass.maxSkills"class="notes">
+			<h6 style="margin-bottom:30px;">Character Traits, Factions, Treasures, and Other Notes:</h6>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			<p class="line"> </p>
+			</div>
 			
 			
 		</div>

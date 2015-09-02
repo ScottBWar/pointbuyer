@@ -222,11 +222,12 @@
 }
 
 .languagelistbox{
-	border: 2px solid magenta;
-  position: absolute;
-  top: 626px;
-  left: 15px;
-  width: 180px;
+	  border: 2px solid magenta;
+    position: absolute;
+    top: 626px;
+    left: 15px;
+    width: 183px;
+    height: 134px;
 }
 
 .weaponDiv{
@@ -268,12 +269,17 @@
 
 .Equipment{
 	  border: 2px solid green;
-    max-width: 300px;
+    max-width: 350px;
     position: absolute;
     left: 365px;
     top: 591px;
 }
 
+.notes{
+	position: absolute;
+  top: 760px;
+  border: 1px solid blue;
+}
 
 .Equipment.ng-enter{
 	animation:fadeIn 1s;

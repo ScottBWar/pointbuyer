@@ -138,3 +138,9 @@ font-size:16px !important;
 	list-style-type: disc;
 }
 
+.line{
+	border-bottom: 1px solid black; 
+	min-width: 710px;
+	margin-bottom:25px;
+}
+
