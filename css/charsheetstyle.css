@@ -270,7 +270,8 @@
 }
 
 .Equipment{
-	  border: 2px solid black;
+	  border-left: 2px dotted black;
+	  border-right: 2px dotted black;
     max-width: 350px;
     position: absolute;
     left: 365px;
