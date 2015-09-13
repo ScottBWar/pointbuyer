@@ -1,4 +1,4 @@
-.displayArea {
+/*.displayArea {
 	border: 5px double black;
 	margin-top:10px;
 	margin-left:10px;
@@ -154,7 +154,7 @@
 #heart.ng-enter{
 	animation: slideInDown 2s;
 }
-
+*//*
 .hp{
 	vertical-align: middle;
 	margin:0 auto;
@@ -241,8 +241,8 @@
     left: 365px;
     min-height:163px;
 }
-
-.weaponDiv.ng-enter{
+*/
+/*.weaponDiv.ng-enter{
 	animation:slideInDown 1s;
 }
 
@@ -285,4 +285,4 @@
 
 .Equipment.ng-enter{
 	animation:fadeIn 1s;
-}
+}*/
