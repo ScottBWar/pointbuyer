@@ -30,16 +30,16 @@
 
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
-					<span class="nametag" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
+					<span class="nametag" ><h1 class="namebox" >{{user.name}}</h1></span>
 					<div class="levelName"></div>
 				</div>
-				<div class="classRace" ng-if="race">Level 1 {{race.type}}   {{selectedClass.type}}
+				<div class="classRace" >Level 1 {{race.type}}   {{selectedClass.type}}
 
 					<div id="hpDetails" style="margin-bottom:75px;">
 				<!-- <span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span> -->
 				<span class="init"> Initiative: {{stats[1].modifier}}</span>
 				<span class="speed"> Speed: {{race.speed}}ft</span>
-				<span class="spellSave" ng-if="selectedClass.spellAbility"> Spell DC: {{spellSaveDC}}</span>
+				<span class="spellSave" > Spell DC: {{spellSaveDC}}</span>
 				<br>
 				<span class="spellAttackMod" ng-if="selectedClass.spellAbility"> Spell Attack Mod: {{stats[selectedClass.spellAbility].label}}</span>
 				<br>
@@ -50,18 +50,18 @@
 				</div>
 
 			</div>
-			<div id="heart" ng-if="selectedClass"><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
+			<div id="heart" ><div class="hp"><span id="lineheight"></span> <h6>Hit Points</h6>Max:  {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</div></div>
 			<br>
 
-			<div id="shield" ng-if="armorClass" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
-
+			<div id="shield" ><div class="ac"><span id="lineheight"></span> <h6 style="text-align:center">Armor Class</h6><span id="inShield">{{armorClass}}</span></h7></div><span id='armortype'>{{armor.name}}</span></div>
+<!-- 
 		<div class="intro animated fadeInDown">
 		<h1 class="intro">Click anywhere to start.</h1>
-		</div>
+		</div> -->
 
 
 			<div class="clear"></div>
-			<div class="statsheetlist" ng-if="total < 27">
+			<div class="statsheetlist" >
 				<ul class="statboxul" ng-repeat="stat in stats" ng-if="stat.value > 8 || benefitsToggle === true">
 				<div class='greyed'>
 					<li class="Slabel">{{stat.label.toUpperCase()}}</li>
@@ -71,7 +71,7 @@
 				</ul>
 			</div>
 			
-			<div class="skillslistbox" ng-if="selectedBackground">
+			<div class="skillslistbox" >
 				<h6>Skills</h6>
 				<ul class = "listStyle">
 					<li ng-if="skill.proficient || skillsPicked() === selectedClass.maxSkills" ng-class="{'filledIn':skill.proficient}"  ng-repeat="skill in skills" class="skill">
@@ -84,7 +84,7 @@
 				</ul>
 			</div>
 			
-			<div ng-if="selectedClass" class="savingthrowlistbox">
+			<div class="savingthrowlistbox">
 				<h6>Saving Throws</h6>
 				<ul class = "savingthrowlist listStyle">
 					<li ng-class="{'filledIn':stat.proficient}" ng-repeat="stat in stats">
@@ -95,7 +95,7 @@
 				</ul>
 			</div>
 
-			<div class="languagelistbox" ng-if="selectedBackground">
+			<div class="languagelistbox">
 				<h6>Languages</h6>
 				<ul class = "languages listStyle">
 					<li ng-repeat="language in knownLanguages track by $index">
@@ -107,7 +107,7 @@
 
 
 			<div class="clear"></div>
-			<div ng-if="selectedClass && weapon1.name" class="weaponDiv">
+			<div class="weaponDiv">
 				<!-- <h3>{{selectedClass.wpn1.name}}  |   {{selectedClass.wpn1.damage}} {{stats[selectedClass.wpn1.reqStat].modifier}}</h3> -->
 				<h4 class="weap">Melee Weapon: <img ng-src="WPNIcons/{{weapon1.img}}.svg"style="width:30px;height:30px;">{{weapon1.name}} <span ng-if="weapon1">+{{stats[weapon1.reqStat].mod + 2}} to hit</span> | {{weapon1.damage}} {{stats[weapon1.reqStat].modifier}} <span ng-if="chosenFeat.title === 'Dueling' && !weapon2 && !weapon1.twoHanded">+2</span></h4>
 				<h4 class="weap">Offhand: <img ng-if="!weapon2.isLightBlade" ng-src="WPNIcons/{{weapon2.img}}.svg"style="width:30px;height:30px;"><img ng-if="weapon2.isLightBlade" ng-src="WPNIcons/DoubleBlade.svg"style="width:30px;height:30px;">{{weapon2.name}} <span ng-if="weapon2">+{{stats[weapon2.reqStat].mod + 2}} to hit</span>| {{weapon2.damage}}<span ng-if="weapon2.name === 'Martial Arts' || chosenFeat.title === 'Two Weapon Fighting'">{{stats[weapon2.reqStat].modifier}}</span></h4>
@@ -115,7 +115,7 @@
 				<!-- <h4>Armor: {{armor.name}} || {{armorClass}} AC</h4> -->
 			</div>
 
-			<div ng-if="selectedClass && selectedBackground" class="featuresDiv">
+			<div  class="featuresDiv">
 			Class Features At Level One:
 			<br>
 			<ul class="featureUL">
@@ -139,7 +139,7 @@
 			</div>
 			</div>
 
-			<div ng-if="selectedBackground && skillsPicked() >= selectedClass.maxSkills"class="Equipment">
+			<div class="Equipment">
 			<h5>Adventuring Equipment:</h5>
 			________________________________________________
 			________________________________________________			________________________________________________
@@ -148,7 +148,7 @@
 			</div>
 			<div class="clear"></div>
 
-			<div ng-if="selectedClass && selectedBackground && skillsPicked() >= selectedClass.maxSkills"class="notes">
+			<div class="notes">
 			<h6 style="margin-bottom:30px;">Character Traits, Factions, Treasures, and Other Notes:</h6>
 			<p class="line"> </p>
 			<p class="line"> </p>

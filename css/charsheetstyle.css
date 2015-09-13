@@ -136,25 +136,25 @@
 	animation:fadeOut 1s;
 }
 
-#heart {
+/*#heart {
 	top:50px;
 	right:150px;
 	border-radius:0px;
 	/*margin-top:25px;
 	margin-right: 10px;
 	margin-left:10px;*/
-	border:5px double gray;
+	/*border:5px double gray;
   position:absolute;
   float:left;
   width:100px;
   height:150px;
-  text-align:center;
+  text-align:center;*/
 }
 
-#heart.ng-enter{
+/*#heart.ng-enter{
 	animation: slideInDown 2s;
-}
-*//*
+}*/
+/*
 .hp{
 	vertical-align: middle;
 	margin:0 auto;
