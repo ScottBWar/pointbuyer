@@ -1,5 +1,5 @@
 
-.intro{
+/*.intro{
 	font-family: Helvetica;
 	font-size:50px !important;
 	text-align: center;
@@ -75,7 +75,7 @@ font-size:16px !important;
 
 .statsheetlist{
 	list-style-type: none;
-}
+}*/
 
 .modalDialog {
 	width:400px;
@@ -146,12 +146,12 @@ font-size:16px !important;
 	list-style-type: disc;
 }
 
-.line{
+/*.line{
 	border-bottom: 1px solid black; 
 	min-width: 710px;
 	margin-bottom:25px;
 }
-
+*/
 /*.modalPositioner{
 	left:90% !important;
 
