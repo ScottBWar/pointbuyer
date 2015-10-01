@@ -268,7 +268,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         rangedChoices: ['Javelin', 'Light Hammer'],
         armorChoices: ['Leather', 'Scale Mail', 'Chain Mail'],
         cantrips: false,
-        spellsDaily: false,
+        spellsDaily: false
     }, {
         id: 8,
         type: "Ranger",
@@ -797,7 +797,7 @@ myApp.controller('statController', function statController($scope, $modal) {
     }, {
         name: 'Hide',
         baseAC: 12,
-        maxDexBonus: 2,
+        maxDexBonus: 2
     }, {
         name: 'Scale Mail',
         baseAC: 14,
@@ -818,7 +818,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         baseAC: 10,
         maxDexBonus: 5,
         extraStat: 'wis'
-    }, ];
+    } ];
 
 
     $scope.levelOneFeatures = [{
