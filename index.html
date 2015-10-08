@@ -30,13 +30,13 @@
 
 			<div class="nameClassHeader">
 				<div class="nameDisplayArea">
-					<span class="nametag" ng-if="user.name"><h1 class="namebox" style="font-family:fantasy;">{{user.name}}</h1></span>
+					<span class="nametag" ng-if="user.name"><h1 class="namebox">{{user.name}}</h1></span>
 					<div class="levelName"></div>
 				</div>
 				<div class="classRace" ng-if="race">Level 1 {{race.type}}   {{selectedClass.type}}
 
 					<div id="hpDetails" style="margin-bottom:75px;">
-				<!-- <span class="hp"> HP | {{selectedClass.health + stats[2].mod + race.hillDwarfHealthBonus}}</span> -->
+				
 				<span class="init"> Initiative: {{stats[1].modifier}}</span>
 				<span class="speed"> Speed: {{race.speed}}ft</span>
 				<span class="spellSave" ng-if="selectedClass.spellAbility"> Spell DC: {{spellSaveDC}}</span>
@@ -255,9 +255,7 @@
 		<ul ng-if="features">
 			<li ng-repeat="feature in features">
 			{{feature.name}} | {{feature.pgNum}}
-			<!-- <span ng-if="feature.choices">
-			 <span>Options:</span><select class="" data-ng-options="choices as choices.title for choice in choices">
-			</span> -->
+		
 			</li>
 		</ul>
 		<div class="featureOptions" ng-if="features" ng-repeat="feature in features">

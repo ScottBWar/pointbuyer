@@ -4,13 +4,9 @@ var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop','ngAnimate']);
 
 myApp.controller('statController', function statController($scope, $modal) {
 
-
-
     $scope.user = {
         name: ""
     };
-
-
 
     $scope.stats = [{
         'label': 'str',
@@ -694,7 +690,7 @@ myApp.controller('statController', function statController($scope, $modal) {
         damage: 'AC+2',
         armorClass: 2,
         img:'Shield'
-    }]
+    }];
 
     $scope.rangedWeapons = [{
         name: 'Dart',
@@ -1015,16 +1011,15 @@ myApp.controller('statController', function statController($scope, $modal) {
                     }
                 }
             }
-        })
-        console.log(choices)
-        return choices
-    }
+        });
+        return choices;
+    };
 
     $scope.determineArmorClass = function() {
         var ac = $scope.armor.baseAC;
         switch ($scope.armor.maxDexBonus) {
             case 5:
-                ac += $scope.stats[1].mod
+                ac += $scope.stats[1].mod;
                 break;
             case 2:
                 if ($scope.stats[1].mod < 3) {
@@ -1043,18 +1038,17 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
         }
         if ($scope.selectedClass.type === 'Barbarian' || 'Monk') {
-            console.log("YOU GOT HERE")
             $scope.stats.forEach(function(stat) {
                 if (stat.label === $scope.armor.extraStat) {
                     ac += stat.mod;
                 }
-            })
+            });
         }
         if ($scope.chosenFeat.title === 'Draconic Resilience') {
             ac = 13 + $scope.stats[1].mod;
         }
         $scope.armorClass = ac;
-    }
+    };
 
     $scope.meleeWeapons.getOptions = function(options) {
         var choices = [];
@@ -1063,8 +1057,8 @@ myApp.controller('statController', function statController($scope, $modal) {
                 if (options.indexOf(weapon[prop]) >= 0) {
                     choices.push(weapon);
                     if (weapon.twoHanded === true && $scope.race.size === 'Small') {
-                        choices.splice(-1, 1)
-                    }
+                        choices.splice(-1, 1);
+                    };
                 }
                 if ($scope.race && $scope.race.weaponTraining) {
                     if ($scope.race.weaponTraining.indexOf(weapon[prop]) >= 0 && options.indexOf(weapon[prop]) < 0) {
@@ -1072,9 +1066,9 @@ myApp.controller('statController', function statController($scope, $modal) {
                     }
                 }
             }
-        })
-        return choices
-    }
+        });
+        return choices;
+    };
 
     $scope.rangedWeapons.getOptions = function(options) {
         var choices = [];
@@ -1083,10 +1077,10 @@ myApp.controller('statController', function statController($scope, $modal) {
                 if (options.indexOf(weapon[prop]) >= 0) {
                     choices.push(weapon);
                     if (weapon.name === 'Longbow' && $scope.race.size === 'Small') {
-                        choices.splice(-1, 1)
+                        choices.splice(-1, 1);
                     }
                     if (weapon.name === 'Heavy Crossbow' && $scope.race.size === 'Small') {
-                        choices.splice(-1, 1)
+                        choices.splice(-1, 1);
                     }
                 }
                 if ($scope.race && $scope.race.weaponTraining) {
@@ -1097,14 +1091,14 @@ myApp.controller('statController', function statController($scope, $modal) {
             }
         });
         return choices;
-    }
+    };
 
     $scope.chooseMelee = function(weapon1) {
         $scope.weapon1 = weapon1;
         if ($scope.weapon1) {
             $scope.findOffHands();
         }
-    }
+    };
 
     $scope.chooseOffHand = function(weapon2) {
         $scope.weapon2 = weapon2;
@@ -1120,12 +1114,12 @@ myApp.controller('statController', function statController($scope, $modal) {
     $scope.chooseArmor = function(armor1) {
         $scope.armor = armor1;
         $scope.determineArmorClass();
-    }
+    };
 
 
     // REFACTOR THIS HIDEOUS FUNCTION!
     $scope.findOffHands = function() {
-        $scope.offHandChoices = []
+        $scope.offHandChoices = [];
         for (var i = 0; i < $scope.meleeWeapons.length; i++) {
             if ($scope.weapon1.light === true && $scope.meleeWeapons[i].light === true && $scope.meleeWeapons[i].type === 'simple') {
                 $scope.offHandChoices.push($scope.meleeWeapons[i]);
@@ -1143,10 +1137,10 @@ myApp.controller('statController', function statController($scope, $modal) {
                 $scope.offHandChoices.push($scope.meleeWeapons[i]);
             }
         }
-        if ($scope.weapon1.twoHanded != true && $scope.selectedClass.hasShield === true) {
-            $scope.offHandChoices.push($scope.meleeWeapons[$scope.meleeWeapons.length - 1])
+        if ($scope.weapon1.twoHanded !== true && $scope.selectedClass.hasShield === true) {
+            $scope.offHandChoices.push($scope.meleeWeapons[$scope.meleeWeapons.length - 1]);
         }
-    }
+    };
 
 
     $scope.benefitsToggle = false;
@@ -1369,7 +1363,6 @@ myApp.controller('statController', function statController($scope, $modal) {
             angular.forEach($scope.stats, function(stat, box) {
                 if (stat.box === true) {
                     stat.box = false;
-                    // console.log(stat.label + " has been unchecked");
                     stat.value--;
                 }
                 $scope.checked = 0;
@@ -1412,32 +1405,11 @@ myApp.controller('statController', function statController($scope, $modal) {
     };
 
 
-    // $scope.getSpellMod = function(){
-    //     if($scope.selectedClass){
-    //     console.log($scope.stats[$scope.selectedClass.spellAbility])
-    //     // console.log($scope.spellMod);
-    // }
-    // };
-
     // $scope.getSpellMod();
-    //this is the end of the controller, where we simply call getAllModifier once.
+    //this is the end of the controller where we call a function.
+    //Will soon find a better way to do this.
     $scope.getAllModifier();
 
-    console.log($scope.racesList)
 });
 
 
-// angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
-//   $scope.ok = function () {
-//     $modalInstance.close();
-//   };
-
-//   $scope.cancel = function () {
-//     $modalInstance.dismiss('cancel');
-//   };
-// });
-
-// var elem = document.querySelector('.modalContainer');
-// var draggie = new Draggabilly( elem, {
-//   // options...
-// });
