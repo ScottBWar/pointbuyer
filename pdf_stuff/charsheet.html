@@ -1,18 +1,38 @@
-
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 	<head>
 		<meta charset="utf-8" />
 		<title>
 		</title>
+		<meta charset="UTF-8">
+		<title>Let's learn Angular, by playing Pathfinder!</title>
+		<script src="../bower_components/jquery/dist/jquery.js"></script>
+		<script src="../bower_components/jquery-ui/jquery-ui.js"></script>
+		<script src="../bower_components/angular/angular.js"></script>
+		<script src="../bower_components/angular-animate/angular-animate.js"></script>
+		<script src="../js/controllers.js"></script>
+		<script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="../js/behavior.js"></script>
+			<link rel="stylesheet" href="../css/bootstrap.css">
+		
 		<link rel="stylesheet" type="text/css" href="charsheet.css" />
+			<link rel="stylesheet" href="../css/animate.css">
+			<link rel="stylesheet" href="../css/style.css">
 	</head>
-	<body>
+<body ng-controller = "statController">
+		<div class="displayArea" >
+
+		<div class="intro animated fadeInDown">
+		<h1 class="intro">Click anywhere to start.</h1>
+		</div>
+
 		<div class="stl_01">
 			<object data="charsheet.svg" type="image/svg+xml" class="stl_02">
 				<embed src="charsheet.svg" type="image/svg+xml" class="stl_02" />
 			</object>
 			<div class="stl_03"><span class="stl_04">CLASS &amp; LEVEL</span></div>
+
 			<div class="stl_05"><span class="stl_04">RACE</span></div>
 			<div class="stl_06"><span class="stl_04">BACKGROUND</span></div>
 			<div class="stl_07"><span class="stl_04">ALIGNMENT</span></div>
@@ -133,4 +153,133 @@
 			<div class="stl_130"><span class="stl_112">9</span></div>
 			<div class="stl_82"><span class="stl_131">TM &amp; © 2014 Wizards of the Coast LLC. Permission is granted to photocopy this document for personal use.</span></div>
 		</div>
+	
+
+
+
+
+
+</div>
+		<div id="openModal" data-drag="true" jqyoui-draggable class="modalDialog">
+			<div>
+				
+				<!-- START MODAL AREA -->
+				
+				<div  id="myModal" role="dialog">
+					<div class="modal-header">
+						Editor Window Header
+					</div>
+					<div  jqyoui-draggable class="modal-body">
+						<div class="tabbable"> <!-- Only required for left/right tabs -->
+						<ul class="nav nav-tabs">
+							<li class="active" id="statsTab"><a href="#openModal" data-toggle="tab">Stats</a></li>
+							<li id="skillsTab"><a href="#openModal" data-toggle="tab">Skills</a></li>
+							<li id="weaponsTab"><a href="#openModal" data-toggle="tab">Equipment</a></li>
+							<li id="featuresTab"><a href="#openModal" data-toggle="tab">Features</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab1">
+								<div class="selectionArea">
+									<span>Name:</span><input type="text" maxlength="20" ng-model="user.name">
+									<div>
+										<span>Race:</span><select class=""  ng-model="selected" ng-change="selectedRace(selected)" data-ng-options="race as race.type + ' | ' + race.perks for race in racesList">
+									</select><br>
+									
+									<span>Class:</span><select class="" ng-model="classChoice" ng-change="setClass(classChoice)" data-ng-options="class as class.type for class in classList">
+								</select><br>
+								<span>Background:</span><select class="" ng-model="backgroundChoice" ng-change="setBackground(backgroundChoice)" data-ng-options="background as background.label for background in backgrounds">
+							</select>
+							<h3>Points Left: <span class="total">{{total}} out of 27</span></h3>
+							<ul class='abilityscores'>
+								
+								<li class="stat" ng-repeat="stat in stats">
+									<span class="statlabel">{{stat.label}}</span>
+									<span class="statnum">{{stat.value}}</span>
+									<span class="modifier">({{stat.modifier}})</span>
+									<div class="statButtons">
+										<button id="increaseStat" class="plusButton btn btn-primary btn-xs" ng-click="increaseStat(stat)"><span class="innerbutton">+</span></button>
+										<button id="decreaseStat" class="minusButton btn btn-info btn-xs" ng-click="decreaseStat(stat)"><span class="innerbutton">-</span></button>
+									</div>
+								</li>
+								
+							</ul>
+							<button id="resetScores" ng-click="revertStats()" ng-disabled="benefitsToggle">Reset Scores</button>
+							<h4 id="benefitsToggle" ng-if="race">Add Race Benefits -   <input id="benefits" type="checkbox" ng-click="applyRacialBenefits()"></h4>
+							<div id="half-elf-bonus" ng-show="race.type == 'Half Elf' && benefitsToggle === true">
+								<label ng-repeat="stat in stats" ng-class="{'first': $first, 'last': $last}" >{{stat.label}}
+									<input type="checkbox" name="bonus" ng-model="stat.box" ng-change="checkChanged(stat); bonusStat(stat,box)" ng-disabled="checked==limit && !stat.box">
+								</label>
+							</div>
+							<h5 ng-show="benefitsToggle" id="flashwarn">(Remove race benefits to redistribute points.)</h5>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab2">
+					<div class="skillSelectionArea">
+						You can pick {{selectedClass.maxSkills - skillsPicked()}} more skills
+						<div id="skillsChecklist">
+							<ul class="listStyle">
+								<li ng-class="{'filledIn':skill.proficient}" ng-if="selectedBackground && selectedClass && selectedClass.skillOptions.indexOf(skill.label) >= 0 || selectedBackground.skills.indexOf(skill.label) >= 0" ng-repeat="skill in skills" class="checkableSkill">
+									<label>{{skill.label}}
+										<input type="checkbox" ng-model="skill.proficient" ng-disabled="skillsPicked() >= selectedClass.maxSkills && !skill.proficient"name="proficiencyCheck">
+									</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab3">
+					<div class="weaponSelectionArea selectionArea">
+						You can pick weapons here<br>
+						<span>Melee Weapon:</span><select class=""  ng-model="weapon1" ng-change="chooseMelee(weapon1)" data-ng-options="weapon as weapon.name for weapon in meleeChoices">
+					</select><br>
+					<span>Offhand:</span><select class=""  ng-model="weapon2" ng-change="chooseOffHand(weapon2)" data-ng-options="weapon as weapon.name for weapon in offHandChoices">
+				</select><br>
+				<span>Ranged:</span><select class=""  ng-model="weapon3" ng-change="chooseRanged(weapon3)" data-ng-options="weapon as weapon.name for weapon in rangedChoices">
+			</select><br>
+			<span>Armor:</span><select class=""  ng-model="armor1" ng-change="chooseArmor(armor1)" data-ng-options="armor as armor.name for armor in armorChoices">
+		</select>
+	</div>
+</div>
+	<div class="tab-pane" id="tab4">
+
+
+<div class="featureSelection selectionArea">
+		<span>Here are the features for your class at level one</span>
+		<ul ng-if="features">
+			<li ng-repeat="feature in features">
+			{{feature.name}} | {{feature.pgNum}}
+		
+			</li>
+		</ul>
+		<div class="featureOptions" ng-if="features" ng-repeat="feature in features">
+		<span ng-if="feature.name === 'Expertise'">You can choose two skills for Expertise as outlined on {{feature.pgNum}}</span>
+		<span ng-if="feature.choices">{{feature.name}} has several options:
+		<select class="" ng-model="choice" ng-change="featureChoice(choice)" data-ng-options="choice as choice.title for choice in feature.choices"></select>
+		<div ng-if="chosenFeat">
+			{{chosenFeat.title}} : 
+			{{chosenFeat.details}}
+		</div>
+		</span>
+		</div>
+	</div>
+
+
+
+
+
+			
+</div>
+
+
+
+
+</div>
+</div>
+
+</div>
+<div style="clear:both"></div>
+<div class="modal-footer">
+</div>
+<script src="../bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 	</body>

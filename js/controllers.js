@@ -1,8 +1,10 @@
 var myApp = angular.module('myApp', ['ui.bootstrap', 'ngDragDrop','ngAnimate']);
-
+console.log("here contoller");
 
 
 myApp.controller('statController', function statController($scope, $modal) {
+
+    console.log("here");
 
     $scope.user = {
         name: ""

@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
 
+   console.log("here behavior");
 	//Custom Modal Stuff
 	MODAL_OPEN = false;
 
